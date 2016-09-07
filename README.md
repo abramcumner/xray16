@@ -1,4 +1,4 @@
-XRAY 1.6
+п»їXRAY 1.6
 --------
 
-Тест Appveyor CI
+РўРµСЃС‚ Appveyor CI
