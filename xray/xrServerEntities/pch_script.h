@@ -18,7 +18,7 @@ extern "C" {
 };
 
 #pragma warning(push)
-#pragma warning(disable:4995)
+#pragma warning(disable:4995 4297 4913)
 #include <luabind/luabind.hpp>
 #pragma warning(pop)
 

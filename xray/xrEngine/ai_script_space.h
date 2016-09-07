@@ -9,10 +9,8 @@
 #pragma once
 
 // Lua
-#pragma warning(disable:4244)
-#pragma warning(disable:4995)
-#pragma warning(disable:4530)
-#pragma warning(disable:4267)
+#pragma warning(push)
+#pragma warning(disable:4244 4267 4297 4530 4913 4995)
 
 //#define LUABIND_NO_EXCEPTIONS
 
@@ -29,9 +27,7 @@ extern "C" {
 #include <luabind/luabind.hpp>
 #include <luabind/object.hpp>
 
-#pragma warning(default:4244)
-#pragma warning(default:4995)
-#pragma warning(default:4267)
+#pragma warning(pop)
 
 typedef lua_State CLuaVirtualMachine;
 

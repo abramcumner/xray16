@@ -13,7 +13,8 @@
 
 namespace debug {
 
-#ifdef DEBUG
+#pragma todo(заменить make_final на ключевое слово с++11 final)
+#if 0 //def DEBUG
 	namespace detail {
 
 		template <typename T1, typename T2>

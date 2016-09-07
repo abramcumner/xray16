@@ -4,16 +4,7 @@
 #include "stdafx.h"
 #include "xrPhysics.h"
 
-#include "../3rd party/ode/include/ode/memory.h"
-
-#pragma comment(lib,"ode.lib")
-#pragma comment(lib,"xrCDB.lib")
-#pragma comment( lib, "xrSound.lib"	)
-#pragma comment( lib, "xrAPI.lib"	)
-//#pragma comment(lib,"xrEngine.lib")
-
-
-
+#include "../../3rd party/ode/include/ode/memory.h"
 
 #ifdef _MANAGED
 #pragma managed(push, off)

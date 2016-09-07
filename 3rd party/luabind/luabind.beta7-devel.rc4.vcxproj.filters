@@ -437,4 +437,7 @@
       <Filter>test</Filter>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\DxErr\ReadMe.txt" />
+  </ItemGroup>
 </Project>

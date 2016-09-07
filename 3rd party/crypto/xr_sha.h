@@ -2,7 +2,7 @@
 #define XR_SHA_INCLUDED
 
 #include "crypto_api_def.h"
-#include "../../xrCore/xrCore.h"
+#include "../../xray/xrCore/xrCore.h"
 
 struct SHAstate_st;
 

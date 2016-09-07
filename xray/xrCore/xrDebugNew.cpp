@@ -5,7 +5,7 @@
 #include "os_clipboard.h"
 
 #include <sal.h>
-#include "dxerr.h"
+#include "../../3rd party/DxErr/src/dxerr.h"
 
 #pragma warning(push)
 #pragma warning(disable:4995)
@@ -42,10 +42,8 @@ extern bool shared_str_initialized;
 #include <dbghelp.h>						// MiniDump flags
 
 #ifdef USE_BUG_TRAP
-#	include "../3rd party/bugtrap/bugtrap/bugtrap.h"						// for BugTrap functionality
-    #ifndef __BORLANDC__
-        #	pragma comment(lib,"BugTrap.lib")		// Link to ANSI DLL
-    #else
+#	include "../../3rd party/bugtrap/bugtrap/bugtrap.h"						// for BugTrap functionality
+    #ifdef __BORLANDC__
         #	pragma comment(lib,"BugTrapB.lib")		// Link to ANSI DLL
     #endif
 #endif // USE_BUG_TRAP
@@ -253,7 +251,7 @@ LPCSTR xrDebug::error2string	(long code)
 
 #ifdef _M_AMD64
 #else
-	result				= DXGetErrorDescription	(code);
+	result				= DXGetErrorString(code);
 #endif
 	if (0==result)
 	{
@@ -704,9 +702,6 @@ LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)
 //		::SetUnhandledExceptionFilter	(UnhandledFilter);	// exception handler to all "unhandled" exceptions
     }
 #else
-    typedef int		(__cdecl * _PNH)( size_t );
-    _CRTIMP int		__cdecl _set_new_mode( int );
-    _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
 
 #ifndef USE_BUG_TRAP
 	void _terminate		()

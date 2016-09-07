@@ -3,3 +3,4 @@
 /intermediate
 /ipch
 *.VC.VC.opendb
+*.user

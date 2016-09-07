@@ -1,7 +1,7 @@
 #if !defined(__ximaCFG_h)
 #define __ximaCFG_h
 
-#include "../../../xrCore/fastdelegate.h"
+#include "../../../xray/xrCore/fastdelegate.h"
 
 extern "C" void*	cxalloc(size_t size);
 extern "C" void		cxfree(void* ptr);
@@ -12,13 +12,10 @@ extern "C" void*	cxrealloc(void* ptr, size_t size);
 
 #ifdef CXIMAGE_AS_SHARED_LIBRARY //must be defined in Release_Shared configuration
 
-#include "../../../xrCore/xrCore.h"
-
-#pragma comment(lib,"jpeg.lib")
-#pragma comment(lib,"xrcore.lib")
+#include "../../../xray/xrCore/xrCore.h"
 
 #ifdef DEBUG
-#include "../../../xrCore/ftimer.h"
+#include "../../../xray/xrCore/ftimer.h"
 #endif //#ifdef DEBUG
 
 #ifdef	CXIMAGE_BUILD

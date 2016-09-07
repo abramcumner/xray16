@@ -35,7 +35,7 @@
 #include "../xrCore/ppmd_compressor.h"
 #include "../xrCore/rt_compressor.h"
 #include "game_cl_mp_snd_messages.h"
-#include "../3rd party/crypto/crypto.h"
+#include "../../3rd party/crypto/crypto.h"
 
 #include "reward_event_generator.h"
 #include "game_cl_base_weapon_usage_statistic.h"
@@ -55,8 +55,6 @@
 
 
 BOOL g_draw_downloads = FALSE;
-
-#pragma comment(lib, "crypto.lib")
 
 game_cl_mp::game_cl_mp()
 {
