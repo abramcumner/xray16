@@ -5587,6 +5587,9 @@
       <Project>{1daec516-e52c-4a3c-a4da-ae3553e6e0f8}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\Layers\xrRenderPC_R1\xrRender_R1.vcxproj">
+      <Project>{57a498c9-a741-4ddf-8efc-bfb9eb6b00e2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Layers\xrRenderPC_R2\xrRender_R2.vcxproj">
       <Project>{963ba4e5-499a-454d-b002-1d5ece0527a6}</Project>
     </ProjectReference>
