@@ -33,12 +33,6 @@ extern bool shared_str_initialized;
 #	include <exception>
 #endif
 
-#ifndef _M_AMD64
-#	ifndef __BORLANDC__
-#		pragma comment(lib,"dxerr.lib")
-#	endif
-#endif
-
 #include <dbghelp.h>						// MiniDump flags
 
 #ifdef USE_BUG_TRAP

@@ -507,6 +507,9 @@
     <ProjectReference Include="..\..\3rd party\bugtrap\bugtrap\BugTrap.vcxproj">
       <Project>{e8cf1ada-264a-4127-86c2-fd7057d3792c}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\3rd party\DxErr\DxErr.vcxproj">
+      <Project>{7a19cbb1-ff90-44bd-9112-c2a269d9c280}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
