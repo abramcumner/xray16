@@ -6,6 +6,10 @@
     <IncludePath>$(DXSDK)include;$(SolutionDir)SDK\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK)Lib\x86;$(SolutionDir)SDK\libraries\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <ItemDefinitionGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <DisableSpecificWarnings>4456;4457;4458;4459;4577;4595</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

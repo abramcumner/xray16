@@ -77,3 +77,4 @@ public:
 };
 
 #include "object_handler_planner_inline.h"
+#include "object_handler_planner_impl.h"
