@@ -1,0 +1,37 @@
+version: 1.6.0.2-{build}
+configuration: Release
+platform: Win32
+shallow_clone: true
+environment:
+  DXSDK: '%DXSDK_DIR%'
+before_build:
+- cmd: >-
+    echo %PLATFORM%
+
+    echo %CONFIGURATION%
+build:
+  project: ./engine.sln
+  verbosity: minimal
+after_build:
+- cmd: >-
+    md dist
+
+    copy opt\start_%PLATFORM%.bat dist
+
+    md dist\bin_%PLATFORM%
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\*.exe dist\bin_%PLATFORM%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\*.dll dist\bin_%PLATFORM%\
+
+    7z a cop_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.7z dist\*
+artifacts:
+- path: cop_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.7z
+  name: release
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: pXJeBrB1oq+/lPsy2jphy4dRQ542dkJRbAEOD3y/YgSVsoRTSgIt01EI92q9whrl
+  artifact: release
+  on:
+    appveyor_repo_tag: true
