@@ -9,6 +9,8 @@ before_build:
     echo %PLATFORM%
 
     echo %CONFIGURATION%
+
+    echo cop_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.7z
 build:
   project: ./engine.sln
   verbosity: minimal
@@ -25,6 +27,8 @@ after_build:
     copy intermediate\%PLATFORM%-%CONFIGURATION%\*.dll dist\bin_%PLATFORM%\
 
     7z a cop_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.7z dist\*
+
+    appveyor PushArtifact cop_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.7z	
 artifacts:
 - path: .\cop_$(appveyor_repo_tag_name)_$(platform).7z
   name: release
