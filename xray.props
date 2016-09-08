@@ -5,6 +5,8 @@
   <PropertyGroup>
     <IncludePath>$(DXSDK)include;$(SolutionDir)SDK\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK)Lib\x86;$(SolutionDir)SDK\libraries\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
