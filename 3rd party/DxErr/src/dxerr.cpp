@@ -27,7 +27,7 @@
 #include <dinputd.h>
 #endif
 
-//struct DXGI_RGBA;
+struct DXGI_RGBA;
 
 #include <d3d10_1.h>
 #include <d3d11_1.h>
