@@ -593,7 +593,6 @@ void format_message	(LPSTR buffer, const u32 &buffer_size)
 
 #ifndef _EDITOR
     #include <errorrep.h>
-    #pragma comment( lib, "faultrep.lib" )
 #endif
 
 LONG WINAPI UnhandledFilter	(_EXCEPTION_POINTERS *pExceptionInfo)

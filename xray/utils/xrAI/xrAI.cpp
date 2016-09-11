@@ -14,15 +14,6 @@
 #include <mmsystem.h>
 #include "spawn_patcher.h"
 
-#pragma comment(linker,"/STACK:0x800000,0x400000")
-
-#pragma comment(lib,"comctl32.lib")
-#pragma comment(lib,"d3dx9.lib")
-#pragma comment(lib,"IMAGEHLP.LIB")
-#pragma comment(lib,"winmm.LIB")
-#pragma comment(lib,"xrcdb.LIB")
-#pragma comment(lib,"MagicFM.LIB")
-
 extern LPCSTR LEVEL_GRAPH_NAME;
 
 extern void	xrCompiler			(LPCSTR name, bool draft_mode, bool pure_covers, LPCSTR out_name);

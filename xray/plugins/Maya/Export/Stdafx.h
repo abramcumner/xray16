@@ -109,9 +109,6 @@ DEFINE_VECTOR(AnsiString,AStringVec,AStringIt);
 #define GAMEMTL_NONE		u32(-1)
 #define _game_data_ "$game_data$"
 
-#pragma comment(lib,"d3dx9.lib")
-#pragma comment(lib,"xrQSlim.lib")
-
 #endif /*_INCDEF_STDAFX_H_*/
 
 

@@ -12,8 +12,6 @@
 #include "editor_environment_detail.hpp"
 #include <shlwapi.h>
 
-#pragma comment(lib, "shlwapi.lib")
-
 using editor::environment::detail::logical_string_predicate;
 
 static HRESULT AnsiToUnicode						(LPCSTR pszA, LPVOID buffer, u32 const& buffer_size)

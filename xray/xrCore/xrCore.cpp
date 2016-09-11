@@ -7,8 +7,6 @@
 #include <objbase.h>
 #include "xrCore.h"
  
-#pragma comment(lib,"winmm.lib")
-
 #ifdef DEBUG
 #	include	<malloc.h>
 #endif // DEBUG

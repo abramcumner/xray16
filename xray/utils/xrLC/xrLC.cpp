@@ -5,15 +5,6 @@
 #include "build.h"
 #include "../xrLC_Light/xrLC_GlobalData.h"
 
-//#pragma comment(linker,"/STACK:0x800000,0x400000")
-//#pragma comment(linker,"/HEAP:0x70000000,0x10000000")
-
-#pragma comment(lib,"comctl32.lib")
-#pragma comment(lib,"d3dx9.lib")
-#pragma comment(lib,"IMAGEHLP.LIB")
-#pragma comment(lib,"winmm.LIB")
-#pragma comment(lib,"FreeImage.lib")
-
 #define PROTECTED_BUILD
 
 #ifdef PROTECTED_BUILD

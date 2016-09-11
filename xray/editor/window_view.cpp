@@ -8,8 +8,6 @@
 
 #include "resource.h"
 
-#pragma comment(lib,"gdi32.lib")
-
 using editor::window_ide;
 using editor::window_view;
 using editor::controls::property_incrementable;
