@@ -324,7 +324,7 @@ static bool savePPM(Stream & s, const Image * img)
     writer.writeString("255\n");
     for (uint i = 0; i < w * h; i++) {
         Color32 c = img->pixel(i);
-        s << (uint8_t&)c.r << (uint8_t&)c.g << (uint8_t&)c.b;
+        s << (uint8&)c.r << (uint8&)c.g << (uint8&)c.b;
     }
 
     return true;
