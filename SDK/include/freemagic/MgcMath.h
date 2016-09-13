@@ -110,9 +110,7 @@ public:
 
     // common constants
     static const Real MAX_REAL;
-#ifndef _EDITOR
     static const Real PI;
-#endif // _EDITOR
     static const Real TWO_PI;
     static const Real HALF_PI;
     static const Real INV_TWO_PI;
