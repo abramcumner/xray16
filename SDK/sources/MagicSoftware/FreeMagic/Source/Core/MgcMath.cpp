@@ -9,8 +9,6 @@
 //
 // FREE SOURCE CODE
 // http://www.magic-software.com/License/free.pdf
-#include "stdafx.h"
-#pragma hdrstop
 
 #include "MgcMath.h"
 using namespace Mgc;
@@ -21,11 +19,11 @@ const Real Math::MAX_REAL = DBL_MAX;
 const Real Math::MAX_REAL = FLT_MAX;
 #endif
 
-const Real Math::PI_ = 4.0f*Math::ATan(1.0f);
+const Real Math::PI = 4.0f*Math::ATan(1.0f);
 const Real Math::TWO_PI = 2.0f*PI;
 const Real Math::HALF_PI = 0.5f*PI;
 const Real Math::INV_TWO_PI = 1.0f/TWO_PI;
-const Real Math::DEG_TO_RAD = Math::PI_/180.0f;
+const Real Math::DEG_TO_RAD = Math::PI/180.0f;
 const Real Math::RAD_TO_DEG = 1.0f/Math::DEG_TO_RAD;
 
 //----------------------------------------------------------------------------

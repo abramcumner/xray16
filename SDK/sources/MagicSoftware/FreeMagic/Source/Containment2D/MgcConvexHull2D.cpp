@@ -9,8 +9,6 @@
 //
 // FREE SOURCE CODE
 // http://www.magic-software.com/License/free.pdf
-#include "stdafx.h"
-#pragma hdrstop
 
 #include "MgcConvexHull2D.h"
 using namespace Mgc;
@@ -464,7 +462,7 @@ void ConvexHull2D::GetTangent (const SVArray& rkLHull, const SVArray& rkRHull,
     }
 
     // detect "infinite loop" caused by floating point round-off errors
-    VERIFY( i < iLSize+iRSize );
+    assert( i < iLSize+iRSize );
 }
 //----------------------------------------------------------------------------
 
@@ -574,7 +572,7 @@ void ConvexHull2D::MergePlanar (const SortedVertex& rkP)
         // iCT == ORDER_COLLINEAR_CONTAIN || iCT == ORDER_COLLINEAR_RIGHT
         return;
     }
-    VERIFY( iU < iSize );
+    assert( iU < iSize );
 
     // search clockwise for last visible vertex
     for (iL = 0, i = iSize-1; i >= 0; iL = i--)
@@ -588,7 +586,7 @@ void ConvexHull2D::MergePlanar (const SortedVertex& rkP)
         // iCT == ORDER_COLLINEAR_CONTAIN || iCT == ORDER_COLLINEAR_LEFT
         return;
     }
-    VERIFY( i >= 0 );
+    assert( i >= 0 );
 
     // construct the counterclockwise-ordered merged-hull vertices
     SVArray kTmpHull;
@@ -604,8 +602,6 @@ void ConvexHull2D::MergePlanar (const SortedVertex& rkP)
     }
     if( kTmpHull.size() > 2 )
         m_kHull = kTmpHull;
-    else
-        Msg("error in ConvexHull2D::MergePlanar");
 }
 //----------------------------------------------------------------------------
 
