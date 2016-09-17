@@ -79,11 +79,6 @@
     <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="nvDXTlibMTDLL.lib">
-      <Filter>Convert</Filter>
-    </Library>
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

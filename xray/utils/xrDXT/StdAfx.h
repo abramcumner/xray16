@@ -24,8 +24,6 @@
 	((DWORD)(BYTE)(ch2) << 16) | ((DWORD)(BYTE)(ch3) << 24 ))
 #endif //defined(MAKEFOURCC)
 
-#pragma comment(lib,"nvDXTlibMTDLL.lib")
-
 #pragma warning( disable : 4995 )
 
 #endif

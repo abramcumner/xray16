@@ -12,11 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="ColorPicker.lib">
-      <Filter>Kernel</Filter>
-    </Library>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="CreateDX.cpp">
       <Filter>Kernel</Filter>
     </ClCompile>
