@@ -18,9 +18,7 @@ after_build:
 - cmd: >-
     set COR_PLAT=%PLATFORM%
 
-    IF "%COR_PLAT%" == "Win32" (
-    	set COR_PLAT=x86
-    )
+    IF "%COR_PLAT%" == "Win32" set COR_PLAT=x86
 
 
     md dist
