@@ -9,7 +9,6 @@
 #ifndef xrServer_Objects_ALifeH
 #define xrServer_Objects_ALifeH
 
-#include "pch_script.h"
 #include "xrServer_Objects.h"
 #include "alife_space.h"
 #include "game_graph_space.h"
