@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "pch_script.h"
 #include "game_sv_mp.h"
 #include "game_cl_mp.h"
 #include "level.h"

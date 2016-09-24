@@ -2,6 +2,7 @@
 #include "GameSpy_Full.h"
 #include "GameSpy_SAKE.h"
 #include "../MainMenu.h"
+#include "profile_data_types_script.h"
 #include "../profile_store.h"
 
 

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "profile_data_types_script.h"
 #include "player_account.h"
 #include "MainMenu.h"
 #include "login_manager.h"
