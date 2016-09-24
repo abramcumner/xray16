@@ -168,7 +168,7 @@ struct Bullet_Check_Request
 	s16 BoneID;
 	bool Result;
 	bool Processed;
-	Bullet_Check_Request() : BulletID(0), Result(false) {};
+	Bullet_Check_Request() : BulletID(0), Result(false), BoneID(0), Processed(false) {};
 	Bullet_Check_Request(u32 ID, s16 BID) : BulletID(ID), BoneID(BID), Result(false), Processed(false) {};
 };
 
