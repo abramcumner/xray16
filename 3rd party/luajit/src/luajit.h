@@ -1,5 +1,7 @@
 /*
-** Copyright (C) 2005-2008 Mike Pall. All rights reserved.
+** LuaJIT -- a Just-In-Time Compiler for Lua. http://luajit.org/
+**
+** Copyright (C) 2005-2015 Mike Pall. All rights reserved.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining
 ** a copy of this software and associated documentation files (the
@@ -23,19 +25,15 @@
 ** [ MIT license: http://www.opensource.org/licenses/mit-license.php ]
 */
 
-/* LuaJIT -- a Just-In-Time Compiler for Lua. http://luajit.org/ */
+#ifndef _LUAJIT_H
+#define _LUAJIT_H
 
-/* LuaJIT public C API. */
-#ifndef luajit_h
-#define luajit_h
+#include "lua.h"
 
-#include <lua/lua.h>
-
-
-#define LUAJIT_VERSION		"LuaJIT 1.1.4"
-#define LUAJIT_VERSION_NUM	10104  /* Version 1.1.4 = 01.01.04. */
-#define LUAJIT_VERSION_SYM	luaJIT_version_1_1_4
-#define LUAJIT_COPYRIGHT	"Copyright (C) 2005-2008 Mike Pall"
+#define LUAJIT_VERSION		"LuaJIT 2.0.4"
+#define LUAJIT_VERSION_NUM	20004  /* Version 2.0.4 = 02.00.04. */
+#define LUAJIT_VERSION_SYM	luaJIT_version_2_0_4
+#define LUAJIT_COPYRIGHT	"Copyright (C) 2005-2015 Mike Pall"
 #define LUAJIT_URL		"http://luajit.org/"
 
 /* Modes for luaJIT_setmode. */
@@ -48,18 +46,22 @@ enum {
   LUAJIT_MODE_FUNC,		/* Change mode for a function. */
   LUAJIT_MODE_ALLFUNC,		/* Recurse into subroutine protos. */
   LUAJIT_MODE_ALLSUBFUNC,	/* Change only the subroutines. */
+
+  LUAJIT_MODE_TRACE,		/* Flush a compiled trace. */
+
+  LUAJIT_MODE_WRAPCFUNC = 0x10,	/* Set wrapper mode for C function calls. */
+
   LUAJIT_MODE_MAX
 };
 
 /* Flags or'ed in to the mode. */
-#define LUAJIT_MODE_OFF		0x0000	/* Disable JIT compilation. */
-#define LUAJIT_MODE_ON		0x0100	/* (Re-)enable JIT compilation. */
+#define LUAJIT_MODE_OFF		0x0000	/* Turn feature off. */
+#define LUAJIT_MODE_ON		0x0100	/* Turn feature on. */
+#define LUAJIT_MODE_FLUSH	0x0200	/* Flush JIT-compiled code. */
 
+/* LuaJIT public C API. */
 
-/* Compile a Lua function. Pass arguments as hints. */
-LUA_API int luaJIT_compile(lua_State *L, int nargs);
-
-/* Set the JIT mode for the whole engine or a function (idx = 0: self). */
+/* Control the JIT engine. */
 LUA_API int luaJIT_setmode(lua_State *L, int idx, int mode);
 
 /* Enforce (dynamic) linker error for version mismatches. Call from main. */

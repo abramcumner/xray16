@@ -1,122 +1,151 @@
-# makefile for installing Lua
-# see INSTALL for installation instructions
-# see src/Makefile and src/luaconf.h for further customization
-
-# == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
-
-# Your platform. See PLATS for possible values.
-PLAT= none
-
-# Where to install. The installation starts in the src directory, so take care
-# if INSTALL_TOP is not an absolute path. (Man pages are installed from the
-# doc directory.) You may want to make these paths consistent with LUA_ROOT,
-# LUA_LDIR, and LUA_CDIR in luaconf.h (and also with etc/luajit.pc).
+##############################################################################
+# LuaJIT top level Makefile for installation. Requires GNU Make.
 #
-INSTALL_TOP= /usr/local
-INSTALL_BIN= $(INSTALL_TOP)/bin
-INSTALL_INC= $(INSTALL_TOP)/include
-INSTALL_LIB= $(INSTALL_TOP)/lib
-INSTALL_MAN= $(INSTALL_TOP)/man/man1
-INSTALL_LMOD= $(INSTALL_TOP)/share/lua/$V
-INSTALL_CMOD= $(INSTALL_TOP)/lib/lua/$V
+# Please read doc/install.html before changing any variables!
+#
+# Suitable for POSIX platforms (Linux, *BSD, OSX etc.).
+# Note: src/Makefile has many more configurable options.
+#
+# ##### This Makefile is NOT useful for Windows! #####
+# For MSVC, please follow the instructions given in src/msvcbuild.bat.
+# For MinGW and Cygwin, cd to src and run make with the Makefile there.
+#
+# Copyright (C) 2005-2015 Mike Pall. See Copyright Notice in luajit.h
+##############################################################################
 
-# How to install. If you don't have "install" (unlikely) then get install-sh at
-#	http://dev.w3.org/cvsweb/libwww/config/install-sh
-# or use cp instead.
-INSTALL_EXEC= $(INSTALL) -p -m 0755
-INSTALL_DATA= $(INSTALL) -p -m 0644
+MAJVER=  2
+MINVER=  0
+RELVER=  4
+VERSION= $(MAJVER).$(MINVER).$(RELVER)
+ABIVER=  5.1
 
-# Utilities.
-INSTALL= install
-MKDIR= mkdir
+##############################################################################
+#
+# Change the installation path as needed. This automatically adjusts
+# the paths in src/luaconf.h, too. Note: PREFIX must be an absolute path!
+#
+export PREFIX= /usr/local
+export MULTILIB= lib
+##############################################################################
 
-# == END OF USER SETTINGS. NO NEED TO CHANGE ANYTHING BELOW THIS LINE =========
+DPREFIX= $(DESTDIR)$(PREFIX)
+INSTALL_BIN=   $(DPREFIX)/bin
+INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
+INSTALL_SHARE= $(DPREFIX)/share
+INSTALL_INC=   $(DPREFIX)/include/luajit-$(MAJVER).$(MINVER)
 
-# Convenience platforms targets.
-PLATS= linux bsd macosx solaris mingw cygwin posix generic linux_rl bsd_rl macosx_rl
+INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(VERSION)
+INSTALL_JITLIB= $(INSTALL_LJLIBD)/jit
+INSTALL_LMODD= $(INSTALL_SHARE)/lua
+INSTALL_LMOD= $(INSTALL_LMODD)/$(ABIVER)
+INSTALL_CMODD= $(INSTALL_LIB)/lua
+INSTALL_CMOD= $(INSTALL_CMODD)/$(ABIVER)
+INSTALL_MAN= $(INSTALL_SHARE)/man/man1
+INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
 
-# What to install.
-TO_BIN= luajit
-###TO_INC= lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp
-###TO_LIB= liblua.a
-###TO_MAN= lua.1 luac.1
+INSTALL_TNAME= luajit-$(VERSION)
+INSTALL_TSYMNAME= luajit
+INSTALL_ANAME= libluajit-$(ABIVER).a
+INSTALL_SONAME= libluajit-$(ABIVER).so.$(MAJVER).$(MINVER).$(RELVER)
+INSTALL_SOSHORT= libluajit-$(ABIVER).so
+INSTALL_DYLIBNAME= libluajit-$(ABIVER).$(MAJVER).$(MINVER).$(RELVER).dylib
+INSTALL_DYLIBSHORT1= libluajit-$(ABIVER).dylib
+INSTALL_DYLIBSHORT2= libluajit-$(ABIVER).$(MAJVER).dylib
+INSTALL_PCNAME= luajit.pc
 
-# Lua version and release.
-V= 5.1
-R= 5.1.3
-# LuaJIT version.
-JV= 1.1.4
+INSTALL_STATIC= $(INSTALL_LIB)/$(INSTALL_ANAME)
+INSTALL_DYN= $(INSTALL_LIB)/$(INSTALL_SONAME)
+INSTALL_SHORT1= $(INSTALL_LIB)/$(INSTALL_SOSHORT)
+INSTALL_SHORT2= $(INSTALL_LIB)/$(INSTALL_SOSHORT)
+INSTALL_T= $(INSTALL_BIN)/$(INSTALL_TNAME)
+INSTALL_TSYM= $(INSTALL_BIN)/$(INSTALL_TSYMNAME)
+INSTALL_PC= $(INSTALL_PKGCONFIG)/$(INSTALL_PCNAME)
 
-all:	$(PLAT)
+INSTALL_DIRS= $(INSTALL_BIN) $(INSTALL_LIB) $(INSTALL_INC) $(INSTALL_MAN) \
+  $(INSTALL_PKGCONFIG) $(INSTALL_JITLIB) $(INSTALL_LMOD) $(INSTALL_CMOD)
+UNINSTALL_DIRS= $(INSTALL_JITLIB) $(INSTALL_LJLIBD) $(INSTALL_INC) \
+  $(INSTALL_LMOD) $(INSTALL_LMODD) $(INSTALL_CMOD) $(INSTALL_CMODD)
 
-$(PLATS) clean:
-	cd src && $(MAKE) $@
+RM= rm -f
+MKDIR= mkdir -p
+RMDIR= rmdir 2>/dev/null
+SYMLINK= ln -sf
+INSTALL_X= install -m 0755
+INSTALL_F= install -m 0644
+UNINSTALL= $(RM)
+LDCONFIG= ldconfig -n
+SED_PC= sed -e "s|^prefix=.*|prefix=$(PREFIX)|" \
+            -e "s|^multilib=.*|multilib=$(MULTILIB)|"
 
-test:	dummy
-	src/luajit -O -e 'io.write("Hello world, from ", jit.version, "!\n")'
+FILE_T= luajit
+FILE_A= libluajit.a
+FILE_SO= libluajit.so
+FILE_MAN= luajit.1
+FILE_PC= luajit.pc
+FILES_INC= lua.h lualib.h lauxlib.h luaconf.h lua.hpp luajit.h
+FILES_JITLIB= bc.lua v.lua dump.lua dis_x86.lua dis_x64.lua dis_arm.lua \
+	      dis_ppc.lua dis_mips.lua dis_mipsel.lua bcsave.lua vmdef.lua
 
-install: dummy
-	cd src && $(MKDIR) -p $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD) $(INSTALL_LMOD)/jit
-	cd src && $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
-	###cd src && $(INSTALL_DATA) $(TO_INC) $(INSTALL_INC)
-	###cd src && $(INSTALL_DATA) $(TO_LIB) $(INSTALL_LIB)
-	###cd doc && $(INSTALL_DATA) $(TO_MAN) $(INSTALL_MAN)
-	cd jit && $(INSTALL_DATA) *.lua $(INSTALL_LMOD)/jit
+ifeq (,$(findstring Windows,$(OS)))
+  ifeq (Darwin,$(shell uname -s))
+    INSTALL_SONAME= $(INSTALL_DYLIBNAME)
+    INSTALL_SHORT1= $(INSTALL_LIB)/$(INSTALL_DYLIBSHORT1)
+    INSTALL_SHORT2= $(INSTALL_LIB)/$(INSTALL_DYLIBSHORT2)
+    LDCONFIG= :
+  endif
+endif
 
-none:
-	@echo "Please do"
-	@echo "   make PLATFORM"
-	@echo "where PLATFORM is one of these:"
-	@echo "   $(PLATS)"
-	@echo "See jitdoc/luajit_install.html for complete instructions."
+##############################################################################
 
-# make may get confused with test/ and INSTALL in a case-insensitive OS
-dummy:
+INSTALL_DEP= src/luajit
 
-# echo config parameters
-echo:
-	@echo ""
-	@echo "These are the parameters currently set in src/Makefile to build LuaJIT $(JV):"
-	@echo ""
-	@cd src && $(MAKE) -s echo
-	@echo ""
-	@echo "These are the parameters currently set in Makefile to install LuaJIT $(JV):"
-	@echo ""
-	@echo "PLAT = $(PLAT)"
-	@echo "INSTALL_TOP = $(INSTALL_TOP)"
-	@echo "INSTALL_BIN = $(INSTALL_BIN)"
-	@echo "INSTALL_INC = $(INSTALL_INC)"
-	@echo "INSTALL_LIB = $(INSTALL_LIB)"
-	@echo "INSTALL_MAN = $(INSTALL_MAN)"
-	@echo "INSTALL_LMOD = $(INSTALL_LMOD)"
-	@echo "INSTALL_CMOD = $(INSTALL_CMOD)"
-	@echo "INSTALL_EXEC = $(INSTALL_EXEC)"
-	@echo "INSTALL_DATA = $(INSTALL_DATA)"
-	@echo ""
-	@echo "See also src/luaconf.h ."
-	@echo ""
+default all $(INSTALL_DEP):
+	@echo "==== Building LuaJIT $(VERSION) ===="
+	$(MAKE) -C src
+	@echo "==== Successfully built LuaJIT $(VERSION) ===="
 
-# echo private config parameters
-pecho:
-	@echo "V = $(V)"
-	@echo "R = $(R)"
-	@echo "JV = $(JV)"
-	@echo "TO_BIN = $(TO_BIN)"
-	@echo "TO_INC = $(TO_INC)"
-	@echo "TO_LIB = $(TO_LIB)"
-	@echo "TO_MAN = $(TO_MAN)"
+install: $(INSTALL_DEP)
+	@echo "==== Installing LuaJIT $(VERSION) to $(PREFIX) ===="
+	$(MKDIR) $(INSTALL_DIRS)
+	cd src && $(INSTALL_X) $(FILE_T) $(INSTALL_T)
+	cd src && test -f $(FILE_A) && $(INSTALL_F) $(FILE_A) $(INSTALL_STATIC) || :
+	$(RM) $(INSTALL_TSYM) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2)
+	cd src && test -f $(FILE_SO) && \
+	  $(INSTALL_X) $(FILE_SO) $(INSTALL_DYN) && \
+	  $(LDCONFIG) $(INSTALL_LIB) && \
+	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
+	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
+	cd etc && $(INSTALL_F) $(FILE_MAN) $(INSTALL_MAN)
+	cd etc && $(SED_PC) $(FILE_PC) > $(FILE_PC).tmp && \
+	  $(INSTALL_F) $(FILE_PC).tmp $(INSTALL_PC) && \
+	  $(RM) $(FILE_PC).tmp
+	cd src && $(INSTALL_F) $(FILES_INC) $(INSTALL_INC)
+	cd src/jit && $(INSTALL_F) $(FILES_JITLIB) $(INSTALL_JITLIB)
+	$(SYMLINK) $(INSTALL_TNAME) $(INSTALL_TSYM)
+	@echo "==== Successfully installed LuaJIT $(VERSION) to $(PREFIX) ===="
 
-# echo config parameters as Lua code
-# uncomment the last sed expression if you want nil instead of empty strings
-lecho:
-	@echo "-- installation parameters for Lua $(R), LuaJIT $(JV)"
-	@echo "VERSION = '$(V)'"
-	@echo "RELEASE = '$(R)'"
-	@echo "LUAJIT_VERSION = '$(JV)'"
-	@$(MAKE) echo | grep = | sed -e 's/= /= "/' -e 's/$$/"/' #-e 's/""/nil/'
-	@echo "-- EOF"
+uninstall:
+	@echo "==== Uninstalling LuaJIT $(VERSION) from $(PREFIX) ===="
+	$(UNINSTALL) $(INSTALL_TSYM) $(INSTALL_T) $(INSTALL_STATIC) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2) $(INSTALL_MAN)/$(FILE_MAN) $(INSTALL_PC)
+	for file in $(FILES_JITLIB); do \
+	  $(UNINSTALL) $(INSTALL_JITLIB)/$$file; \
+	  done
+	for file in $(FILES_INC); do \
+	  $(UNINSTALL) $(INSTALL_INC)/$$file; \
+	  done
+	$(LDCONFIG) $(INSTALL_LIB)
+	$(RMDIR) $(UNINSTALL_DIRS) || :
+	@echo "==== Successfully uninstalled LuaJIT $(VERSION) from $(PREFIX) ===="
 
-# list targets that do not create files (but not all makes understand .PHONY)
-.PHONY: all $(PLATS) clean test install local none dummy echo pecho lecho
+##############################################################################
 
-# (end of Makefile)
+amalg:
+	@echo "Building LuaJIT $(VERSION)"
+	$(MAKE) -C src amalg
+
+clean:
+	$(MAKE) -C src clean
+
+.PHONY: all install amalg clean
+
+##############################################################################
