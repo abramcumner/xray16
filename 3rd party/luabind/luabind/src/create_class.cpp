@@ -20,10 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#define LUABIND_BUILDING
-
 #include <luabind/luabind.hpp>
-
 #include <luabind/lua_include.hpp>
 
 namespace luabind { namespace detail
@@ -118,15 +115,50 @@ namespace luabind { namespace detail
 
         const char* name = lua_tostring(L, 1);
 
+		int stack_level = lua_gettop(L);
+		//////////////////////////////////////////////////////////////////////////
+		// Here we are trying to add the class to the namespace in the local variable "this" if exist
+		//////////////////////////////////////////////////////////////////////////
+
+		int index = LUA_GLOBALSINDEX;
+		lua_Debug ar;
+		if (lua_getstack(L, 1, &ar))
+		{
+			int i = 1;
+			const char *name;
+			while ((name = lua_getlocal(L, &ar, i++)) != NULL) {
+				if (!strcmp("this", name)) {
+					if (lua_istable(L, -1))
+						index = lua_gettop(L);
+					else
+						lua_pop(L, 1);
+					break;
+				}
+				lua_pop(L, 1);  /* remove variable value */
+			}
+		}
+
+		//////////////////////////////////////////////////////////////////////////
+		// End of change
+		//////////////////////////////////////////////////////////////////////////
+
         void* c = lua_newuserdata(L, sizeof(class_rep));
         new(c) class_rep(L, name);
 
         // make the class globally available
-        lua_pushvalue(L, -1);
-        lua_setglobal(L, name);
+        //lua_pushvalue(L, -1);
+        //lua_setglobal(L, name);
+		// make the class globally available
+		lua_pushstring(L, name);
+		lua_pushvalue(L, -2);
+		lua_settable(L, index);
+		if (index != LUA_GLOBALSINDEX)
+			lua_remove(L, index);
 
-        // also add it to the closure as return value
+		// also add it to the closure as return value
         lua_pushcclosure(L, &stage2, 1);
+
+		int stack_level2 = lua_gettop(L);
 
         return 1;
     }
