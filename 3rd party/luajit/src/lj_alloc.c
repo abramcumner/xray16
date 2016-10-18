@@ -31,6 +31,7 @@
 #include "lj_def.h"
 #include "lj_arch.h"
 #include "lj_alloc.h"
+#include "xr_pool.h"
 
 #ifndef LUAJIT_USE_SYSMALLOC
 
@@ -82,7 +83,7 @@
 /* Undocumented, but hey, that's what we all love so much about Windows. */
 typedef long (*PNTAVM)(HANDLE handle, void **addr, ULONG zbits,
 		       size_t *size, ULONG alloctype, ULONG prot);
-static PNTAVM ntavm;
+PNTAVM ntavm;
 
 /* Number of top bits of the lower 32 bits of an address that must be zero.
 ** Apparently 0 gives us full 64 bit addresses and 1 gives us the lower 2GB.
@@ -93,28 +94,34 @@ static void INIT_MMAP(void)
 {
   ntavm = (PNTAVM)GetProcAddress(GetModuleHandleA("ntdll.dll"),
 				 "NtAllocateVirtualMemory");
+  XR_INIT();
 }
 
 /* Win64 32 bit MMAP via NtAllocateVirtualMemory. */
 static LJ_AINLINE void *CALL_MMAP(size_t size)
 {
-  DWORD olderr = GetLastError();
-  void *ptr = NULL;
-  long st = ntavm(INVALID_HANDLE_VALUE, &ptr, NTAVM_ZEROBITS, &size,
-		  MEM_RESERVE|MEM_COMMIT, PAGE_READWRITE);
+  DWORD olderr = GetLastError();  
+  void* ptr = XR_MMAP(size);
   SetLastError(olderr);
-  return st == 0 ? ptr : MFAIL;
+  return ptr;
 }
 
 /* For direct MMAP, use MEM_TOP_DOWN to minimize interference */
 static LJ_AINLINE void *DIRECT_MMAP(size_t size)
 {
-  DWORD olderr = GetLastError();
-  void *ptr = NULL;
-  long st = ntavm(INVALID_HANDLE_VALUE, &ptr, NTAVM_ZEROBITS, &size,
-		  MEM_RESERVE|MEM_COMMIT|MEM_TOP_DOWN, PAGE_READWRITE);
+  DWORD olderr = GetLastError();  
+  void* ptr = XR_MMAP(size);
   SetLastError(olderr);
-  return st == 0 ? ptr : MFAIL;
+  return ptr;  
+}
+
+/* This function supports releasing coalesed segments */
+static LJ_AINLINE int CALL_MUNMAP(void *ptr, size_t size)
+{
+  DWORD olderr = GetLastError();
+  XR_DESTROY(ptr, size);  
+  SetLastError(olderr);
+  return 0;  
 }
 
 #else
@@ -140,8 +147,6 @@ static LJ_AINLINE void *DIRECT_MMAP(size_t size)
   return ptr ? ptr : MFAIL;
 }
 
-#endif
-
 /* This function supports releasing coalesed segments */
 static LJ_AINLINE int CALL_MUNMAP(void *ptr, size_t size)
 {
@@ -152,7 +157,7 @@ static LJ_AINLINE int CALL_MUNMAP(void *ptr, size_t size)
     if (VirtualQuery(cptr, &minfo, sizeof(minfo)) == 0)
       return -1;
     if (minfo.BaseAddress != cptr || minfo.AllocationBase != cptr ||
-	minfo.State != MEM_COMMIT || minfo.RegionSize > size)
+        minfo.State != MEM_COMMIT || minfo.RegionSize > size)
       return -1;
     if (VirtualFree(cptr, 0, MEM_RELEASE) == 0)
       return -1;
@@ -162,6 +167,8 @@ static LJ_AINLINE int CALL_MUNMAP(void *ptr, size_t size)
   SetLastError(olderr);
   return 0;
 }
+
+#endif
 
 #else
 
