@@ -22,90 +22,76 @@
 
 #include "test.hpp"
 #include <luabind/luabind.hpp>
+#include <boost/mpl/if.hpp>             // for if_<>::type
 
-namespace
+namespace {
+
+struct test_class : counted_type<test_class>
 {
-	struct test_class : counted_type<test_class>
-	{
-		test_class() {}
-		int f() const
-		{
-			return 5;
-		}
-	};
+    test_class() {}
+    int f() const
+    {
+        return 5;
+    }
+};
 
-	int f(int a)
-	{
-		return 9;
-	}
+COUNTER_GUARD(test_class);
 
-	int j(lua_State* L)
-	{
-		lua_pushnumber(L, 9);
-		return lua_yield(L, 1);
-	}
+} // namespace unnamed
 
-	void f() {}
-}
-
-void test_yield()
+void test_main(lua_State* L)
 {
-    COUNTER_GUARD(test_class);
+    using namespace luabind;
 
-	lua_state L;
+    module(L)
+    [
+        class_<test_class>("test")
+            .def(constructor<>())
+            .def("f", &test_class::f, luabind::yield)
+    ];
 
-	using namespace luabind;
+    DOSTRING(L,
+        "function h()\n"
+        "   coroutine.yield(4)"
+        "end");
 
-	module(L)
-	[
-		class_<test_class>("test")
-			.def(constructor<>())
-			.def("f", &test_class::f, luabind::yield)
-	];
-
-	DOSTRING(L,
-		"function h()\n"
-		"	coroutine.yield(4)"
-		"end");
-
-	{
-		lua_State* thread = lua_newthread(L);
-        BOOST_CHECK(resume_function<int>(thread, "h") == 4);
+    {
+        lua_State* thread = lua_newthread(L);
+        TEST_CHECK(resume_function<int>(thread, "h") == 4);
         lua_pop(L, 1); // pop thread
     }
 
-	DOSTRING(L,
-		"function g(str)\n"
-		"	assert(str == 'foobar')\n"
-		"	a = test()"
-		"	for i = 1, 10 do\n"
-		"		assert(a:f() == i + 4)\n"
-		"	end\n"
-		"end");
+    DOSTRING(L,
+        "function g(str)\n"
+        "   assert(str == 'foobar')\n"
+        "   a = test()"
+        "   for i = 1, 10 do\n"
+        "       assert(a:f() == i + 4)\n"
+        "   end\n"
+        "end");
 
-	{
+    {
         lua_State* thread = lua_newthread(L);
 
-        BOOST_CHECK(resume_function<int>(thread, "g", "foobar") == 5);
-		for (int i = 1; i < 10; ++i)
-		{
-			BOOST_CHECK(resume<int>(thread, i + 4) == 5);
-		}
-		lua_pop(L, 1); // pop thread
-	}
+        TEST_CHECK(resume_function<int>(thread, "g", "foobar") == 5);
+        for (int i = 1; i < 10; ++i)
+        {
+            TEST_CHECK(resume<int>(thread, i + 4) == 5);
+        }
+        lua_pop(L, 1); // pop thread
+    }
 
 
-	{
+    {
         lua_State* thread = lua_newthread(L);
-		object g = get_globals(thread)["g"];
+        object g = globals(thread)["g"];
 
-        BOOST_CHECK(resume_function<int>(g, "foobar") == 5);
-		for (int i = 1; i < 10; ++i)
-		{
-			BOOST_CHECK(resume<int>(thread, i + 4) == 5);
-		}
-		lua_pop(L, 1); // pop thread
-	}
+        TEST_CHECK(resume_function<int>(g, "foobar") == 5);
+        for (int i = 1; i < 10; ++i)
+        {
+            TEST_CHECK(resume<int>(thread, i + 4) == 5);
+        }
+        lua_pop(L, 1); // pop thread
+    }
 
 }
-

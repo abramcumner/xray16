@@ -25,35 +25,48 @@
 
 namespace {
 
-struct ex : public std::exception
+struct ex : public std::exception, public counted_type<ex>
 {
     ex(const char* m): msg(m) {}
-    virtual const char* what() const throw() { return msg; }
+    virtual ~ex() LUABIND_NOEXCEPT {}
+    virtual const char* what() const LUABIND_NOEXCEPT { return msg; }
     const char* msg;
 };
 
 struct exception_thrower : counted_type<exception_thrower>
 {
     exception_thrower() {}
-    exception_thrower(int) { throw ex("exception description"); }
-    exception_thrower(int, int) { throw "a string exception"; }
-    exception_thrower(int, int, int) { throw 10; }
+#ifdef BOOST_MSVC
+#   pragma warning(push)
+#   pragma warning(disable:4702) // warning C4702: unreachable code
+#endif
+    LUABIND_ATTRIBUTE_NORETURN exception_thrower(int)
+    { throw ex("exception description"); }
+
+    LUABIND_ATTRIBUTE_NORETURN exception_thrower(int, int)
+    { throw "a string exception"; }
+
+    LUABIND_ATTRIBUTE_NORETURN exception_thrower(int, int, int)
+    { throw 10; }
+#ifdef BOOST_MSVC
+#   pragma warning(pop)
+#endif
     int f() { throw ex("exception from a member function"); }
     int g() { throw "a string exception"; }
     int h() { throw 10; }
 };
 
+COUNTER_GUARD(exception_thrower);
+
 } // namespace unnamed
 
-void test_exceptions()
+void test_main(lua_State* L)
 {
-	COUNTER_GUARD(exception_thrower);
-
-	lua_state L;
-
     using namespace luabind;
 
 #ifndef LUABIND_NO_EXCEPTIONS
+
+    const int start_count = ex::count;
 
     module(L)
     [
@@ -67,21 +80,24 @@ void test_exceptions()
             .def("h", &exception_thrower::h)
     ];
 
-    DOSTRING_EXPECTED(L, "a = throw(1)", "exception description");
-    DOSTRING_EXPECTED(L, "a = throw(1,1)", "a string exception");
-    DOSTRING_EXPECTED(L, "a = throw(1,1,1)", "throw() threw an exception");
+    DOSTRING_EXPECTED(L, "a = throw(1)", "std::exception: 'exception description'");
+    DOSTRING_EXPECTED(L, "a = throw(1,1)", "c-string: 'a string exception'");
+    DOSTRING_EXPECTED(L, "a = throw(1,1,1)", "Unknown C++ exception");
     DOSTRING(L, "a = throw()");
-    DOSTRING_EXPECTED(L, "a:f()", "exception from a member function");
-    DOSTRING_EXPECTED(L, "a:g()", "a string exception");
+    DOSTRING_EXPECTED(L, "a:f()", "std::exception: 'exception from a member function'");
+    DOSTRING_EXPECTED(L, "a:g()", "c-string: 'a string exception'");
 
-    DOSTRING_EXPECTED(L, "a:h()", "throw:h() threw an exception");
-    DOSTRING_EXPECTED(L, 
+    DOSTRING_EXPECTED(L, "a:h()", "Unknown C++ exception");
+    DOSTRING_EXPECTED(L,
         "obj = throw('incorrect', 'parameters', 'constructor')",
-        "no constructor of 'throw' matched the arguments "
-        "(string, string, string)\n candidates are:\n"
-        "throw()\nthrow(number)\nthrow(number, number)\n"
-        "throw(number, number, number)\n");
+        "No matching overload found, candidates:\n"
+        "void __init(luabind::argument const&,int,int,int)\n"
+        "void __init(luabind::argument const&,int,int)\n"
+        "void __init(luabind::argument const&,int)\n"
+        "void __init(luabind::argument const&)");
+
+    const int end_count = ex::count;
+    TEST_CHECK( start_count == end_count );
 
 #endif
 }
-

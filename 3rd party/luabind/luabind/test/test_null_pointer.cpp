@@ -21,49 +21,44 @@
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "test.hpp"
-
 #include <luabind/luabind.hpp>
 
-namespace
+namespace {
+
+struct A : counted_type<A>
 {
+    A* f() { return 0; }
+};
 
-	struct A: counted_type<A>
-	{
-		A* f() { return 0; }
-	};
-
-	A* return_pointer()
-	{
-		return 0;
-	}
-
-} // anonymous namespace
-
-
-void test_null_pointer()
+A* return_pointer()
 {
-    COUNTER_GUARD(A);
+    return 0;
+}
 
-	lua_state L;
+COUNTER_GUARD(A);
 
-	using namespace luabind;
+} // namespace unnamed
 
-	module(L)
-	[
-		class_<A>("A")
-			.def(constructor<>())
-			.def("f", &A::f),
+void test_main(lua_State* L)
+{
+    using namespace luabind;
 
-		def("return_pointer", &return_pointer)
-	];
+    module(L)
+    [
+        class_<A>("A")
+            .def(constructor<>())
+            .def("f", &A::f),
+
+        def("return_pointer", &return_pointer)
+    ];
 
 
-	DOSTRING(L,
-		"e = return_pointer()\n"
-		"assert(e == nil)");
+    DOSTRING(L,
+        "e = return_pointer()\n"
+        "assert(e == nil)");
 
-	DOSTRING(L,
-		"a = A()\n"
-		"e = a:f()\n"
-		"assert(e == nil)");
+    DOSTRING(L,
+        "a = A()\n"
+        "e = a:f()\n"
+        "assert(e == nil)");
 }

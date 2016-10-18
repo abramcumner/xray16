@@ -20,41 +20,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "pch.h"
+#define LUABIND_BUILDING
 
 #include <luabind/config.hpp>
-#include <luabind/lua_include.hpp>
-#include <luabind/detail/object_rep.hpp>
 #include <luabind/detail/class_rep.hpp>
+#include <luabind/detail/object_rep.hpp>
 #include <luabind/detail/stack_utils.hpp>
+#include <luabind/function.hpp>
 
+#include <luabind/lua_include.hpp>
 
 namespace luabind { namespace detail
 {
-	LUABIND_API void do_call_member_selection(lua_State* L, char const* name)
-	{
-		object_rep* obj = static_cast<object_rep*>(lua_touserdata(L, -1));
-		lua_pop(L, 1); // pop self
+    LUABIND_API void do_call_member_selection(lua_State* L, char const* name)
+    {
+        object_rep* obj = static_cast<object_rep*>(lua_touserdata(L, -1));
+        assert(obj);
 
-		obj->crep()->get_table(L); // push the crep table
-		lua_pushstring(L, name);
-		lua_gettable(L, -2);
-		lua_remove(L, -2); // remove the crep table
+        lua_pushstring(L, name);
+        lua_gettable(L, -2);
+        lua_replace(L, -2);
 
-		{
-			if (!lua_iscfunction(L, -1)) return;
-			if (lua_getupvalue(L, -1, 3) == 0) return;
-			detail::stack_pop p(L, 1);
-			if (lua_touserdata(L, -1) != reinterpret_cast<void*>(0x1337)) return;
-		}
+        if (!is_luabind_function(L, -1))
+            return;
 
-		// this (usually) means the function has not been
-		// overridden by lua, call the default implementation
-		lua_pop(L, 1);
-		obj->crep()->get_default_table(L); // push the crep table
-		lua_pushstring(L, name);
-		lua_gettable(L, -2);
-		assert(!lua_isnil(L, -1));
-		lua_remove(L, -2); // remove the crep table
-	}
+        // this (usually) means the function has not been
+        // overridden by lua, call the default implementation
+        lua_pop(L, 1);
+        obj->crep()->get_default_table(L); // push the crep table
+        lua_pushstring(L, name);
+        lua_gettable(L, -2);
+        lua_remove(L, -2); // remove the crep table
+    }
 }}

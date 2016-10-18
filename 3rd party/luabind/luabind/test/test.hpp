@@ -1,4 +1,4 @@
-// Copyright (c) 2004 Daniel Wallin
+// Copyright (c) 2005 Daniel Wallin, Arvid Norberg
 
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the "Software"),
@@ -20,27 +20,69 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef TEST_040212_HPP
-#define TEST_040212_HPP
+#ifndef TEST_050415_HPP
+#define TEST_050415_HPP
 
-#include <luabind/lua_include.hpp>
+
 #include <luabind/error.hpp>
-#include <boost/test/test_tools.hpp>
+
 #include <boost/preprocessor/cat.hpp>
-#include <cstring>
+#include <luabind/lua_include.hpp>
 
-struct lua_state
-{
-    lua_state();
-    ~lua_state();
+#include <string>
 
-    operator lua_State*() const;
-	void check() const;
+// See boost/exception/detail/attribute_noreturn.hpp
+#if defined(BOOST_CLANG)
+// Clang's noreturn changes the type so that it is not recognizable by
+// Boost.FunctionTypes.
+#    define LUABIND_ATTRIBUTE_NORETURN
+#elif defined(_MSC_VER)
+#    define LUABIND_ATTRIBUTE_NORETURN __declspec(noreturn)
+#elif defined(__GNUC__)
+#    define LUABIND_ATTRIBUTE_NORETURN __attribute__((__noreturn__))
+#else
+#    define LUABIND_ATTRIBUTE_NORETURN
+#endif
 
-private:
-    lua_State* m_state;
-    int m_top;
-};
+
+// Individual tests must provide a definition for this function:
+void test_main(lua_State* L);
+
+
+void report_failure(char const* str, char const* file, int line);
+
+#if defined(_MSC_VER)
+#define COUNTER_GUARD(x)
+#else
+#define COUNTER_GUARD(type) \
+    struct BOOST_PP_CAT(type, _counter_guard) \
+    { \
+        ~BOOST_PP_CAT(type, _counter_guard()) \
+        { \
+            TEST_CHECK(counted_type<type>::count == 0); \
+        } \
+    } BOOST_PP_CAT(type, _guard)
+#endif
+
+#define TEST_REPORT_AUX(x, line, file) \
+    report_failure(x, line, file)
+
+#define TEST_CHECK(x) \
+    if (!(x)) \
+        TEST_REPORT_AUX("TEST_CHECK failed: \"" #x "\"", __FILE__, __LINE__)
+
+#define TEST_ERROR(x) \
+    TEST_REPORT_AUX((std::string("ERROR: \"") + x + "\"").c_str(), __FILE__, __LINE__)
+
+#define TEST_NOTHROW(x) \
+    try \
+    { \
+        x; \
+    } \
+    catch (...) \
+    { \
+        TEST_ERROR("Exception thrown: " #x); \
+    }
 
 void dostring(lua_State* L, char const* str);
 
@@ -48,7 +90,7 @@ template<class T>
 struct counted_type
 {
     static int count;
-    
+
     counted_type()
     {
         ++count;
@@ -61,27 +103,12 @@ struct counted_type
 
     ~counted_type()
     {
-        BOOST_CHECK(--count >= 0);
+        TEST_CHECK(--count >= 0);
     }
 };
 
 template<class T>
 int counted_type<T>::count = 0;
-
-#if defined(_MSC_VER)
-#define COUNTER_GUARD(x)
-#else
-#define COUNTER_GUARD(type) \
-    struct BOOST_PP_CAT(type, _counter_guard) \
-    { \
-        ~BOOST_PP_CAT(type, _counter_guard()) \
-        { \
-            BOOST_CHECK(counted_type<type>::count == 0); \
-        } \
-    }; \
-    type##_counter_guard BOOST_PP_CAT(type, _guard); \
-	(void)BOOST_PP_CAT(type, _guard)
-#endif
 
 #define DOSTRING_EXPECTED(state_, str, expected) \
 {                                               \
@@ -91,18 +118,19 @@ int counted_type<T>::count = 0;
     }                                           \
     catch (luabind::error const& e)             \
     {                                           \
-		using namespace std;					\
-        if (strcmp(                             \
+        using namespace std;                    \
+        if (std::strcmp(                        \
             lua_tostring(e.state(), -1)         \
           , expected))                          \
         {                                       \
-            BOOST_ERROR(lua_tostring(e.state(), -1)); \
+            TEST_ERROR(lua_tostring(e.state(), -1)); \
+            lua_pop(L, 1);                      \
         }                                       \
     }                                           \
-    catch (string_class const& s)                \
+    catch (std::string const& s)                \
     {                                           \
         if (s != expected)                      \
-            BOOST_ERROR(s.c_str());             \
+            TEST_ERROR(s.c_str());              \
     }                                           \
 }
 
@@ -114,13 +142,13 @@ int counted_type<T>::count = 0;
     }                                           \
     catch (luabind::error const& e)             \
     {                                           \
-        BOOST_ERROR(lua_tostring(e.state(), -1)); \
+        TEST_ERROR(lua_tostring(e.state(), -1)); \
+            lua_pop(L, 1);                      \
     }                                           \
-    catch (string_class const& s)                \
+    catch (std::string const& s)                \
     {                                           \
-        BOOST_ERROR(s.c_str());                 \
+        TEST_ERROR(s.c_str());                  \
     }                                           \
 }
 
-#endif // TEST_040212_HPP
-
+#endif // TEST_050415_HPP

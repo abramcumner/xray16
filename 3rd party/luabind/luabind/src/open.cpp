@@ -20,51 +20,125 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "pch.h"
+#define LUABIND_BUILDING
+
+#include <luabind/class.hpp>
+#include <luabind/detail/garbage_collector.hpp>
+#include <luabind/get_main_thread.hpp>
+#include <luabind/set_package_preload.hpp>
 
 #include <luabind/lua_include.hpp>
 
-#include <luabind/luabind.hpp>
-#include <luabind/function.hpp>
 
 namespace luabind {
 
-    void open(lua_State* L)
+namespace
+{
+
+  int make_property(lua_State* L)
+  {
+      int args = lua_gettop(L);
+
+      if (args == 0 || args > 2)
+      {
+          lua_pushliteral(L, "make_property() called with wrong number of arguments.");
+          lua_error(L);
+      }
+
+      if (args == 1)
+          lua_pushnil(L);
+
+      lua_pushcclosure(L, &detail::property_tag, 2);
+      return 1;
+  }
+
+  int main_thread_tag;
+
+  int deprecated_super(lua_State* L)
+  {
+      lua_pushliteral(L,
+          "DEPRECATION: 'super' has been deprecated in favor of "
+          "directly calling the base class __init() function. "
+          "This error can be disabled by calling 'luabind::disable_super_deprecation()'."
+      );
+      lua_error(L);
+
+      return 0;
+  }
+
+} // namespace unnamed
+
+    LUABIND_API lua_State* get_main_thread(lua_State* L)
     {
-        // get the global class registry, or create one if it doesn't exist
-        // (it's global within a lua state)
-        detail::class_registry* r = 0;
+        lua_pushlightuserdata(L, &main_thread_tag);
+        lua_rawget(L, LUA_REGISTRYINDEX);
+        lua_State* result = static_cast<lua_State*>(lua_touserdata(L, -1));
+        lua_pop(L, 1);
 
-        // If you hit this assert it's because you have called luabind::open()
-        // twice on the same lua_State.
-        assert((detail::class_registry::get_registry(L) == 0) 
-            && "you cannot call luabind::open() twice");
+        if (!result)
+            throw std::runtime_error("Unable to get main thread, luabind::open() not called?");
 
-        lua_pushstring(L, "__luabind_classes");
-        r = static_cast<detail::class_registry*>(
-            lua_newuserdata(L, sizeof(detail::class_registry)));
+        return result;
+    }
+    namespace {
+        template<typename T>
+        inline void* create_gc_udata(lua_State* L, void* tag) {
+            void* storage = lua_newuserdata(L, sizeof(T));
 
-        // set gc metatable
-        lua_newtable(L);
-        lua_pushstring(L, "__gc");
-        lua_pushcclosure(
-            L
-          , detail::garbage_collector_s<
-                detail::class_registry
-            >::apply
-          , 0);
+            // set gc metatable
+            lua_createtable(L, 0, 1); // one (non-sequence) element.
+            lua_pushcfunction(L, &detail::garbage_collector<T>);
+            lua_setfield(L, -2, "__gc");
+            lua_setmetatable(L, -2);
 
-        lua_settable(L, -3);
-        lua_setmetatable(L, -2);
+            lua_rawsetp(L, LUA_REGISTRYINDEX, tag);
+            return storage;
+        }
 
-        new(r) detail::class_registry(L);
-        lua_settable(L, LUA_REGISTRYINDEX);
+        template<typename T>
+        inline void push_gc_udata(lua_State* L, void* tag) {
+            void* storage = create_gc_udata<T>(L, tag);
+            new (storage) T;
+        }
+
+        template<typename T, typename A1>
+        inline void push_gc_udata(lua_State* L, void* tag, A1 constructorArg) {
+            void* storage = create_gc_udata<T>(L, tag);
+            new (storage) T(constructorArg);
+        }
+    }
+
+    LUABIND_API void open(lua_State* L)
+    {
+        bool is_main_thread = lua_pushthread(L) == 1;
+        lua_pop(L, 1);
+
+        if (!is_main_thread)
+        {
+            throw std::runtime_error(
+                "luabind::open() must be called with the main thread "
+                "lua_State*"
+            );
+        }
+
+        push_gc_udata<detail::class_registry>(L, &detail::classes_tag, L);
+        push_gc_udata<detail::class_id_map>(L, &detail::classid_map_tag);
+        push_gc_udata<detail::cast_graph>(L, &detail::cast_graph_tag);
+        push_gc_udata<detail::class_map>(L, &detail::class_map_tag);
 
         // add functions (class, cast etc...)
-        lua_pushstring(L, "class");
-        lua_pushcclosure(L, detail::create_class::stage1, 0);
-        lua_settable(L, LUA_GLOBALSINDEX);
+        lua_pushcfunction(L, detail::create_class::stage1);
+        lua_setglobal(L, "class");
+
+        lua_pushcfunction(L, &make_property);
+        lua_setglobal(L, "property");
+
+        lua_pushlightuserdata(L, &main_thread_tag);
+        lua_pushlightuserdata(L, L);
+        lua_rawset(L, LUA_REGISTRYINDEX);
+
+        lua_pushcfunction(L, &deprecated_super);
+        lua_setglobal(L, "super");
     }
 
 } // namespace luabind
-
