@@ -42,14 +42,14 @@ IC	void CScriptEngine::parse_script_namespace(LPCSTR function_to_call, LPSTR nam
 }
 
 template <typename _result_type>
-IC	bool CScriptEngine::functor(LPCSTR function_to_call, luabind::functor<_result_type> &lua_function)
+IC	bool CScriptEngine::functor(LPCSTR function_to_call, luabindex::functor<_result_type> &lua_function)
 {
 	luabind::object			object;
 	if (!function_object(function_to_call,object))
 		return				(false);
 
 	try {
-		lua_function		= luabind::object_cast<luabind::functor<_result_type> >(object);
+		lua_function		= luabind::object_cast<luabindex::functor<_result_type> >(object);
 	}
 	catch(...) {
 		return				(false);

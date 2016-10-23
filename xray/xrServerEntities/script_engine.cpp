@@ -196,11 +196,11 @@ int  CScriptEngine::lua_pcall_failed	(lua_State *L)
 	return					(LUA_ERRRUN);
 }
 
-void lua_cast_failed					(lua_State *L, LUABIND_TYPE_INFO info)
+void lua_cast_failed					(lua_State *L, const luabind::type_id& info)
 {
 	CScriptEngine::print_output	(L,"",LUA_ERRRUN);
 
-	Debug.fatal				(DEBUG_INFO,"LUA error: cannot cast lua value to %s",info->name());
+	Debug.fatal				(DEBUG_INFO,"LUA error: cannot cast lua value to %s",info.name());
 }
 
 void CScriptEngine::setup_callbacks		()
@@ -295,6 +295,7 @@ void CScriptEngine::init				()
 #endif // #ifdef USE_LUA_STUDIO
 
 	luabind::open						(lua());
+	luabind::disable_super_deprecation();
 	setup_callbacks						();
 	export_classes						(lua());
 	setup_auto_load						();
@@ -359,7 +360,7 @@ void CScriptEngine::load_common_scripts()
 			xr_strcat	(I,"_initialize");
 			if (object("_G",I,LUA_TFUNCTION)) {
 //				lua_dostring			(lua(),xr_strcat(I,"()"));
-				luabind::functor<void>	f;
+				luabindex::functor<void>	f;
 				R_ASSERT				(functor(I,f));
 				f						();
 			}
@@ -434,7 +435,7 @@ void CScriptEngine::register_script_classes		()
 	string256					I;
 	for (u32 i=0; i<n; ++i) {
 		_GetItem				(*m_class_registrators,i,I);
-		luabind::functor<void>	result;
+		luabindex::functor<void>	result;
 		if (!functor(I,result)) {
 			script_log			(eLuaMessageTypeError,"Cannot load class registrator %s!",I);
 			continue;

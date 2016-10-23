@@ -3,13 +3,13 @@
 #include "encyclopedia_article_defs.h"
 #include "GameTaskDefs.h"
 #include "script_export_space.h"
-#include "../../sdk/include/luabind/functor.hpp"
+#include <luabindex/functor.hpp>
 
 class CGameTaskManager;
 class CMapLocation;
 class CGameTask;
 
-typedef xr_vector<luabind::functor<bool> > task_state_functors;
+typedef xr_vector<luabindex::functor<bool> > task_state_functors;
 
 class SScriptTaskHelper: public IPureSerializeObject<IReader,IWriter>
 {

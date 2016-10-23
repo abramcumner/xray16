@@ -201,7 +201,7 @@ bool CScriptGameObject::IsInvUpgradeEnabled		()
 	return pInventoryOwner->IsInvUpgradeEnabled();
 }
 
-void CScriptGameObject::ForEachInventoryItems(const luabind::functor<void> &functor)
+void CScriptGameObject::ForEachInventoryItems(const luabindex::functor<void> &functor)
 {
 	CInventoryOwner* owner = smart_cast<CInventoryOwner*>(&object());
 	if(!owner){
@@ -224,7 +224,7 @@ void CScriptGameObject::ForEachInventoryItems(const luabind::functor<void> &func
 }
 
 //1
-void CScriptGameObject::IterateInventory	(luabind::functor<void> functor, luabind::object object)
+void CScriptGameObject::IterateInventory	(luabindex::functor<void> functor, luabind::object object)
 {
 	CInventoryOwner			*inventory_owner = smart_cast<CInventoryOwner*>(&this->object());
 	if (!inventory_owner) {
@@ -239,7 +239,7 @@ void CScriptGameObject::IterateInventory	(luabind::functor<void> functor, luabin
 }
 
 #include "InventoryBox.h"
-void CScriptGameObject::IterateInventoryBox	(luabind::functor<void> functor, luabind::object object)
+void CScriptGameObject::IterateInventoryBox	(luabindex::functor<void> functor, luabind::object object)
 {
 	CInventoryBox			*inventory_box = smart_cast<CInventoryBox*>(&this->object());
 	if (!inventory_box) {

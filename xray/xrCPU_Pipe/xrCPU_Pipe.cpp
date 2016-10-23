@@ -36,14 +36,14 @@ extern "C" {
 		T->PLC_calc3 = PLC_calc3_x86;
 	
 		// SSE
-		if (dwFeatures & _CPU_FEATURE_SSE) {
-			T->skin1W	= xrSkin1W_SSE;
-			T->skin2W	= xrSkin2W_SSE;
-			T->skin3W	= xrSkin3W_SSE;
-			T->skin4W	= xrSkin4W_SSE;
-			skin4W_func = xrSkin4W_SSE;
-			T->PLC_calc3 = PLC_calc3_SSE;
-		}
+		//if (dwFeatures & _CPU_FEATURE_SSE) {
+		//	T->skin1W	= xrSkin1W_SSE;
+		//	T->skin2W	= xrSkin2W_SSE;
+		//	T->skin3W	= xrSkin3W_SSE;
+		//	T->skin4W	= xrSkin4W_SSE;
+		//	skin4W_func = xrSkin4W_SSE;
+		//	T->PLC_calc3 = PLC_calc3_SSE;
+		//}
 
 		// Init helper threads
 		ttapi_Init();

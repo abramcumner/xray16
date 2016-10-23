@@ -578,7 +578,6 @@ void CUIGameCTA::SetPlayerItemsToBuyMenu()
 
 		u16 ISlot = actor->inventory().FirstSlot();
 		u16 ESlot = actor->inventory().LastSlot();
-
 		for( ; ISlot<=ESlot; ++ISlot)
 			BuyMenuItemInserter(actor->inventory().ItemFromSlot(ISlot));
 
@@ -590,7 +589,6 @@ void CUIGameCTA::SetPlayerItemsToBuyMenu()
 
 		for (const auto& el : add_ammo)
 			AdditionalAmmoInserter(el);
-
 	} else
 	{
 		SetPlayerDefItemsToBuyMenu();

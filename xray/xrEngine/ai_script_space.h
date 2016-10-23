@@ -17,22 +17,23 @@
 extern "C" {
 	//#define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-	#include <lua/lua.h>
-	#include <lua/lualib.h>
-	#include <lua/lauxlib.h>
+	#include <lua.h>
+	#include <lualib.h>
+	#include <lauxlib.h>
 //	#include <lua/luajit.h>
 }
 
 // Lua-bind
 #include <luabind/luabind.hpp>
 #include <luabind/object.hpp>
+#include <luabindex/functor.hpp>
 
 #pragma warning(pop)
 
 typedef lua_State CLuaVirtualMachine;
 
 struct SMemberCallback {
-	luabind::functor<void>	*m_lua_function;
+	luabindex::functor<void>	*m_lua_function;
 	luabind::object			*m_lua_object;
 	shared_str				m_method_name;
 };

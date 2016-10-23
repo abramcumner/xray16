@@ -13,7 +13,7 @@
 
 IC	bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
 {
-	if ((o1.type() == LUA_TNIL) && (o2.type() == LUA_TNIL))
+	if (luabind::type(o1) == LUA_TNIL && luabind::type(o2) == LUA_TNIL)
 		return						(true);
 
 	return							(o1 == o2);
@@ -74,7 +74,7 @@ public:
 	typedef _return_type							return_type;
 
 private:
-	typedef luabind::functor<_return_type>			functor_type;
+	typedef luabindex::functor<_return_type>		functor_type;
 	typedef luabind::object							object_type;
 	typedef bool (CScriptCallbackEx_::*unspecified_bool_type) () const;
 

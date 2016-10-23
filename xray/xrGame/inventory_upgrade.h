@@ -22,7 +22,7 @@ namespace detail
 template <typename return_type>
 struct functor_base
 {
-	typedef luabind::functor<return_type>	functor_type;
+	typedef luabindex::functor<return_type>	functor_type;
 
 	functor_type	functr;
 	LPCSTR			parameter;

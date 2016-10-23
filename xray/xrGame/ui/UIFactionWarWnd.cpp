@@ -382,21 +382,21 @@ void CUIFactionWarWnd::set_amount_enemy_bonus( int value )
 // -------------------------------------------------------------------------------------------------
 int CUIFactionWarWnd::get_max_member_count()
 {
-	luabind::functor<int>	funct;
+	luabindex::functor<int>	funct;
 	R_ASSERT( ai().script_engine().functor( "pda.get_max_member_count", funct ) );
 	return funct();
 }
 
 float CUIFactionWarWnd::get_max_resource()
 {
-	luabind::functor<float>	funct;
+	luabindex::functor<float>	funct;
 	R_ASSERT( ai().script_engine().functor( "pda.get_max_resource", funct ) );
 	return funct();
 }
 
 float CUIFactionWarWnd::get_max_power()
 {
-	luabind::functor<float>	funct;
+	luabindex::functor<float>	funct;
 	R_ASSERT( ai().script_engine().functor( "pda.get_max_power", funct ) );
 	return funct();
 }

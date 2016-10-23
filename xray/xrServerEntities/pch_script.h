@@ -12,9 +12,9 @@
 #include "stdafx.h"
 
 extern "C" {
-	#include <lua/lua.h>
-	#include <lua/lualib.h>
-	#include <lua/lauxlib.h>
+	#include <lua.h>
+	#include <lualib.h>
+	#include <lauxlib.h>
 };
 
 #pragma warning(push)
@@ -23,7 +23,7 @@ extern "C" {
 #pragma warning(pop)
 
 #include <luabind/object.hpp>
-#include <luabind/functor.hpp>
+#include <luabindex/functor.hpp>
 #include <luabind/operator.hpp>
 #include <luabind/adopt_policy.hpp>
 #include <luabind/return_reference_to_policy.hpp>

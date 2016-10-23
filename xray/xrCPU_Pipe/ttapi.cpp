@@ -34,7 +34,7 @@ DWORD WINAPI ttapiThreadProc( LPVOID lpParameter )
 		for ( i = 0 ; i < 10000 ; ++i ) {
 			if ( ! _InterlockedCompareExchange( &pParams->vlFlag , 0 , 0 ) )
 				goto process;
-			__asm pause;
+			_mm_pause();
 		}
 		// Moderate
 		for ( i = 0 ; i < 1000000 ; ++i ) {
@@ -85,7 +85,7 @@ void SetThreadName( DWORD dwThreadID , LPCSTR szThreadName )
   }
   __try
   {
-    RaiseException( 0x406D1388, 0, sizeof(info)/sizeof(DWORD), (DWORD*)&info );
+    RaiseException( 0x406D1388, 0, sizeof(info)/sizeof(DWORD), (PDWORD_PTR)&info );
   }
   __except (EXCEPTION_CONTINUE_EXECUTION)
   {
@@ -173,7 +173,7 @@ VOID ttapi_RunAllWorkers()
 
 		// Waiting task queue to become empty
 		while( _InterlockedCompareExchange( &ttapi_queue_size.size , 0 , 0 ) )
-			__asm pause;
+			_mm_pause();
 	} else
 		// Running the only worker in current thread
 		ttapi_worker_params[ ttapi_thread_workers ].lpWorkerFunc( ttapi_worker_params[ ttapi_thread_workers ].lpvWorkerFuncParams );

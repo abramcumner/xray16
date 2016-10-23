@@ -109,7 +109,7 @@ void FactionState::update_info()
 	}
 	ResetStates();
 
-	luabind::functor<void>	m_functor;
+	luabindex::functor<void>	m_functor;
 	R_ASSERT( ai().script_engine().functor( "pda.fill_faction_state", m_functor ) );
 	m_functor( this );
 }

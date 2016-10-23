@@ -70,7 +70,7 @@ CALifeSimulator::CALifeSimulator		(xrServer *server, shared_str *command_line) :
 	*command_line				= temp;
 	
 	LPCSTR						start_game_callback = pSettings->r_string(alife_section,"start_game_callback");
-	luabind::functor<void>		functor;
+	luabindex::functor<void>		functor;
 	R_ASSERT2					(ai().script_engine().functor(start_game_callback,functor),"failed to get start game callback");
 	functor						();
 

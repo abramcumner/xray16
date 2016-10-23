@@ -168,45 +168,12 @@ static void *lua_alloc	(void *ud, void *ptr, size_t osize, size_t nsize) {
 	doug_lea_allocator	g_render_lua_allocator( 0, 0, "render:lua" );
 #endif // #ifdef USE_ARENA_ALLOCATOR
 
-static void *lua_alloc		(void *ud, void *ptr, size_t osize, size_t nsize) {
-#ifndef USE_MEMORY_MONITOR
-	(void)ud;
-	(void)osize;
-	if ( !nsize )	{
-		g_render_lua_allocator.free_impl	(ptr);
-		return					0;
-	}
-
-	if ( !ptr )
-		return					g_render_lua_allocator.malloc_impl((u32)nsize);
-
-	return g_render_lua_allocator.realloc_impl(ptr, (u32)nsize);
-#else // #ifndef USE_MEMORY_MONITOR
-	if ( !nsize )	{
-		memory_monitor::monitor_free(ptr);
-		g_render_lua_allocator.free_impl		(ptr);
-		return						NULL;
-	}
-
-	if ( !ptr ) {
-		void* const result			= 
-			g_render_lua_allocator.malloc_impl((u32)nsize);
-		memory_monitor::monitor_alloc (result,nsize,"render:LUA");
-		return						result;
-	}
-
-	memory_monitor::monitor_free	(ptr);
-	void* const result				= g_render_lua_allocator.realloc_impl(ptr, (u32)nsize);
-	memory_monitor::monitor_alloc	(result,nsize,"render:LUA");
-	return							result;
-#endif // #ifndef USE_MEMORY_MONITOR
-}
 #endif // USE_DL_ALLOCATOR
 
 // export
 void	CResourceManager::LS_Load			()
 {
-	LSVM			= lua_newstate(lua_alloc, NULL);
+	LSVM			= luaL_newstate();
 	if (!LSVM)		{
 		Msg			("! ERROR : Cannot initialize LUA VM!");
 		return;
@@ -225,10 +192,10 @@ void	CResourceManager::LS_Load			()
 		luabind::set_error_callback		(LuaError);
 #endif
 
-	function		(LSVM, "log",	LuaLog);
-
 	module			(LSVM)
 	[
+		def("log", LuaLog),
+
 		class_<adopt_dx10options>("_dx10options")
 		.def("dx10_msaa_alphatest_atoc",	&adopt_dx10options::_dx10_msaa_alphatest_atoc		)
 		//.def("",					&adopt_dx10options::_dx10Options		),	// returns options-object
@@ -467,11 +434,10 @@ ShaderElement*		CBlender_Compile::_lua_Compile	(LPCSTR namesp, LPCSTR name)
 	LPCSTR				t_1		= (L_textures.size() > 1)	? *L_textures[1] : "null";
 	LPCSTR				t_d		= detail_texture			? detail_texture : "null" ;
 	lua_State*			LSVM	= dxRenderDeviceRender::Instance().Resources->LSVM;
-	object				shader	= get_globals(LSVM)[namesp];
-	functor<void>		element	= object_cast<functor<void> >(shader[name]);
+	object				shader	= globals(LSVM)[namesp];
 	bool				bFirstPass = false;
 	adopt_compiler		ac		= adopt_compiler(this, bFirstPass);
-	element						(ac,t_0,t_1,t_d);
+	call_function<void>(shader[name], ac, t_0, t_1, t_d);
 	r_End				();
 	ShaderElement*	_r	= dxRenderDeviceRender::Instance().Resources->_CreateElement(E);
 	return			_r;

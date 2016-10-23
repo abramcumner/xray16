@@ -47,7 +47,7 @@ void CScriptGameObject::set_smart_cover_target_selector	()
 	stalker->movement().target_selector	(CScriptCallbackEx<void>());
 }
 
-void CScriptGameObject::set_smart_cover_target_selector	(luabind::functor<void> functor)
+void CScriptGameObject::set_smart_cover_target_selector	(luabindex::functor<void> functor)
 {
 	CAI_Stalker							*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -60,7 +60,7 @@ void CScriptGameObject::set_smart_cover_target_selector	(luabind::functor<void> 
 	stalker->movement().target_selector	(callback);
 }
 
-void CScriptGameObject::set_smart_cover_target_selector	(luabind::functor<void> functor, luabind::object object)
+void CScriptGameObject::set_smart_cover_target_selector	(luabindex::functor<void> functor, luabind::object object)
 {
 	CAI_Stalker							*stalker = smart_cast<CAI_Stalker*>(&this->object());
 	if (!stalker) {

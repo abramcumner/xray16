@@ -60,7 +60,7 @@ lp_tv_uchar tv_yuv2argb(
 						)
 {
 	tv_sshort_tables ttl;
-
+#if 0
 	__asm{
 		push  ebx
 		// helper constants
@@ -277,7 +277,7 @@ _tb_loop:
 		sfence        ;
 		emms        ;
 	}
-
+#endif
 	return argb_plane;
 } // tv_yuv2argb
 

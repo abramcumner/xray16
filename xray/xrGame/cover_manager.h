@@ -10,6 +10,7 @@
 
 #include "profiler.h"
 #include "quadtree.h"
+#include "script_space_forward.h"
 
 class CCoverPoint;
 
@@ -22,10 +23,6 @@ namespace smart_cover{
 	class storage;
 	class object;
 };
-
-namespace luabind {
-	class object;
-} // namespace luabind
 
 class CCoverManager {
 public:

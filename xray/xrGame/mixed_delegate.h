@@ -21,7 +21,7 @@ public:
 	typedef		fastdelegate::FastDelegate<R (Param1, Param2)>	fastdelegate_type;
 	typedef		CScriptCallbackEx<R>							lua_delegate_type;
 	typedef		luabind::object									lua_object_type;
-	typedef		luabind::functor<R>								lua_function_type;
+	typedef		luabindex::functor<R>								lua_function_type;
 		
 	mixed_delegate()
 	{

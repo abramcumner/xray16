@@ -17,13 +17,6 @@
 
 #include "character_info.h"
 #include "specific_character.h"
-//#include "character_community.h"
-//#include "monster_community.h"
-//#include "character_rank.h"
-//#include "character_reputation.h"
-
-#include <lua/library_linkage.h>
-#include <luabind/library_linkage.h>
 
 extern CSE_Abstract *F_entity_Create	(LPCSTR section);
 
@@ -47,8 +40,6 @@ extern "C" {
 //typedef void DUMMY_STUFF (const void*,const u32&,void*);
 //XRCORE_API DUMMY_STUFF	*g_temporary_stuff;
 
-void setup_luabind_allocator		();
-
 //#define TRIVIAL_ENCRYPTOR_DECODER
 //#include UP(xrEngine/trivial_encryptor.h)
 
@@ -63,8 +54,6 @@ BOOL APIENTRY DllMain		(HANDLE module_handle, DWORD call_reason, LPVOID reserved
 			string_path					SYSTEM_LTX;
 			FS.update_path				(SYSTEM_LTX,"$game_config$","system.ltx");
 			pSettings					= xr_new<CInifile>(SYSTEM_LTX);
-
-			setup_luabind_allocator		();
 
 			CCharacterInfo::InitInternal					();
 			CSpecificCharacter::InitInternal				();

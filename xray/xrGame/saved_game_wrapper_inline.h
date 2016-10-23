@@ -23,7 +23,7 @@ inline LPCSTR CSavedGameWrapper::level_name								() const
 	return	(m_level_name.c_str());
 }
 
-inline const float &CSavedGameWrapper::actor_health						() const
+inline float CSavedGameWrapper::actor_health						() const
 {
 	return	(m_actor_health);
 }

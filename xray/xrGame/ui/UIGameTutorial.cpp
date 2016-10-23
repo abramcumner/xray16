@@ -17,7 +17,7 @@ extern ENGINE_API BOOL bShowPauseString;
 
 void CallFunction(shared_str const& func)
 {
-	luabind::functor<void>		functor_to_call;
+	luabindex::functor<void>		functor_to_call;
 	bool functor_exists			= ai().script_engine().functor(func.c_str() ,functor_to_call);
 	THROW3						(functor_exists, "Cannot find script function described in tutorial item ", func.c_str());
 	if( functor_to_call.is_valid() ) 
@@ -191,7 +191,7 @@ CUISequenceItem* CUISequencer::GetNextItem()
 
 	while(m_sequencer_items.size())
 	{
-		luabind::functor<bool>		functor_to_call;
+		luabindex::functor<bool>		functor_to_call;
 		result						= m_sequencer_items.front();
 		shared_str const f			= result->m_check_lua_function;
 		if(f.size()==0)

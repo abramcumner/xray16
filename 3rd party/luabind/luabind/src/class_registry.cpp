@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#define LUABIND_BUILDING
-
 #include <luabind/config.hpp>           // for LUABIND_API
 #include <luabind/detail/class_registry.hpp>  // for class_registry
 #include <luabind/detail/class_rep.hpp>  // for class_rep

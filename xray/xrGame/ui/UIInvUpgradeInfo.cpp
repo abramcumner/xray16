@@ -104,7 +104,7 @@ bool UIInvUpgradeInfo::init_upgrade( Upgrade_type* upgr, CInventoryItem* inv_ite
 	{
 		m_prereq->Show( true );
 		m_properties_wnd->Show( true );
-		luabind::functor<LPCSTR> cost_func;
+		luabindex::functor<LPCSTR> cost_func;
 		LPCSTR cost_func_str = "inventory_upgrades.get_upgrade_cost";
 		R_ASSERT2(ai().script_engine().functor(cost_func_str, cost_func), "Failed to get cost");
 		m_cost->SetText(cost_func(m_upgrade->section()));

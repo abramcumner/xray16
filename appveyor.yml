@@ -1,6 +1,8 @@
 version: 1.6.0.2-{build}
 configuration: Release
-platform: Win32
+platform:
+- Win32
+- x64
 shallow_clone: true
 environment:
   DXSDK: '%DXSDK_DIR%'
@@ -20,8 +22,13 @@ after_build:
 
     IF "%COR_PLAT%" == "Win32" set COR_PLAT=x86
 
+    set BUGTRAP=BugTrap-%COR_PLAT%.dll
+
+    IF "%COR_PLAT%" == "x86" set BUGTRAP=BugTrap.dll
 
     md dist
+
+    echo ===================== engine files =====================
 
     md dist\engine
 
@@ -33,9 +40,27 @@ after_build:
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\*.dll dist\engine\bin_%COR_PLAT%\
 
+    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\bin_%COR_PLAT%\
+
+    md dist\engine\bin_%COR_PLAT%\lua
+
+    copy SDK\binaries\%COR_PLAT%\lua\* dist\engine\bin_%COR_PLAT%\lua\
+
+    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\bin_%COR_PLAT%\
+
     7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z dist\engine\*
 
     echo appveyor PushArtifact cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
+
+    echo ===================== engine pdb files =====================
+
+    md dist\engine_pdb_%COR_PLAT%
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\*.pdb dist\engine_pdb_%COR_PLAT%\
+
+    7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\engine_pdb_%COR_PLAT%\*
+
+    echo ===================== sdk files =====================
 
     md dist\sdk_%COR_PLAT%
 
@@ -43,19 +68,23 @@ after_build:
 
     copy SDK\binaries\%COR_PLAT%\nvtt.dll dist\sdk_%COR_PLAT%\
 
+    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\bin_%COR_PLAT%\
+
+    md dist\engine\bin_%COR_PLAT%\lua
+
+    copy SDK\binaries\%COR_PLAT%\lua\* dist\engine\bin_%COR_PLAT%\lua\
+
+    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\bin_%COR_PLAT%\
+
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.dll dist\sdk_%COR_PLAT%\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.dll dist\sdk_%COR_PLAT%\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.dll dist\sdk_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\BugTrap.dll dist\sdk_%COR_PLAT%\
-
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.dll dist\sdk_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\lua.JIT.1.1.4.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.beta7-devel.rc4.dll dist\sdk_%COR_PLAT%\
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.dll dist\sdk_%COR_PLAT%\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.exe dist\sdk_%COR_PLAT%\
 
@@ -64,10 +93,32 @@ after_build:
     7z a cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z dist\sdk_%COR_PLAT%\*
 
     echo appveyor PushArtifact cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
+
+    echo ===================== sdk pdb files =====================
+
+    md dist\sdk_pdb_%COR_PLAT%
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.pdb dist\sdk_pdb_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.pdb dist\sdk_pdb_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.pdb dist\sdk_pdb_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.pdb dist\sdk_pdb_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.pdb dist\sdk_pdb_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.pdb dist\sdk_pdb_%COR_PLAT%\
+
+    7z a cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\sdk_pdb_%COR_PLAT%\*
 artifacts:
 - path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat).7z
   name: release
 - path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat).7z
+  name: release
+- path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
+  name: release
+- path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
   name: release
 deploy:
 - provider: GitHub

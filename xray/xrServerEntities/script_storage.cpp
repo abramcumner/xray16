@@ -91,78 +91,11 @@ static doug_lea_allocator	s_allocator( s_fake_array, s_arena_size, "lua" );
 static doug_lea_allocator	s_allocator( 0, 0, "lua" );
 #endif // #ifdef USE_ARENA_ALLOCATOR
 
-static void *lua_alloc		(void *ud, void *ptr, size_t osize, size_t nsize) {
-#ifndef USE_MEMORY_MONITOR
-	(void)ud;
-	(void)osize;
-	if ( !nsize )	{
-		s_allocator.free_impl	(ptr);
-		return					0;
-	}
-
-	if ( !ptr )
-		return					s_allocator.malloc_impl((u32)nsize);
-
-	return						s_allocator.realloc_impl(ptr, (u32)nsize);
-#else // #ifndef USE_MEMORY_MONITOR
-	if ( !nsize )	{
-		memory_monitor::monitor_free(ptr);
-		s_allocator.free_impl		(ptr);
-		return						NULL;
-	}
-
-	if ( !ptr ) {
-		void* const result			= s_allocator.malloc_impl((u32)nsize);
-		memory_monitor::monitor_alloc (result,nsize,"LUA");
-		return						result;
-	}
-
-	memory_monitor::monitor_free	(ptr);
-	void* const result				= s_allocator.realloc_impl(ptr, (u32)nsize);
-	memory_monitor::monitor_alloc	(result,nsize,"LUA");
-	return							result;
-#endif // #ifndef USE_MEMORY_MONITOR
-}
-
 u32 game_lua_memory_usage	()
 {
 	return					(s_allocator.get_allocated_size());
 }
 #endif // USE_DL_ALLOCATOR
-
-static LPVOID __cdecl luabind_allocator	(
-		luabind::memory_allocation_function_parameter const,
-		void const * const pointer,
-		size_t const size
-	)
-{
-	if (!size) {
-		LPVOID	non_const_pointer = const_cast<LPVOID>(pointer);
-		xr_free	(non_const_pointer);
-		return	( 0 );
-	}
-
-	if (!pointer) {
-#ifdef DEBUG
-		return	( Memory.mem_alloc(size, "luabind") );
-#else // #ifdef DEBUG
-		return	( Memory.mem_alloc(size) );
-#endif // #ifdef DEBUG
-	}
-
-	LPVOID		non_const_pointer = const_cast<LPVOID>(pointer);
-#ifdef DEBUG
-	return		( Memory.mem_realloc(non_const_pointer, size, "luabind") );
-#else // #ifdef DEBUG
-	return		( Memory.mem_realloc(non_const_pointer, size) );
-#endif // #ifdef DEBUG
-}
-
-void setup_luabind_allocator		()
-{
-	luabind::allocator				= &luabind_allocator;
-	luabind::allocator_parameter	= 0;
-}
 
 /* ---- start of LuaJIT extensions */
 static void l_message (lua_State* state, const char *msg) {
@@ -277,8 +210,7 @@ void CScriptStorage::reinit	()
 	if (m_virtual_machine)
 		lua_close			(m_virtual_machine);
 
-	m_virtual_machine		= lua_newstate(lua_alloc, NULL);
-
+	m_virtual_machine = luaL_newstate();
 	if (!m_virtual_machine) {
 		Msg					("! ERROR : Cannot initialize script virtual machine!");
 		return;
@@ -710,15 +642,15 @@ luabind::object CScriptStorage::name_space(LPCSTR namespace_name)
 	string256			S1;
 	xr_strcpy				(S1,namespace_name);
 	LPSTR				S = S1;
-	luabind::object		lua_namespace = luabind::get_globals(lua());
+	luabind::object		lua_namespace = luabind::globals(lua());
 	for (;;) {
 		if (!xr_strlen(S))
 			return		(lua_namespace);
 		LPSTR			I = strchr(S,'.');
 		if (!I)
-			return		(lua_namespace[S]);
+			return		(lua_namespace[(LPCSTR)S]);
 		*I				= 0;
-		lua_namespace	= lua_namespace[S];
+		lua_namespace	= lua_namespace[(LPCSTR)S];
 		S				= I + 1;
 	}
 }
@@ -731,7 +663,7 @@ struct raii_guard : private boost::noncopyable {
 	raii_guard	(int error_code, LPCSTR const& m_description) : m_error_code(error_code), m_error_description(m_description) {}
 	~raii_guard	()
 	{
-#ifdef DEBUG
+#ifdef USE_DEBUGGER
 		bool lua_studio_connected = !!ai().script_engine().debugger();
 		if (!lua_studio_connected)
 #endif //#ifdef DEBUG
@@ -788,6 +720,8 @@ bool CScriptStorage::print_output(lua_State *L, LPCSTR caScriptFileName, int iEr
 		}
 #	endif // #ifndef USE_LUA_STUDIO
 #endif // #ifdef USE_DEBUGGER
+		if (xr_strcmp(S, "not enough memory") == 0)
+			Msg("! [LUA]: LUA USED MEM: %dK", lua_getgccount(L));
 	}
 	return				(true);
 }

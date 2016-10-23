@@ -156,7 +156,7 @@ CScriptActionPlanner		*script_action_planner(CScriptGameObject *obj)
 	return					(obj->action_planner<CScriptActionPlanner>());
 }
 
-void CScriptGameObject::set_enemy_callback	(const luabind::functor<bool> &functor)
+void CScriptGameObject::set_enemy_callback	(const luabindex::functor<bool> &functor)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -166,7 +166,7 @@ void CScriptGameObject::set_enemy_callback	(const luabind::functor<bool> &functo
 	monster->memory().enemy().useful_callback().set(functor);
 }
 
-void CScriptGameObject::set_enemy_callback	(const luabind::functor<bool> &functor, const luabind::object &object)
+void CScriptGameObject::set_enemy_callback	(const luabindex::functor<bool> &functor, const luabind::object &object)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&this->object());
 	if (!monster) {
@@ -186,12 +186,12 @@ void CScriptGameObject::set_enemy_callback	()
 	monster->memory().enemy().useful_callback().clear();
 }
 
-void CScriptGameObject::SetCallback(GameObject::ECallbackType type, const luabind::functor<void> &functor)
+void CScriptGameObject::SetCallback(GameObject::ECallbackType type, const luabindex::functor<void> &functor)
 {
 	object().callback(type).set(functor);
 }
 
-void CScriptGameObject::SetCallback(GameObject::ECallbackType type, const luabind::functor<void> &functor, const luabind::object &object)
+void CScriptGameObject::SetCallback(GameObject::ECallbackType type, const luabindex::functor<void> &functor, const luabind::object &object)
 {
 	this->object().callback(type).set(functor, object);
 }
@@ -201,7 +201,7 @@ void CScriptGameObject::SetCallback(GameObject::ECallbackType type)
 	object().callback(type).clear();
 }
 
-void CScriptGameObject::set_fastcall(const luabind::functor<bool> &functor, const luabind::object &object)
+void CScriptGameObject::set_fastcall(const luabindex::functor<bool> &functor, const luabind::object &object)
 {
 	
 

@@ -78,6 +78,9 @@ void BuildStackTrace	()
 	if (!GetThreadContext(GetCurrentThread(),&context))
 		return;
 
+#ifdef _WIN64
+	context.Rip = program_counter();
+#else
 	context.Eip				= program_counter();
 #ifndef _EDITOR
 	__asm					mov context.Ebp, ebp
@@ -86,7 +89,7 @@ void BuildStackTrace	()
 	__asm					mov EBP, ebp
 	__asm					mov ESP, esp
 #endif // _EDITOR
-
+#endif
 	EXCEPTION_POINTERS		ex_ptrs;
 	ex_ptrs.ContextRecord	= &context;
 	ex_ptrs.ExceptionRecord	= 0;

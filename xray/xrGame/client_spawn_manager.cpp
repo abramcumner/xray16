@@ -19,14 +19,14 @@ CClientSpawnManager::~CClientSpawnManager	()
 	VERIFY							(m_registry.empty());
 }
 
-void CClientSpawnManager::add		(ALife::_OBJECT_ID requesting_id, ALife::_OBJECT_ID requested_id, const luabind::functor<void> &functor, const luabind::object &object)
+void CClientSpawnManager::add		(ALife::_OBJECT_ID requesting_id, ALife::_OBJECT_ID requested_id, const luabindex::functor<void> &functor, const luabind::object &object)
 {
 	CSpawnCallback					callback;
 	callback.m_callback.set			(functor,object);
 	add								(requesting_id,requested_id,callback);
 }
 
-void CClientSpawnManager::add		(ALife::_OBJECT_ID requesting_id, ALife::_OBJECT_ID requested_id, const luabind::functor<void> &lua_function)
+void CClientSpawnManager::add		(ALife::_OBJECT_ID requesting_id, ALife::_OBJECT_ID requested_id, const luabindex::functor<void> &lua_function)
 {
 	CSpawnCallback					callback;
 	callback.m_callback.set			(lua_function);

@@ -91,7 +91,7 @@ extern bool g_block_pause;
 extern float g_separate_factor;
 extern float g_separate_radius;
 
-#include <luabind/functor.hpp>
+#include <luabindex/functor.hpp>
 #include "script_engine.h"
 #include "ai_space.h"
 
@@ -408,7 +408,7 @@ void CLevel::IR_OnKeyboardPress	(int key)
 //			ai().level_graph().set_start_point();
 //			m_bSynchronization	= false;
 //		}
-//		luabind::functor<void>	functor;
+//		luabindex::functor<void>	functor;
 //		ai().script_engine().functor("alife_test.set_switch_online",functor);
 //		functor(0,false);
 //	}

@@ -524,10 +524,10 @@ static DWORD ConvertAddress ( DWORD dwAddr , LPTSTR szOutBuff )
     }
 
     // Get the function.
-    DWORD dwDisp ;
-    if ( 0 != g_cSym.SymGetSymFromAddr ( dwAddr , &dwDisp , pIHS ) )
+    DWORD_PTR dwDisp64;
+    if ( 0 != g_cSym.SymGetSymFromAddr ( dwAddr , &dwDisp64, pIHS ) )
     {
-        if ( 0 == dwDisp )
+        if ( 0 == dwDisp64 )
         {
             pCurrPos += wsprintf ( pCurrPos , _T ( "%s" ) , pIHS->Name);
         }
@@ -536,7 +536,7 @@ static DWORD ConvertAddress ( DWORD dwAddr , LPTSTR szOutBuff )
             pCurrPos += wsprintf ( pCurrPos               ,
                                    _T ( "%s + %d bytes" ) ,
                                    pIHS->Name             ,
-                                   dwDisp                  ) ;
+                                   dwDisp64                  ) ;
         }
 
         // If I got a symbol, give the source and line a whirl.
@@ -546,6 +546,7 @@ static DWORD ConvertAddress ( DWORD dwAddr , LPTSTR szOutBuff )
 
         stIHL.SizeOfStruct = sizeof ( IMAGEHLP_LINE ) ;
 
+		DWORD dwDisp;
         if ( 0 != g_cSym.SymGetLineFromAddr ( dwAddr  ,
                                               &dwDisp ,
                                               &stIHL   ) )
@@ -555,11 +556,11 @@ static DWORD ConvertAddress ( DWORD dwAddr , LPTSTR szOutBuff )
                                   _T ( "\n\t\t%s, Line %d" ) ,
                                   stIHL.FileName             ,
                                   stIHL.LineNumber            ) ;
-            if ( 0 != dwDisp )
+            if ( 0 != dwDisp)
             {
                 pCurrPos += wsprintf ( pCurrPos             ,
                                        _T ( " + %d bytes" ) ,
-                                       dwDisp                ) ;
+					dwDisp) ;
             }
         }
     }
@@ -639,17 +640,23 @@ void DoStackTrace ( LPTSTR szString  ,
 
 #if defined (_M_IX86)
         dwMachine                = IMAGE_FILE_MACHINE_I386 ;
-
         stFrame.AddrPC.Offset    = stCtx.Eip    ;
         stFrame.AddrStack.Offset = stCtx.Esp    ;
         stFrame.AddrFrame.Offset = stCtx.Ebp    ;
         stFrame.AddrPC.Mode		 = AddrModeFlat ;
         stFrame.AddrStack.Mode   = AddrModeFlat ;
         stFrame.AddrFrame.Mode   = AddrModeFlat ;
-
 #elif defined (_M_ALPHA)
         dwMachine                = IMAGE_FILE_MACHINE_ALPHA ;
         stFrame.AddrPC.Offset    = (unsigned long)stCtx.Fir ;
+#elif defined(_M_AMD64)
+		dwMachine = IMAGE_FILE_MACHINE_AMD64;
+		stFrame.AddrPC.Offset = stCtx.Rip;
+		stFrame.AddrStack.Offset = stCtx.Rsp;
+		stFrame.AddrFrame.Offset = stCtx.Rbp;
+		stFrame.AddrPC.Mode = AddrModeFlat;
+		stFrame.AddrStack.Mode = AddrModeFlat;
+		stFrame.AddrFrame.Mode = AddrModeFlat;
 #else
 #error ( "Unknown machine!" )
 #endif

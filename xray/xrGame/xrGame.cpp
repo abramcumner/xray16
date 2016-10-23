@@ -12,9 +12,6 @@
 #include "xr_level_controller.h"
 #include "profiler.h"
 
-#include "lua/library_linkage.h"
-#include "luabind/library_linkage.h"
-
 extern "C" {
 	DLL_API DLL_Pure*	__cdecl xrFactory_Create		(CLASS_ID clsid)
 	{
@@ -34,7 +31,6 @@ extern "C" {
 };
 
 void CCC_RegisterCommands	();
-void setup_luabind_allocator();
 
 BOOL APIENTRY DllMain(HANDLE hModule, u32 ul_reason_for_call, LPVOID lpReserved)
 {
@@ -45,7 +41,6 @@ BOOL APIENTRY DllMain(HANDLE hModule, u32 ul_reason_for_call, LPVOID lpReserved)
 			// keyboard binding
 			CCC_RegisterInput	();
 
-			setup_luabind_allocator	();
 #ifdef DEBUG
 			g_profiler			= xr_new<CProfiler>();
 #endif

@@ -370,16 +370,16 @@ bool is_level_present()
 	return (!!g_pGameLevel);
 }
 
-void add_call(const luabind::functor<bool> &condition,const luabind::functor<void> &action)
+void add_call(const luabindex::functor<bool> &condition,const luabindex::functor<void> &action)
 {
-	luabind::functor<bool>		_condition = condition;
-	luabind::functor<void>		_action = action;
+	luabindex::functor<bool>		_condition = condition;
+	luabindex::functor<void>		_action = action;
 	CPHScriptCondition	* c=xr_new<CPHScriptCondition>(_condition);
 	CPHScriptAction		* a=xr_new<CPHScriptAction>(_action);
 	Level().ph_commander_scripts().add_call(c,a);
 }
 
-void remove_call(const luabind::functor<bool> &condition,const luabind::functor<void> &action)
+void remove_call(const luabindex::functor<bool> &condition,const luabindex::functor<void> &action)
 {
 	CPHScriptCondition	c(condition);
 	CPHScriptAction		a(action);
@@ -391,8 +391,8 @@ void add_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR action)
 //	try{	
 //		CPHScriptObjectCondition	*c=xr_new<CPHScriptObjectCondition>(lua_object,condition);
 //		CPHScriptObjectAction		*a=xr_new<CPHScriptObjectAction>(lua_object,action);
-		luabind::functor<bool>		_condition = object_cast<luabind::functor<bool> >(lua_object[condition]);
-		luabind::functor<void>		_action = object_cast<luabind::functor<void> >(lua_object[action]);
+		luabindex::functor<bool>		_condition = object_cast<luabindex::functor<bool> >(lua_object[condition]);
+		luabindex::functor<void>		_action = object_cast<luabindex::functor<void> >(lua_object[action]);
 		CPHScriptObjectConditionN	*c=xr_new<CPHScriptObjectConditionN>(lua_object,_condition);
 		CPHScriptObjectActionN		*a=xr_new<CPHScriptObjectActionN>(lua_object,_action);
 		Level().ph_commander_scripts().add_call_unique(c,c,a,a);
@@ -410,7 +410,7 @@ void remove_call(const luabind::object &lua_object, LPCSTR condition,LPCSTR acti
 	Level().ph_commander_scripts().remove_call(&c,&a);
 }
 
-void add_call(const luabind::object &lua_object, const luabind::functor<bool> &condition,const luabind::functor<void> &action)
+void add_call(const luabind::object &lua_object, const luabindex::functor<bool> &condition,const luabindex::functor<void> &action)
 {
 
 	CPHScriptObjectConditionN	*c=xr_new<CPHScriptObjectConditionN>(lua_object,condition);
@@ -418,7 +418,7 @@ void add_call(const luabind::object &lua_object, const luabind::functor<bool> &c
 	Level().ph_commander_scripts().add_call(c,a);
 }
 
-void remove_call(const luabind::object &lua_object, const luabind::functor<bool> &condition,const luabind::functor<void> &action)
+void remove_call(const luabind::object &lua_object, const luabindex::functor<bool> &condition,const luabindex::functor<void> &action)
 {
 	CPHScriptObjectConditionN	c(lua_object,condition);
 	CPHScriptObjectActionN		a(lua_object,action);
@@ -489,14 +489,14 @@ void iterate_sounds					(LPCSTR prefix, u32 max_count, const CScriptCallbackEx<v
 	}
 }
 
-void iterate_sounds1				(LPCSTR prefix, u32 max_count, luabind::functor<void> functor)
+void iterate_sounds1				(LPCSTR prefix, u32 max_count, luabindex::functor<void> functor)
 {
 	CScriptCallbackEx<void>		temp;
 	temp.set					(functor);
 	iterate_sounds				(prefix,max_count,temp);
 }
 
-void iterate_sounds2				(LPCSTR prefix, u32 max_count, luabind::object object, luabind::functor<void> functor)
+void iterate_sounds2				(LPCSTR prefix, u32 max_count, luabind::object object, luabindex::functor<void> functor)
 {
 	CScriptCallbackEx<void>		temp;
 	temp.set					(functor,object);
@@ -772,11 +772,11 @@ void CLevel::script_register(lua_State *L)
 
 		def("show_indicators",					show_indicators),
 		def("show_weapon",						show_weapon),
-		def("add_call",							((void (*) (const luabind::functor<bool> &,const luabind::functor<void> &)) &add_call)),
-		def("add_call",							((void (*) (const luabind::object &,const luabind::functor<bool> &,const luabind::functor<void> &)) &add_call)),
+		def("add_call",							((void (*) (const luabindex::functor<bool> &,const luabindex::functor<void> &)) &add_call)),
+		def("add_call",							((void (*) (const luabind::object &,const luabindex::functor<bool> &,const luabindex::functor<void> &)) &add_call)),
 		def("add_call",							((void (*) (const luabind::object &, LPCSTR, LPCSTR)) &add_call)),
-		def("remove_call",						((void (*) (const luabind::functor<bool> &,const luabind::functor<void> &)) &remove_call)),
-		def("remove_call",						((void (*) (const luabind::object &,const luabind::functor<bool> &,const luabind::functor<void> &)) &remove_call)),
+		def("remove_call",						((void (*) (const luabindex::functor<bool> &,const luabindex::functor<void> &)) &remove_call)),
+		def("remove_call",						((void (*) (const luabind::object &,const luabindex::functor<bool> &,const luabindex::functor<void> &)) &remove_call)),
 		def("remove_call",						((void (*) (const luabind::object &, LPCSTR, LPCSTR)) &remove_call)),
 		def("remove_calls_for_object",			remove_calls_for_object),
 		def("present",							is_level_present),
@@ -853,8 +853,6 @@ void CLevel::script_register(lua_State *L)
 		.def(						constructor<const xrTime&>())
 		.def(const_self <			xrTime()					)
 		.def(const_self <=			xrTime()					)
-		.def(const_self >			xrTime()					)
-		.def(const_self >=			xrTime()					)
 		.def(const_self ==			xrTime()					)
 		.def(self +					xrTime()					)
 		.def(self -					xrTime()					)
@@ -866,7 +864,7 @@ void CLevel::script_register(lua_State *L)
 		.def("setHMS"				,&xrTime::setHMS)
 		.def("setHMSms"				,&xrTime::setHMSms)
 		.def("set"					,&xrTime::set)
-		.def("get"					,&xrTime::get, out_value(_2) + out_value(_3) + out_value(_4) + out_value(_5) + out_value(_6) + out_value(_7) + out_value(_8))
+		.def("get"					,&xrTime::get, pure_out_value(_2) + pure_out_value(_3) + pure_out_value(_4) + pure_out_value(_5) + pure_out_value(_6) + pure_out_value(_7) + pure_out_value(_8))
 		.def("dateToString"			,&xrTime::dateToString)
 		.def("timeToString"			,&xrTime::timeToString),
 		// declarations

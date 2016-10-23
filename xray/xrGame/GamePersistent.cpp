@@ -815,7 +815,7 @@ void CGamePersistent::LoadTitle(bool change_tip, shared_str map_name)
 	{
 		string512				buff;
 		u8						tip_num;
-		luabind::functor<u8>	m_functor;
+		luabindex::functor<u8>	m_functor;
 		bool is_single = !xr_strcmp(m_game_params.m_game_type,"single");
 		if(is_single)
 		{

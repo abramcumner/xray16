@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#define LUABIND_BUILDING
-
 #include <luabind/detail/class_rep.hpp>
 #include <luabind/detail/format_signature.hpp> // for get_class_name
 #include <luabind/detail/object_rep.hpp>

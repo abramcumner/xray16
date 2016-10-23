@@ -210,7 +210,7 @@ void CUIRankingWnd::get_statistic()
 
 	for(u8 i = 1; i < m_stat_count; ++i)
 	{
-		luabind::functor<LPCSTR> funct;
+		luabindex::functor<LPCSTR> funct;
 		R_ASSERT( ai().script_engine().functor("pda.get_stat", funct));
 		LPCSTR str = funct(i);
 		m_stat_info[i]->SetTextColor(color_rgba(170,170,170,255));
@@ -220,7 +220,7 @@ void CUIRankingWnd::get_statistic()
 }
 void CUIRankingWnd::get_best_monster()
 {
-	luabind::functor<LPCSTR> funct;
+	luabindex::functor<LPCSTR> funct;
 	R_ASSERT(ai().script_engine().functor("pda.get_monster_back", funct));
 	LPCSTR str = funct();
 	if(!xr_strcmp(str, ""))
@@ -247,7 +247,7 @@ void CUIRankingWnd::get_best_monster()
 }
 void CUIRankingWnd::get_favorite_weapon()
 {
-	luabind::functor<LPCSTR> funct;
+	luabindex::functor<LPCSTR> funct;
 	R_ASSERT(ai().script_engine().functor("pda.get_favorite_weapon", funct));
 	LPCSTR str = funct();
 

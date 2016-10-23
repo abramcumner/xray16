@@ -126,17 +126,17 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(int))(&CScriptGameObject::GetObjectByIndex))
 		.def("active_item",					&CScriptGameObject::GetActiveItem)
 		
-		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType, const luabind::functor<void> &))(&CScriptGameObject::SetCallback))
-		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType, const luabind::functor<void> &, const luabind::object &))(&CScriptGameObject::SetCallback))
+		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType, const luabindex::functor<void> &))(&CScriptGameObject::SetCallback))
+		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType, const luabindex::functor<void> &, const luabind::object &))(&CScriptGameObject::SetCallback))
 		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType))(&CScriptGameObject::SetCallback))
 
 		.def("set_patrol_extrapolate_callback",	(void (CScriptGameObject::*)())(&CScriptGameObject::set_patrol_extrapolate_callback))
-		.def("set_patrol_extrapolate_callback",	(void (CScriptGameObject::*)(const luabind::functor<bool> &))(&CScriptGameObject::set_patrol_extrapolate_callback))
-		.def("set_patrol_extrapolate_callback",	(void (CScriptGameObject::*)(const luabind::functor<bool> &, const luabind::object &))(&CScriptGameObject::set_patrol_extrapolate_callback))
+		.def("set_patrol_extrapolate_callback",	(void (CScriptGameObject::*)(const luabindex::functor<bool> &))(&CScriptGameObject::set_patrol_extrapolate_callback))
+		.def("set_patrol_extrapolate_callback",	(void (CScriptGameObject::*)(const luabindex::functor<bool> &, const luabind::object &))(&CScriptGameObject::set_patrol_extrapolate_callback))
 
 		.def("set_enemy_callback",			(void (CScriptGameObject::*)())(&CScriptGameObject::set_enemy_callback))
-		.def("set_enemy_callback",			(void (CScriptGameObject::*)(const luabind::functor<bool> &))(&CScriptGameObject::set_enemy_callback))
-		.def("set_enemy_callback",			(void (CScriptGameObject::*)(const luabind::functor<bool> &, const luabind::object &))(&CScriptGameObject::set_enemy_callback))
+		.def("set_enemy_callback",			(void (CScriptGameObject::*)(const luabindex::functor<bool> &))(&CScriptGameObject::set_enemy_callback))
+		.def("set_enemy_callback",			(void (CScriptGameObject::*)(const luabindex::functor<bool> &, const luabind::object &))(&CScriptGameObject::set_enemy_callback))
 
 		.def("patrol",						&CScriptGameObject::GetPatrolPathName)
 
@@ -153,7 +153,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("action_by_index",				&CScriptGameObject::GetActionByIndex)
 		
 		//.def("set_hear_callback",			(void (CScriptGameObject::*)(const luabind::object &, LPCSTR))(&CScriptGameObject::SetSoundCallback))
-		//.def("set_hear_callback",			(void (CScriptGameObject::*)(const luabind::functor<void> &))(&CScriptGameObject::SetSoundCallback))
+		//.def("set_hear_callback",			(void (CScriptGameObject::*)(const luabindex::functor<void> &))(&CScriptGameObject::SetSoundCallback))
 		//.def("clear_hear_callback",		&CScriptGameObject::ClearSoundCallback)
 		
 		.def("memory_time",					&CScriptGameObject::memory_time)
@@ -327,8 +327,8 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("set_smart_cover_target",		(void (CScriptGameObject::*)	(CScriptGameObject*))&CScriptGameObject::set_smart_cover_target)
 		.def("set_smart_cover_target",		(void (CScriptGameObject::*)	())&CScriptGameObject::set_smart_cover_target)
 
-		.def("set_smart_cover_target_selector",	(void (CScriptGameObject::*)(luabind::functor<void>))&CScriptGameObject::set_smart_cover_target_selector)
-		.def("set_smart_cover_target_selector",	(void (CScriptGameObject::*)(luabind::functor<void>, luabind::object))&CScriptGameObject::set_smart_cover_target_selector)
+		.def("set_smart_cover_target_selector",	(void (CScriptGameObject::*)(luabindex::functor<void>))&CScriptGameObject::set_smart_cover_target_selector)
+		.def("set_smart_cover_target_selector",	(void (CScriptGameObject::*)(luabindex::functor<void>, luabind::object))&CScriptGameObject::set_smart_cover_target_selector)
 		.def("set_smart_cover_target_selector",	(void (CScriptGameObject::*)())&CScriptGameObject::set_smart_cover_target_selector)
 
 		.def("set_smart_cover_target_idle",				&CScriptGameObject::set_smart_cover_target_idle)

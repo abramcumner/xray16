@@ -14,7 +14,7 @@
 #include "associative_vector.h"
 
 extern "C" {
-	#include <lua/lua.h>
+	#include <lua.h>
 };
 
 //#define DBG_DISABLE_SCRIPTS
@@ -97,7 +97,7 @@ public:
 	IC		void				parse_script_namespace		(LPCSTR function_to_call, LPSTR name_space, u32 const namespace_size, LPSTR function, u32 const function_size);
 
 	template <typename _result_type>
-	IC		bool				functor						(LPCSTR function_to_call, luabind::functor<_result_type> &lua_function);
+	IC		bool				functor						(LPCSTR function_to_call, luabindex::functor<_result_type> &lua_function);
 
 #ifdef USE_DEBUGGER
 #	ifndef USE_LUA_STUDIO

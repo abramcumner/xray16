@@ -43,10 +43,10 @@ IC	CSScriptCallbackEx &CSScriptCallbackEx::operator=	(const CScriptCallbackEx_ &
 {
 	clear				();
 	
-	if (callback.m_functor.is_valid() && callback.m_functor.lua_state())
+	if (callback.m_functor.is_valid() && callback.m_functor.interpreter())
 		m_functor		= callback.m_functor;
 
-	if (callback.m_object.is_valid() && callback.m_object.lua_state())
+	if (callback.m_object.is_valid() && callback.m_object.interpreter())
 		m_object		= callback.m_object;
 
 	return				(*this);
@@ -71,7 +71,7 @@ IC	void CSScriptCallbackEx::set						(const functor_type &functor, const object_
 TEMPLATE_SPECIALIZATION
 IC	bool CSScriptCallbackEx::empty						() const
 {
-	return				(!!m_functor.lua_state());
+	return				(!!m_functor.interpreter());
 }
 
 #undef TEMPLATE_SPECIALIZATION

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #pragma hdrstop
 
-#include <lua/library_linkage.h>
-
 #include	"../../xrEngine/Render.h"
 #include	"ResourceManager.h"
 #include	"tss.h"
@@ -95,22 +93,7 @@ void LuaError(lua_State* L)
 //#	endif // USE_MEMORY_MONITOR
 #endif // PURE_ALLOC
 
-#ifndef USE_DL_ALLOCATOR
-static void *lua_alloc_dl	(void *ud, void *ptr, size_t osize, size_t nsize) {
-	(void)ud;
-	(void)osize;
-	if (nsize == 0) {
-		xr_free	(ptr);
-		return	NULL;
-	}
-	else
-#ifdef DEBUG_MEMORY_NAME
-		return Memory.mem_realloc		(ptr, nsize, "LUA");
-#else // DEBUG_MEMORY_MANAGER
-		return Memory.mem_realloc		(ptr, nsize);
-#endif // DEBUG_MEMORY_MANAGER
-}
-#else // USE_DL_ALLOCATOR
+#ifdef USE_DL_ALLOCATOR
 
 #include "../../xrCore/memory_allocator_options.h"
 
@@ -122,67 +105,34 @@ static void *lua_alloc_dl	(void *ud, void *ptr, size_t osize, size_t nsize) {
 	doug_lea_allocator	g_render_lua_allocator( 0, 0, "render:lua" );
 #endif // #ifdef USE_ARENA_ALLOCATOR
 
-static void *lua_alloc		(void *ud, void *ptr, size_t osize, size_t nsize) {
-#ifndef USE_MEMORY_MONITOR
-	(void)ud;
-	(void)osize;
-	if ( !nsize )	{
-		g_render_lua_allocator.free_impl	(ptr);
-		return					0;
-	}
-
-	if ( !ptr )
-		return					g_render_lua_allocator.malloc_impl((u32)nsize);
-
-	return g_render_lua_allocator.realloc_impl(ptr, (u32)nsize);
-#else // #ifndef USE_MEMORY_MONITOR
-	if ( !nsize )	{
-		memory_monitor::monitor_free(ptr);
-		g_render_lua_allocator.free_impl		(ptr);
-		return						NULL;
-	}
-
-	if ( !ptr ) {
-		void* const result			= 
-			g_render_lua_allocator.malloc_impl((u32)nsize);
-		memory_monitor::monitor_alloc (result,nsize,"render:LUA");
-		return						result;
-	}
-
-	memory_monitor::monitor_free	(ptr);
-	void* const result				= g_render_lua_allocator.realloc_impl(ptr, (u32)nsize);
-	memory_monitor::monitor_alloc	(result,nsize,"render:LUA");
-	return							result;
-#endif // #ifndef USE_MEMORY_MONITOR
-}
 #endif // USE_DL_ALLOCATOR
 
 // export
-void	CResourceManager::LS_Load			()
+void	CResourceManager::LS_Load()
 {
-	LSVM			= lua_newstate(lua_alloc, NULL);
-	if (!LSVM)		{
-		Msg			("! ERROR : Cannot initialize LUA VM!");
+	LSVM = luaL_newstate();
+	if (!LSVM) {
+		Msg("! ERROR : Cannot initialize LUA VM!");
 		return;
 	}
 
 	// initialize lua standard library functions 
-	luaopen_base	(LSVM); 
-	luaopen_table	(LSVM);
-	luaopen_string	(LSVM);
-	luaopen_math	(LSVM);
-	luaopen_jit		(LSVM);
+	luaopen_base(LSVM);
+	luaopen_table(LSVM);
+	luaopen_string(LSVM);
+	luaopen_math(LSVM);
+	luaopen_jit(LSVM);
 
-	luabind::open						(LSVM);
+	luabind::open(LSVM);
 #if !XRAY_EXCEPTIONS
-	if (0==luabind::get_error_callback())
-		luabind::set_error_callback		(LuaError);
+	if (0 == luabind::get_error_callback())
+		luabind::set_error_callback(LuaError);
 #endif
-
-	function		(LSVM, "log",	LuaLog);
 
 	module			(LSVM)
 	[
+		def("log", LuaLog),
+
 		class_<adopt_sampler>("_sampler")
 			.def(								constructor<const adopt_sampler&>())
 			.def("texture",						&adopt_sampler::_texture		,return_reference_to(_1))
@@ -378,10 +328,9 @@ ShaderElement*		CBlender_Compile::_lua_Compile	(LPCSTR namesp, LPCSTR name)
 	LPCSTR				t_1		= (L_textures.size() > 1)	? *L_textures[1] : "null";
 	LPCSTR				t_d		= detail_texture			? detail_texture : "null" ;
 	lua_State*			LSVM	= dxRenderDeviceRender::Instance().Resources->LSVM;
-	object				shader	= get_globals(LSVM)[namesp];
-	functor<void>		element	= object_cast<functor<void> >(shader[name]);
+	object				shader	= globals(LSVM)[namesp];
 	adopt_compiler		ac		= adopt_compiler(this);
-	element						(ac,t_0,t_1,t_d);
+	call_function<void>(shader[name], ac, t_0, t_1, t_d);
 	r_End				();
 	ShaderElement*	_r	= dxRenderDeviceRender::Instance().Resources->_CreateElement(E);
 	return			_r;

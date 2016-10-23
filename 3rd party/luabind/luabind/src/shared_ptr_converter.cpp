@@ -1,4 +1,3 @@
-#define LUABIND_BUILDING
 #include <luabind/shared_ptr_converter.hpp>
 
 #include <luabind/lua_include.hpp>

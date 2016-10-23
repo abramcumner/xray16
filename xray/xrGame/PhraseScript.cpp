@@ -81,7 +81,7 @@ LPCSTR CDialogScriptHelper::GetScriptText(LPCSTR str_to_translate, const CGameOb
 	if(!m_sScriptTextFunc.size())
 		return str_to_translate;
 
-	luabind::functor<LPCSTR>		lua_function;
+	luabindex::functor<LPCSTR>		lua_function;
 	bool functor_exists				= ai().script_engine().functor(m_sScriptTextFunc.c_str() ,lua_function);
 	THROW3							(functor_exists, "Cannot find phrase script text ", m_sScriptTextFunc.c_str());
 
@@ -109,7 +109,7 @@ bool CDialogScriptHelper::Precondition	(const CGameObject* pSpeakerGO, LPCSTR di
 
 	for(u32 i = 0; i<Preconditions().size(); ++i)
 	{
-		luabind::functor<bool>	lua_function;
+		luabindex::functor<bool>	lua_function;
 		THROW(*Preconditions()[i]);
 		bool functor_exists = ai().script_engine().functor(*Preconditions()[i] ,lua_function);
 		THROW3(functor_exists, "Cannot find precondition", *Preconditions()[i]);
@@ -130,7 +130,7 @@ void CDialogScriptHelper::Action			(const CGameObject* pSpeakerGO, LPCSTR dialog
 
 	for(u32 i = 0; i<Actions().size(); ++i)
 	{
-		luabind::functor<void>	lua_function;
+		luabindex::functor<void>	lua_function;
 		THROW(*Actions()[i]);
 		bool functor_exists = ai().script_engine().functor(*Actions()[i] ,lua_function);
 		THROW3(functor_exists, "Cannot find phrase dialog script function", *Actions()[i]);
@@ -156,7 +156,7 @@ bool CDialogScriptHelper::Precondition	(	const CGameObject* pSpeakerGO1,
 	}
 	for(u32 i = 0; i<Preconditions().size(); ++i)
 	{
-		luabind::functor<bool>	lua_function;
+		luabindex::functor<bool>	lua_function;
 		THROW(*Preconditions()[i]);
 		bool functor_exists = ai().script_engine().functor(*Preconditions()[i] ,lua_function);
 		THROW3(functor_exists, "Cannot find phrase precondition", *Preconditions()[i]);
@@ -179,7 +179,7 @@ void CDialogScriptHelper::Action			(const CGameObject* pSpeakerGO1, const CGameO
 
 	for(u32 i = 0; i<Actions().size(); ++i)
 	{
-		luabind::functor<void>	lua_function;
+		luabindex::functor<void>	lua_function;
 		THROW(*Actions()[i]);
 		bool functor_exists = ai().script_engine().functor(*Actions()[i] ,lua_function);
 		THROW3(functor_exists, "Cannot find phrase dialog script function", *Actions()[i]);

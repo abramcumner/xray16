@@ -337,15 +337,15 @@ public:
 
 
 			void				ActorLookAtPoint	(Fvector point);
-			void				IterateInventory	(luabind::functor<void> functor, luabind::object object);
-			void				IterateInventoryBox	(luabind::functor<void> functor, luabind::object object);
+			void				IterateInventory	(luabindex::functor<void> functor, luabind::object object);
+			void				IterateInventoryBox	(luabindex::functor<void> functor, luabind::object object);
 			void				MarkItemDropped		(CScriptGameObject *item);
 			bool				MarkedDropped		(CScriptGameObject *item);
 			void				UnloadMagazine		();
 
 			void				DropItem			(CScriptGameObject* pItem);
 			void				DropItemAndTeleport	(CScriptGameObject* pItem, Fvector position);
-			void				ForEachInventoryItems(const luabind::functor<void> &functor);
+			void				ForEachInventoryItems(const luabindex::functor<void> &functor);
 			void				TransferItem		(CScriptGameObject* pItem, CScriptGameObject* pForWho);
 			void				TransferMoney		(int money, CScriptGameObject* pForWho);
 			void				GiveMoney			(int money);
@@ -413,16 +413,16 @@ public:
 
 			
 	// Callbacks			
-			void				SetCallback			(GameObject::ECallbackType type, const luabind::functor<void> &functor);
-			void				SetCallback			(GameObject::ECallbackType type, const luabind::functor<void> &functor, const luabind::object &object);
+			void				SetCallback			(GameObject::ECallbackType type, const luabindex::functor<void> &functor);
+			void				SetCallback			(GameObject::ECallbackType type, const luabindex::functor<void> &functor, const luabind::object &object);
 			void				SetCallback			(GameObject::ECallbackType type);
 
-			void				set_patrol_extrapolate_callback(const luabind::functor<bool> &functor);
-			void				set_patrol_extrapolate_callback(const luabind::functor<bool> &functor, const luabind::object &object);
+			void				set_patrol_extrapolate_callback(const luabindex::functor<bool> &functor);
+			void				set_patrol_extrapolate_callback(const luabindex::functor<bool> &functor, const luabind::object &object);
 			void				set_patrol_extrapolate_callback();
 
-			void				set_enemy_callback	(const luabind::functor<bool> &functor);
-			void				set_enemy_callback	(const luabind::functor<bool> &functor, const luabind::object &object);
+			void				set_enemy_callback	(const luabindex::functor<bool> &functor);
+			void				set_enemy_callback	(const luabindex::functor<bool> &functor, const luabind::object &object);
 			void				set_enemy_callback	();
 	
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -431,7 +431,7 @@ public:
 			void				SetTipTextDefault	();
 			void				SetNonscriptUsable	(bool nonscript_usable);
 ///////////////////////////////////////////////////////////////////////////////////////////
-			void				set_fastcall		(const luabind::functor<bool> &functor, const luabind::object &object);
+			void				set_fastcall		(const luabindex::functor<bool> &functor, const luabind::object &object);
 			void				set_const_force		(const Fvector &dir,float value,u32  time_interval)							;
 //////////////////////////////////////////////////////////////////////////
 
@@ -721,8 +721,8 @@ public:
 			void				set_smart_cover_target					();
 
 			void				set_smart_cover_target_selector			();
-			void				set_smart_cover_target_selector			(luabind::functor<void> functor);
-			void				set_smart_cover_target_selector			(luabind::functor<void> functor, luabind::object object);
+			void				set_smart_cover_target_selector			(luabindex::functor<void> functor);
+			void				set_smart_cover_target_selector			(luabindex::functor<void> functor, luabind::object object);
 
 			void				set_smart_cover_target_idle				();
 			void				set_smart_cover_target_lookout			();

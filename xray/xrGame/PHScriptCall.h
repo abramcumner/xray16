@@ -14,12 +14,12 @@ class CPHScriptCondition:
 	public CPHCondition,
 	public CPHReqComparerV
 {
-	luabind::functor<bool>			*m_lua_function;
+	luabindex::functor<bool>			*m_lua_function;
 
 							CPHScriptCondition				(const CPHScriptCondition &func);
 
 public:
-							CPHScriptCondition				(const luabind::functor<bool> &func)	;
+							CPHScriptCondition				(const luabindex::functor<bool> &func)	;
 	virtual					~CPHScriptCondition				()										;
 	virtual bool 			is_true							()										;
 	virtual bool 			obsolete						()								const	;
@@ -35,9 +35,9 @@ class CPHScriptAction :
 	public CPHReqComparerV
 {
 	bool	b_obsolete							   ;
-	luabind::functor<void>			*m_lua_function;
+	luabindex::functor<void>			*m_lua_function;
 public:
-							CPHScriptAction					(const luabind::functor<void> &func)	;
+							CPHScriptAction					(const luabindex::functor<void> &func)	;
 							CPHScriptAction					(const CPHScriptAction &action)			;
 	virtual					~CPHScriptAction				()										;
 	virtual void 			run								()										;
@@ -89,7 +89,7 @@ class CPHScriptObjectConditionN:
 {
 	CScriptCallbackEx<bool>			m_callback;
 public:
-	CPHScriptObjectConditionN			( const luabind::object &object,const luabind::functor<bool> &functor)	;
+	CPHScriptObjectConditionN			( const luabind::object &object,const luabindex::functor<bool> &functor)	;
 	virtual					~CPHScriptObjectConditionN		()													;
 	virtual bool 			is_true							()													;
 	virtual bool 			obsolete						()										const		;
@@ -105,7 +105,7 @@ class CPHScriptObjectActionN :
 	bool	b_obsolete							   ;
 	CScriptCallbackEx<void>			m_callback;
 public:
-	CPHScriptObjectActionN			( const luabind::object &object,const luabind::functor<void> &functor);
+	CPHScriptObjectActionN			( const luabind::object &object,const luabindex::functor<void> &functor);
 	virtual					~CPHScriptObjectActionN			()													;
 	virtual void 			run								()													;
 	virtual bool 			obsolete						()									const			;
@@ -120,7 +120,7 @@ class CPHScriptGameObjectCondition :
 	CObject* m_obj;
 	bool	 b_obsolete;
 public:
-	CPHScriptGameObjectCondition( const luabind::object &object,const luabind::functor<bool> &functor,CObject* gobj):
+	CPHScriptGameObjectCondition( const luabind::object &object,const luabindex::functor<bool> &functor,CObject* gobj):
 	CPHScriptObjectConditionN(object,functor)
 	{
 		m_obj=gobj;
@@ -137,7 +137,7 @@ class CPHScriptGameObjectAction :
 {
 	CObject* m_obj;
 public:
-	CPHScriptGameObjectAction( const luabind::object &object,const luabind::functor<void> &functor,CObject* gobj):
+	CPHScriptGameObjectAction( const luabind::object &object,const luabindex::functor<void> &functor,CObject* gobj):
 	CPHScriptObjectActionN(object,functor)
 	{
 		m_obj=gobj;

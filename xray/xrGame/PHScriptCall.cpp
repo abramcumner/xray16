@@ -15,14 +15,14 @@ IC bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
 }
 /**/
 
-CPHScriptCondition::CPHScriptCondition(const luabind::functor<bool> &func)
+CPHScriptCondition::CPHScriptCondition(const luabindex::functor<bool> &func)
 {
-	m_lua_function		= xr_new<luabind::functor<bool> >(func);
+	m_lua_function		= xr_new<luabindex::functor<bool> >(func);
 }
 
 CPHScriptCondition::CPHScriptCondition(const CPHScriptCondition &func)
 {
-	m_lua_function		= xr_new<luabind::functor<bool> >(*func.m_lua_function);
+	m_lua_function		= xr_new<luabindex::functor<bool> >(*func.m_lua_function);
 }
 
 CPHScriptCondition::~CPHScriptCondition()
@@ -41,16 +41,16 @@ bool CPHScriptCondition::obsolete()const
 }
 
 //
-CPHScriptAction::CPHScriptAction(const luabind::functor<void> &func)
+CPHScriptAction::CPHScriptAction(const luabindex::functor<void> &func)
 {
 	b_obsolete		= false;
-	m_lua_function	= xr_new<luabind::functor<void> >(func);
+	m_lua_function	= xr_new<luabindex::functor<void> >(func);
 }
 
 CPHScriptAction::CPHScriptAction(const CPHScriptAction &action)
 {
 	b_obsolete		= action.b_obsolete;
-	m_lua_function	= xr_new<luabind::functor<void> >(*action.m_lua_function);
+	m_lua_function	= xr_new<luabindex::functor<void> >(*action.m_lua_function);
 }
 
 CPHScriptAction::~CPHScriptAction()
@@ -136,7 +136,7 @@ bool CPHScriptObjectCondition::obsolete()const
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-CPHScriptObjectActionN::CPHScriptObjectActionN( const luabind::object &object,const luabind::functor<void> &functor)
+CPHScriptObjectActionN::CPHScriptObjectActionN( const luabind::object &object,const luabindex::functor<void> &functor)
 {
 	m_callback.set(functor,object);
 }
@@ -157,7 +157,7 @@ bool CPHScriptObjectActionN::obsolete()const
 	return b_obsolete;
 }
 
-CPHScriptObjectConditionN::CPHScriptObjectConditionN(const luabind::object &object,const luabind::functor<bool> &functor)
+CPHScriptObjectConditionN::CPHScriptObjectConditionN(const luabind::object &object,const luabindex::functor<bool> &functor)
 {
 	m_callback.set(functor,object);
 }

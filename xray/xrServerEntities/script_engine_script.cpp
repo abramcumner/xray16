@@ -42,7 +42,7 @@ void ErrorLog(LPCSTR caMessage)
 #	endif // #ifndef USE_LUA_STUDIO
 #endif // #ifdef USE_DEBUGGER
 
-#ifdef DEBUG
+#ifdef USE_DEBUGGER
 		bool lua_studio_connected = !!ai().script_engine().debugger();
 		if (!lua_studio_connected)
 #endif //#ifdef DEBUG
@@ -183,11 +183,11 @@ IC	profile_timer_script	operator+	(const profile_timer_script &portion0, const p
 	return					(result);
 }
 
-// IC	std::ostream& operator<<(std::ostream &stream, profile_timer_script &timer)
-// {
-// 	stream					<< timer.time();
-// 	return					(stream);
-// }
+ IC	std::ostream& operator<<(std::ostream &stream, const profile_timer_script &timer)
+ {
+ 	stream					<< timer.time();
+ 	return					(stream);
+ }
 
 #ifdef XRGAME_EXPORTS
 ICF	u32	script_time_global	()	{ return Device.dwTimeGlobal; }
@@ -218,23 +218,23 @@ void CScriptEngine::script_register(lua_State *L)
 			.def("start",&profile_timer_script::start)
 			.def("stop",&profile_timer_script::stop)
 			.def("time",&profile_timer_script::time)
-	];
 
-	function	(L,	"log",								LuaLog);
-	function	(L,	"error_log",						ErrorLog);
-	function	(L,	"flush",							FlushLogs);
-	function	(L,	"prefetch",							prefetch_module);
-	function	(L,	"verify_if_thread_is_running",		verify_if_thread_is_running);
-	function	(L,	"editor",							is_editor);
-	function	(L,	"bit_and",							bit_and);
-	function	(L,	"bit_or",							bit_or);
-	function	(L,	"bit_xor",							bit_xor);
-	function	(L,	"bit_not",							bit_not);
-	function	(L, "user_name",						user_name);
-	function	(L, "time_global",						script_time_global);
-	function	(L, "time_global_async",				script_time_global_async);
+		,def("log", LuaLog)
+		,def("error_log", ErrorLog)
+		,def("flush", FlushLogs)
+		,def("prefetch", prefetch_module)
+		,def("verify_if_thread_is_running", verify_if_thread_is_running)
+		,def("editor", is_editor)
+		,def("bit_and", bit_and)
+		,def("bit_or", bit_or)
+		,def("bit_xor", bit_xor)
+		,def("bit_not", bit_not)
+		,def("user_name", user_name)
+		,def("time_global", script_time_global)
+		,def("time_global_async", script_time_global_async)
 #ifdef XRGAME_EXPORTS
-	function	(L,	"device",							get_device);
-	function	(L,	"is_enough_address_space_available",is_enough_address_space_available_impl);
+		,def("device", get_device)
+		,def("is_enough_address_space_available", is_enough_address_space_available_impl)
 #endif // #ifdef XRGAME_EXPORTS
+	];
 }
