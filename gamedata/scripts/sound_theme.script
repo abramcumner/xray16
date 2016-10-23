@@ -781,7 +781,7 @@ function load_sound()
 	theme = {}
 
 	for i=0,n-1 do
-		result, section, value  = snd_ini:r_line("list",i,"","")
+		result, section, value  = snd_ini:r_line("list",i)
 
 		local type = utils.cfg_get_string(snd_ini, section, "type", db.actor, true, "")
 

@@ -28,7 +28,7 @@ function init_drop_settings()
 				local n = death_ini:line_count(v)
 				local id, value = "", ""
 				for i=0,n-1 do
-					result, id, value	= death_ini:r_line(v,i,"","")
+					result, id, value	= death_ini:r_line(v,i)
 								item_by_community[v][id] = 100*tonumber(value)
 				end
 				end
@@ -38,7 +38,7 @@ function init_drop_settings()
 	local n = death_ini:line_count("item_dependence")
 	local id, value = "", ""
 	for i=0,n-1 do
-		result, id, value	= death_ini:r_line("item_dependence",i,"","")
+		result, id, value	= death_ini:r_line("item_dependence",i)
 		item_dependence[id] = {}
 		local vvv = parse_names(value)
 		for k,v in pairs(vvv) do
@@ -56,14 +56,14 @@ function init_drop_settings()
 		local n = death_ini:line_count(level_name)
 	local id, value = "", ""
 	for i=0,n-1 do
-		result, id, value	= death_ini:r_line(level_name,i,"","")
+		result, id, value	= death_ini:r_line(level_name,i)
 				mul_by_level[id] = tonumber(value)
 	end
 
 		local item_count_section = "item_count_" .. level.get_game_difficulty()
 		local n = death_ini:line_count(item_count_section)
 	for i=0,n-1 do
-		result, id, value	= death_ini:r_line(item_count_section,i,"","")
+		result, id, value	= death_ini:r_line(item_count_section,i)
 		--' Нужно распарсить value в два значения
 		local t = parse_nums(value)
 		if t[1] == nil then
@@ -88,7 +88,7 @@ function init_drop_settings()
  	--' Предметы, которые нельзя удалять (квестовые например)
 	local n = death_ini:line_count("keep_items")
 	for i=0,n-1 do
-		result, id, value	= death_ini:r_line("keep_items",i,"","")
+		result, id, value	= death_ini:r_line("keep_items",i)
 		if value == "true" then
 			always_keep_item[id] = true
 		end
@@ -99,7 +99,7 @@ function init_drop_settings()
 	local n = death_ini:line_count("ammo_sections")
 	local id, value = "", ""
 	for i=0,n-1 do
-		result, id, value	= death_ini:r_line("ammo_sections",i,"","")
+		result, id, value	= death_ini:r_line("ammo_sections",i)
 		ammo_sections[id] = true
 	end
 end

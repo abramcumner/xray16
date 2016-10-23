@@ -154,8 +154,7 @@ function file_data(fname)
 		local file		=	flist:GetAt(0)
 		local sg = CSavedGameWrapper(fname)
 
-		local y,m,d,h,min,sec,ms = 0,0,0,0,0,0,0
-		y,m,d,h,min,sec,ms = sg:game_time():get(y,m,d,h,min,sec,ms)
+		local y,m,d,h,min,sec,ms = sg:game_time():get()
 
 
 		local date_time = ""

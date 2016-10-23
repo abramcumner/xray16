@@ -6,7 +6,7 @@ function spawn_items(npc, st)
 		local n = st.ini:line_count(spawn_items_section)
 		local id, value = "", ""
 		for i=0,n-1 do
-			result, id, value	= st.ini:r_line(spawn_items_section,i,"","")
+			result, id, value	= st.ini:r_line(spawn_items_section,i)
 			if value == "" then
 				value = 1
 			end

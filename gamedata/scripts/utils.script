@@ -283,11 +283,7 @@ end
 local function door_default_callback(door, actor)
 	local ph_shell = door:get_physics_shell()
 	local joint = ph_shell:get_joint_by_bone_name("door")
-
-	local low_limit = 0
-	local hi_limit = 0
-	low_limit, hi_limit = joint:get_limits(low_limit, hi_limit, 0)
-
+	local low_limit, hi_limit = joint:get_limits(0)
 	local angle = joint:get_axis_angle(0)
 	if angle-low_limit > hi_limit - angle
 	then
@@ -584,8 +580,7 @@ function w_CTime( p, t )
 	end
 
 	if (CTime == nil) or (t ~= CTime_0) then
-		local Y, M, D, h, m, s, ms = 0, 0, 0, 0, 0, 0, 0
-		Y, M, D, h, m, s, ms = t:get( Y, M, D, h, m, s, ms )
+		local Y, M, D, h, m, s, ms = t:get()
 
 		p:w_u8 ( Y - 2000 )
 		p:w_u8 ( M )
@@ -626,9 +621,8 @@ end
 -- возвращает vertex_id, в которое отправил персонажа
 function send_to_nearest_accessible_vertex( npc, v_id )
 	if not npc:accessible( v_id ) then
-		local vtemp = vector()
 		--printf("vertex_position")
-		v_id, vtemp = npc:accessible_nearest( level.vertex_position( v_id ), vtemp )
+		v_id = npc:accessible_nearest( level.vertex_position( v_id ) )
 	end
 
 	npc:set_dest_level_vertex_id( v_id )

@@ -10,7 +10,7 @@ function Ctraveler:__init()
 
 	self.smart_to_stringtables = {}
 	for i=0, ini_file:line_count("locations")-1 do
-		temp1, id, value = ini_file:r_line("locations", i, "", "")
+		temp1, id, value = ini_file:r_line("locations", i)
 
 		self.smart_to_stringtables[id] = value
 	end
@@ -18,7 +18,7 @@ function Ctraveler:__init()
 	self.smart_travels = {}
 	self.smart_by_phrase = {}
 	for i=0, ini_file:line_count("traveler")-1 do
-		temp1, id, value = ini_file:r_line("traveler", i, "", "")
+		temp1, id, value = ini_file:r_line("traveler", i)
 
 		self.smart_travels[id] = {}
 

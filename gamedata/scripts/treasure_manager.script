@@ -12,13 +12,13 @@ function CTreasureManager:initialize()
 	local ini = ini_file("misc\\secrets.ltx")
 	local n = ini:line_count("list")
 	for i=0,n-1 do
-		local result, id, value	= ini:r_line("list",i,"","")
+		local result, id, value	= ini:r_line("list",i)
 		if(ini:section_exist(id)) then
 			self.secrets[id] = {items = {}, given = false, empty = nil, refreshing = false, checked = false, to_find = 0}
 					local items_count = ini:line_count(id)
 					local item_section = ""
 					for i=0,items_count-1 do
-							result, item_section, str = ini:r_line(id,i,"","")
+							result, item_section, str = ini:r_line(id,i)
 				if(item_section=="empty") then
 									local parsed_condlist = xr_logic.parse_condlist(nil, "treasure_manager", "empty_cond", str)
 					self.secrets[id].empty = parsed_condlist
@@ -69,7 +69,7 @@ function CTreasureManager:register_item(se_obj)
 	local spawn_ini = se_obj:spawn_ini()
 	if(spawn_ini:section_exist("secret")) then
 		local result, id, value
-		result, id, value	= spawn_ini:r_line("secret",0,"","")
+		result, id, value	= spawn_ini:r_line("secret",0)
 		if id ~= "name" then
 			abort("There is no 'name' field in [secret] section for object [%s]", se_obj:name())
 		end

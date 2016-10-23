@@ -58,8 +58,7 @@ function action_cover:activate_scheme()
 	end
 			
 	if not self.object:accessible(self.cover_position) then
-		local ttp = vector():set(0,0,0)
-		self.cover_vertex_id = self.object:accessible_nearest(self.cover_position, ttp)
+		self.cover_vertex_id = self.object:accessible_nearest(self.cover_position)
 		self.cover_position = level.vertex_position(self.cover_vertex_id)
 		--printf("cover exists but not accesible -- cover_vertex [%s] cover_position [%s]", tostring(self.cover_vertex_id), vec_to_str(self.cover_position))
 	end	

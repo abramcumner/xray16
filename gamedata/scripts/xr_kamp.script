@@ -313,7 +313,7 @@ function CKampManager:getDestVertex(npc, radius)
 		--printf("vertex_position %s", tostring(dest_vertex))
 		local vp = level.vertex_position(dest_vertex)
 		--printf("Nearest for npc[%s] kamp [%s] position [%s:%s:%s]", npc:name(), tostring(self.kamp_name),tostring(vp.x), tostring(vp.y), tostring(vp.z))
-		local nearest_vertex = npc:accessible_nearest(vp, vector():set(0,0,0))
+		local nearest_vertex = npc:accessible_nearest(vp)
 		--printf("Nearest for npc[%s] kamp [%s] position [%s:%s:%s]", npc:name(), tostring(self.kamp_name), vec_to_str(nearest_vertex))
 		return nearest_vertex, self.npc[npc_id].position
 	end

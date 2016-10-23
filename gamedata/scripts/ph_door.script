@@ -29,8 +29,7 @@ function action_door:reset_scheme(loading)
 	end
 	self.joint = ph_shell:get_joint_by_bone_name("door")
 
-	self.low_limits, self.hi_limits = 0, 0
-	self.low_limits, self.hi_limits	= self.joint:get_limits(self.low_limits, self.hi_limits, 0)
+	self.low_limits, self.hi_limits	= self.joint:get_limits(0)
 
 	self.block = false
 	self.soundless_block = false

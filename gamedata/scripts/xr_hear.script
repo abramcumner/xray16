@@ -63,7 +63,7 @@ function reset_hear_callback(st, section)
 	local category = ""
 	st.hear_sounds = {}
 	for i=0,n-1 do
-		result, id, value  = ini:r_line(section,i,"","")
+		result, id, value  = ini:r_line(section,i)
 		if is_on_sound_line(id) then
 			add_parsed_data_to_storage(value, st)
 		end

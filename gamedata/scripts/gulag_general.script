@@ -851,7 +851,7 @@ function load_job(smart)
 						local n = smart_ini:line_count("exclusive")
 						local id, value = "",""
 						for i=0,n-1 do
-								result, id, value  = smart_ini:r_line("exclusive",i,"","")
+								result, id, value  = smart_ini:r_line("exclusive",i)
 								add_exclusive_job("exclusive", id, smart_ini, job_table)
 						end
 				else
@@ -885,7 +885,7 @@ local job_type_by_scheme = {
 function add_exclusive_job(sect, work_field, smart_ini, job_table)
 		local work = utils.cfg_get_string(smart_ini, sect, work_field, nil, false, "")
 		if work == nil then return end
-		local ini_path = "\scripts\\"..work
+		local ini_path = "scripts\\"..work
 
 		local fs = getFS()
 		if fs:exist("$game_config$",ini_path) == nil then

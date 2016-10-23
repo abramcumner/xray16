@@ -387,8 +387,7 @@ function action_reach_task_location:commander_execute()
 
 		self.object:set_path_type           ( game_object.level_path )
 		if not self.object:accessible(pos) then
-			local ttp = vector():set(0,0,0)
-			lv_id = self.object:accessible_nearest(pos, ttp)
+			lv_id = self.object:accessible_nearest(pos)
 			pos = level.vertex_position(lv_id)
 		end
 		self.object:set_sight				(look.path_dir,nil,0)

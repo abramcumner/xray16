@@ -1090,7 +1090,7 @@ function cfg_get_switch_conditions(ini, section, npc)
 
 	local function add_conditions(func, cond)
 		for line_number = 0, line_count - 1 do
-			local result, id, value  = ini:r_line(section,line_number,"","")
+			local result, id, value  = ini:r_line(section,line_number)
 			if string.find( id, "^"..cond.."%d*$" ) ~= nil then
 				c = func(ini, section, id, npc)
 				n = add_condition(l, n, c)

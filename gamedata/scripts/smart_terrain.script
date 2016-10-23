@@ -1347,7 +1347,7 @@ function se_smart_terrain:check_respawn_params(respawn_params)
 		abort("Wrong smatr_terrain respawn_params section [%s](empty params)", respawn_params)
 	end
 	for j=0,n-1 do
-		local result, prop_name, prop_condlist = self.ini:r_line(respawn_params,j,"","")
+		local result, prop_name, prop_condlist = self.ini:r_line(respawn_params,j)
 		if not self.ini:section_exist(prop_name) then
 			abort("Wrong smatr_terrain respawn_params section [%s] prop [%s](there is no section)", respawn_params, prop_name)
 		end

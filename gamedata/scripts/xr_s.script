@@ -185,7 +185,7 @@ function parse_ini_section_to_array(ini,section)
 		tmp={}
 		local result, id, value = nil, nil, nil
 		for a=0,ini:line_count(section)-1 do
-			result, id, value = ini:r_line(section,a,"","")
+			result, id, value = ini:r_line(section,a)
 			if id~=nil and trim(id)~="" and trim(id)~=nil then
 				tmp[trim(id)]=trim(value)
 			end

@@ -38,7 +38,7 @@ function fill_phrase_table()
 	local value = ""
 	local category = ""
 	for i=0,dm_ini_file:line_count("list")-1 do
-		temp1, id, temp2 = dm_ini_file:r_line("list", i, "", "")
+		temp1, id, temp2 = dm_ini_file:r_line("list", i)
 		if(dm_ini_file:line_exist(id, "category")) then
 			category = dm_ini_file:r_string(id, "category")
 

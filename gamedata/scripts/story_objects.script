@@ -89,7 +89,7 @@ function check_spawn_ini_for_story_id(se_obj)
 	local spawn_ini = se_obj:spawn_ini()
 	if spawn_ini:section_exist("story_object") then
 		local result, id, value
-		result, id, value	= spawn_ini:r_line("story_object",0,"","")
+		result, id, value	= spawn_ini:r_line("story_object",0)
 		if id ~= "story_id" then
 			abort("There is no 'story_id' field in [story_object] section :object [%s]", se_obj:name())
 		end

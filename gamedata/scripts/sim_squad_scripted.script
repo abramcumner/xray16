@@ -76,7 +76,7 @@ function sim_squad_scripted:set_squad_behaviour()
 	end
 	local n = squad_behaviour_ini:line_count(behaviour_section)
 	for j=0,n-1 do
-		local result, prop_name, prop_condlist = squad_behaviour_ini:r_line(behaviour_section,j,"","")
+		local result, prop_name, prop_condlist = squad_behaviour_ini:r_line(behaviour_section,j)
 		self.behaviour[prop_name] = prop_condlist
 	end
 end
@@ -467,7 +467,7 @@ end
 function sim_squad_scripted:set_location_types_section (section)
 --	printf("set_location_types_section[%s] for [%s]", tostring(section), tostring(self:name()))
 	if locations_ini:section_exist(section) then
-		local result, id, value	= locations_ini:r_line(section,0,"","")
+		local result, id, value	= locations_ini:r_line(section,0)
 		self:add_location_type(id)
 	end
 end

@@ -52,7 +52,7 @@ function Crelease_body:__init()
 	local n = snd_ini:line_count("keep_items")
 	local value = ""
 	for i = 0, n - 1 do
-		result, section, value  = snd_ini:r_line("keep_items", i, "", "")
+		result, section, value  = snd_ini:r_line("keep_items", i)
 		table.insert(self.keep_items_table, section)
 	end
 end

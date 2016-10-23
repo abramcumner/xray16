@@ -128,8 +128,7 @@ function act_state_mgr_smartcover_exit:initialize()
 	local vertex		= object:level_vertex_id()
 	local npc_position 	= level.vertex_position(vertex)
 	if not object:accessible(npc_position) then
-		local ttp 		= vector():set(0,0,0)
-		vertex 			= object:accessible_nearest(npc_position, ttp)
+		vertex 			= object:accessible_nearest(npc_position)
 		npc_position 	= level.vertex_position(vertex)
 		printf("accesible position is %s", vec_to_str(npc_position))
 	end

@@ -124,7 +124,7 @@ function anomaly_zone_binder:__init(obj) super(obj)
 
 			if ini:line_count(mines_section) > 0 then
 				for i = 0, ini:line_count(mines_section)-1 do
-					temp1, mine_name, temp2 = ini:r_line(mines_section, i, "", "")
+					temp1, mine_name, temp2 = ini:r_line(mines_section, i)
 					table.insert(self.mines_table[section],mine_name)
 				end
 			end

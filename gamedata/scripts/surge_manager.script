@@ -82,7 +82,7 @@ end
 function CSurgeManager:init_surge_covers()
 	local ini = self.ini
 	for i = 0, ini:line_count("list")-1 do
-		temp1, id, temp2 = ini:r_line("list", i, "", "")
+		temp1, id, temp2 = ini:r_line("list", i)
 		local zone = db.zone_by_name[id]
 		if zone ~= nil then
 			self.count = self.count + 1
@@ -283,8 +283,7 @@ function CSurgeManager:update()
 end
 
 function CSurgeManager:start(manual)
-	local Y, M, D, h, m, s, ms = 0, 0, 0, 0, 0, 0, 0
-	Y, M, D, h, m, s, ms = self.last_surge_time:get(Y, M, D, h, m, s, ms)
+	local Y, M, D, h, m, s, ms = self.last_surge_time:get()
 	if(manual) then
 		self.inited_time = game.get_game_time()
 	else
@@ -314,8 +313,7 @@ function CSurgeManager:start(manual)
 end
 
 function CSurgeManager:skip_surge()
-	local Y, M, D, h, m, s, ms = 0, 0, 0, 0, 0, 0, 0
-	Y, M, D, h, m, s, ms = self.inited_time:get(Y, M, D, h, m, s, ms)
+	local Y, M, D, h, m, s, ms = self.inited_time:get()
 	self.last_surge_time:set(Y, M, D, h, m, s + self.surge_time, ms)
 
 	self.started 			= false

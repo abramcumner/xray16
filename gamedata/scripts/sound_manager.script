@@ -251,7 +251,7 @@ function CStory:__init(story_id)
 	local id, value = "",""
 
 	for i=0,n-1 do
-		result, id, value	= story_ltx:r_line(story_id,i,"","")
+		result, id, value	= story_ltx:r_line(story_id,i)
 
 		local t = parse_names(value)
 

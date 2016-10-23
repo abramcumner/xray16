@@ -398,7 +398,7 @@ function sim_board:fill_start_position()
 
 		local n = setting_ini:line_count(section_name)
 		for i=0,n-1 do
-			local result, id, value	= setting_ini:r_line(section_name,i,"","")
+			local result, id, value	= setting_ini:r_line(section_name,i)
 			local smrt_names = utils.parse_names(value)
 			for k,v in pairs(smrt_names) do
 				local smart = self.smarts_by_names[v]

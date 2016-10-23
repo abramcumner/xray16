@@ -53,7 +53,7 @@ function scenes_item_dialog:FillList()
 	local line_count = scenes_ini:line_count(level_name)
 
 	for line_number = 0, line_count - 1 do
-		local result, id, value  = scenes_ini:r_line(level_name,line_number,"","")
+		local result, id, value  = scenes_ini:r_line(level_name,line_number)
 		local parsed_value = utils.parse_params(value)
 		scenes_table[id] = parsed_value
 		self:AddItemToList(id)
