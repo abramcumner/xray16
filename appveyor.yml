@@ -48,6 +48,10 @@ after_build:
 
     copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\bin_%COR_PLAT%\
 
+    md dist\engine\gamedata
+
+    copy gamedata\* dist\engine\gamedata\
+
     7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z dist\engine\*
 
     echo appveyor PushArtifact cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
