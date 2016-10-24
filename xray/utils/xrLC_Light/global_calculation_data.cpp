@@ -1,14 +1,10 @@
 #include "stdafx.h"
-
 #include "global_calculation_data.h"
-
 #include "../shader_xrlc.h"
 #include "serialize.h"
+#include <memory>
 
 global_claculation_data	gl_data;
-
-
-
 
 template <class T>
 void transfer(const char *name, xr_vector<T> &dest, IReader& F, u32 chunk)
@@ -26,10 +22,6 @@ void transfer(const char *name, xr_vector<T> &dest, IReader& F, u32 chunk)
 
 extern u32*		Surface_Load	(char* name, u32& w, u32& h);
 extern void		Surface_Init	();
-
-// 
-
-
 
 void global_claculation_data::xrLoad()
 {
@@ -49,8 +41,13 @@ void global_claculation_data::xrLoad()
 		R_ASSERT			(CFORM_CURRENT_VERSION==H.version);
 		
 		Fvector*	verts	= (Fvector*)fs->pointer();
-		CDB::TRI*	tris	= (CDB::TRI*)(verts+H.vertcount);
-		RCAST_Model.build	( verts, H.vertcount, tris, H.facecount );
+		CDB::TRI_Build*	build_tris	= (CDB::TRI_Build*)(verts+H.vertcount);
+		auto tris = std::make_unique<CDB::TRI[]>(H.facecount);
+		for (u32 i = 0; i != H.facecount; i++) {
+			memcpy(tris[i].verts, build_tris[i].verts, sizeof(tris[i].verts));
+			tris[i].dummy = build_tris[i].dummy_low;
+		}
+		RCAST_Model.build	( verts, H.vertcount, tris.get(), H.facecount );
 		Msg("* Level CFORM: %dK",RCAST_Model.memory()/1024);
 
 		g_rc_faces.resize	(H.facecount);
@@ -110,28 +107,36 @@ void global_claculation_data::xrLoad()
 		transfer("materials",	g_materials,			*fs,		EB_Materials);
 		transfer("shaders_xrlc",g_shader_compile,		*fs,		EB_Shaders_Compile);
 		post_process_materials( *g_shaders_xrlc, g_shader_compile, g_materials );
+		
 		// process textures
-#ifdef	DEBUG
-		xr_vector<b_texture> dbg_textures;
-#endif
 		Status			("Processing textures...");
 		{
 			Surface_Init		();
 			F = fs->open_chunk	(EB_Textures);
+#ifdef _WIN64
+			u32 tex_count = F->length() / sizeof(help_b_texture);
+#else
 			u32 tex_count	= F->length()/sizeof(b_texture);
+#endif
+			bool is_thm_missing = false;
+			bool is_tga_missing = false;
 			for (u32 t=0; t<tex_count; t++)
 			{
 				Progress		(float(t)/float(tex_count));
 
+#ifdef _WIN64
+				// workaround for ptr size mismatching
+				help_b_texture	TEX;
+				F->r(&TEX, sizeof(TEX));
+				b_BuildTexture	BT;
+				CopyMemory(&BT, &TEX, sizeof(TEX) - 4);	// ptr should be copied separately
+				BT.pSurface = (u32 *)TEX.pSurface;
+#else
 				b_texture		TEX;
 				F->r			(&TEX,sizeof(TEX));
-#ifdef	DEBUG
-				dbg_textures.push_back( TEX );
-#endif
-
 				b_BuildTexture	BT;
 				CopyMemory		(&BT,&TEX,sizeof(TEX));
-
+#endif
 				// load thumbnail
 				LPSTR N			= BT.name;
 				if (strchr(N,'.')) *(strchr(N,'.')) = 0;
@@ -147,8 +152,12 @@ void global_claculation_data::xrLoad()
 				} else {
 					xr_strcat				(N,sizeof(BT.name),".thm");
 					IReader* THM			= FS.r_open("$game_textures$",N);
-					R_ASSERT2				(THM,	N);
-
+					//R_ASSERT2				(THM,	N);
+					if (!THM) {
+						clMsg("cannot find thm: %s", N);
+						is_thm_missing = true;
+						continue;
+					}
 					// version
 					u32 version				= 0;
 					R_ASSERT				(THM->r_chunk(THM_CHUNK_VERSION,&version));
@@ -181,7 +190,13 @@ void global_claculation_data::xrLoad()
 							u32			w=0, h=0;
 							BT.pSurface		= Surface_Load(N,w,h);
 							BT.THM.SetHasSurface(TRUE);
-							R_ASSERT2	(BT.pSurface,"Can't load surface");
+							//R_ASSERT2	(BT.pSurface,"Can't load surface");
+							if (!BT.pSurface)
+							{
+								clMsg("cannot find tga texture: %s", N);
+								is_tga_missing = true;
+								continue;
+							}
 							if ((w != BT.dwWidth) || (h != BT.dwHeight))
 								Msg		("! THM doesn't correspond to the texture: %dx%d -> %dx%d", BT.dwWidth, BT.dwHeight, w, h);
 							BT.Vflip	();
@@ -194,6 +209,8 @@ void global_claculation_data::xrLoad()
 				// save all the stuff we've created
 				g_textures.push_back	(BT);
 			}
+			R_ASSERT2(!is_thm_missing, "Some of required thm's are missing. See log for details.");
+			R_ASSERT2(!is_tga_missing, "Some of required tga_textures are missing. See log for details.");
 		}
 	}
 }

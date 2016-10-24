@@ -192,71 +192,67 @@ void LightPoint(CDB::COLLIDER* DB, base_color &C, Fvector &P, Fvector &N, base_l
 
 	if (0==(flags&LP_dont_rgb))
 	{
-		R_Light	*L	= &*lights.rgb.begin(), *E = &*lights.rgb.end();
-		for (;L!=E; L++)
-		{
-			if (L->type==LT_DIRECT) {
+		for (auto& L: lights.rgb) {
+			if (L.type==LT_DIRECT) {
 				// Cos
-				Ldir.invert	(L->direction);
+				Ldir.invert	(L.direction);
 				float D		= Ldir.dotproduct( N );
 				if( D <=0 ) continue;
 
 				// Trace Light
-				float scale	=	D*L->energy*rayTrace(DB,*L,Pnew,Ldir,1000.f);
-				C.rgb.x		+=	scale * L->diffuse.x; 
-				C.rgb.y		+=	scale * L->diffuse.y;
-				C.rgb.z		+=	scale * L->diffuse.z;
+				float scale	=	D*L.energy*rayTrace(DB,L,Pnew,Ldir,1000.f);
+				C.rgb.x		+=	scale * L.diffuse.x; 
+				C.rgb.y		+=	scale * L.diffuse.y;
+				C.rgb.z		+=	scale * L.diffuse.z;
 			} else {
 				// Distance
-				float sqD	=	P.distance_to_sqr	(L->position);
-				if (sqD > L->range2) continue;
+				float sqD	=	P.distance_to_sqr	(L.position);
+				if (sqD > L.range2) continue;
 
 				// Dir
-				Ldir.sub	(L->position,P);
+				Ldir.sub	(L.position,P);
 				Ldir.normalize_safe();
 				float D		= Ldir.dotproduct( N );
 				if( D <=0 ) continue;
 
 				// Trace Light
 				float R		= _sqrt(sqD);
-				float scale = D*L->energy*rayTrace(DB,*L,Pnew,Ldir,R);
-				float A		= scale / (L->attenuation0 + L->attenuation1*R + L->attenuation2*sqD);
+				float scale = D*L.energy*rayTrace(DB,L,Pnew,Ldir,R);
+				float A		= scale / (L.attenuation0 + L.attenuation1*R + L.attenuation2*sqD);
 
-				C.rgb.x += A * L->diffuse.x;
-				C.rgb.y += A * L->diffuse.y;
-				C.rgb.z += A * L->diffuse.z;
+				C.rgb.x += A * L.diffuse.x;
+				C.rgb.y += A * L.diffuse.y;
+				C.rgb.z += A * L.diffuse.z;
 			}
 		}
 	}
 	if (0==(flags&LP_dont_sun))
 	{
-		R_Light	*L	= &*(lights.sun.begin()), *E = &*(lights.sun.end());
-		for (;L!=E; L++)
-		{
-			if (L->type==LT_DIRECT) {
+		for (auto& L : lights.sun) {
+			if (L.type==LT_DIRECT) {
 				// Cos
-				Ldir.invert	(L->direction);
+				Ldir.invert	(L.direction);
 				float D		= Ldir.dotproduct( N );
 				if( D <=0 ) continue;
 
 				// Trace Light
-				float scale	=	L->energy*rayTrace(DB,*L,Pnew,Ldir,1000.f);
+				float scale	=	L.energy*rayTrace(DB,L,Pnew,Ldir,1000.f);
 				C.sun		+=	scale;
 			} else {
 				// Distance
-				float sqD	=	P.distance_to_sqr(L->position);
-				if (sqD > L->range2) continue;
+				float sqD	=	P.distance_to_sqr(L.position);
+				if (sqD > L.range2) continue;
 
 				// Dir
-				Ldir.sub			(L->position,P);
+				Ldir.sub			(L.position,P);
 				Ldir.normalize_safe	();
 				float D				= Ldir.dotproduct( N );
 				if( D <=0 )			continue;
 
 				// Trace Light
 				float R		=	_sqrt(sqD);
-				float scale =	D*L->energy*rayTrace(DB,*L,Pnew,Ldir,R);
-				float A		=	scale / (L->attenuation0 + L->attenuation1*R + L->attenuation2*sqD);
+				float scale =	D*L.energy*rayTrace(DB,L,Pnew,Ldir,R);
+				float A		=	scale / (L.attenuation0 + L.attenuation1*R + L.attenuation2*sqD);
 
 				C.sun		+=	A;
 			}
@@ -264,34 +260,32 @@ void LightPoint(CDB::COLLIDER* DB, base_color &C, Fvector &P, Fvector &N, base_l
 	}
 	if (0==(flags&LP_dont_hemi))
 	{
-		R_Light	*L	= &*lights.hemi.begin(), *E = &*lights.hemi.end();
-		for (;L!=E; L++)
-		{
-			if (L->type==LT_DIRECT) {
+		for (auto& L : lights.hemi) {
+			if (L.type==LT_DIRECT) {
 				// Cos
-				Ldir.invert	(L->direction);
+				Ldir.invert	(L.direction);
 				float D		= Ldir.dotproduct( N );
 				if( D <=0 ) continue;
 
 				// Trace Light
 				Fvector		PMoved;	PMoved.mad	(Pnew,Ldir,0.001f);
-				float scale	=	L->energy*rayTrace(DB,*L,PMoved,Ldir,1000.f);
+				float scale	=	L.energy*rayTrace(DB,L,PMoved,Ldir,1000.f);
 				C.hemi		+=	scale;
 			} else {
 				// Distance
-				float sqD	=	P.distance_to_sqr(L->position);
-				if (sqD > L->range2) continue;
+				float sqD	=	P.distance_to_sqr(L.position);
+				if (sqD > L.range2) continue;
 
 				// Dir
-				Ldir.sub			(L->position,P);
+				Ldir.sub			(L.position,P);
 				Ldir.normalize_safe	();
 				float D		=	Ldir.dotproduct( N );
 				if( D <=0 ) continue;
 
 				// Trace Light
 				float R		=	_sqrt(sqD);
-				float scale =	D*L->energy*rayTrace(DB,*L,Pnew,Ldir,R);
-				float A		=	scale / (L->attenuation0 + L->attenuation1*R + L->attenuation2*sqD);
+				float scale =	D*L.energy*rayTrace(DB,L,Pnew,Ldir,R);
+				float A		=	scale / (L.attenuation0 + L.attenuation1*R + L.attenuation2*sqD);
 
 				C.hemi		+=	A;
 			}
@@ -375,7 +369,7 @@ bool detail_slot_calculate( u32 _x, u32 _z, DetailSlot&	DS, DWORDVec& box_result
 			if (P.y<BB.min.y) continue;
 			
 			// light point
-			LightPoint		(&DB,amount,P,t_n,Selected,0);
+			LightPoint		(&DB,amount,P,t_n,Selected, (gl_data.noRgb ? LP_dont_rgb : 0) | (gl_data.noSun ? LP_dont_sun : 0));
 			count			+= 1;
 		}
 	}

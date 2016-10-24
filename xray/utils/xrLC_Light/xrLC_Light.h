@@ -42,7 +42,7 @@ extern XRLC_LIGHT_API xr_pure_interface  XRLC_LIGHT_API i_lc_log
 	virtual	void Phase		( LPCSTR phase_name )	=0;
 } *lc_log;
 
-			XRLC_LIGHT_API void	xrCompileDO		 ( bool net );
+			XRLC_LIGHT_API void	xrCompileDO		 ( bool net, bool noRgb, bool noSun );
 extern "C"	XRLC_LIGHT_API  b_params	&g_params();
 
 IC	u8	u8_clr				(float a)	{ s32 _a = iFloor(a*255.f); clamp(_a,0,255); return u8(_a);		};

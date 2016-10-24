@@ -26,7 +26,8 @@ struct global_claculation_data
 	void							read			( INetReader &r );
 	void							write			( IWriter	&w ) const ;
 //////////////////////////////////////////////////////////////////////////
-
+	bool noRgb;
+	bool noSun;
 ///////////////////////////////////////////////////////////////////
 			global_claculation_data		(): g_shaders_xrlc( 0 ) {}
 	void	xrLoad						( );

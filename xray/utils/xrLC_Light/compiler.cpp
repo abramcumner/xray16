@@ -16,6 +16,7 @@ void	xrLight			()
 	// Start threads, wait, continue --- perform all the work
 	CThreadManager		Threads;
 	CTimer				start_time;
+	start_time.Start();
 	u32	stride			= range/NUM_THREADS;
 	u32	last			= range-stride*	(NUM_THREADS-1);
 	for (u32 thID=0; thID<NUM_THREADS; thID++)	{
@@ -28,8 +29,11 @@ void	xrLight			()
 	Msg						("%d seconds elapsed.",(start_time.GetElapsed_ms())/1000);
 }
 
-void xrCompileDO( bool net )
+void xrCompileDO( bool net, bool noRgb, bool noSun )
 {
+	gl_data.noRgb = noRgb;
+	gl_data.noSun = noSun;
+
 	Phase		("Loading level...");
 	gl_data.xrLoad	();
 

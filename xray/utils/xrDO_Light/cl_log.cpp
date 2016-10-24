@@ -122,7 +122,7 @@ void Phase			(const char *phase_name)
 HWND logWindow=0;
 void logThread(void *dummy)
 {
-	SetProcessPriorityBoost	(GetCurrentProcess(),TRUE);
+	//SetProcessPriorityBoost	(GetCurrentProcess(),TRUE);
 
 	logWindow = CreateDialog(
 		HINSTANCE(GetModuleHandle(0)),
@@ -142,8 +142,11 @@ void logThread(void *dummy)
 
 	SendMessage(hwProgress, PBM_SETRANGE,	0, MAKELPARAM(0, 1000)); 
 	SendMessage(hwProgress, PBM_SETPOS,		0, 0); 
-
-	Msg("\"LevelBuilder v4.1\" beta build\nCompilation date: %s\n",__DATE__);
+#ifdef _WIN64
+	Msg("\"xrDO_Light x64 from CoP SDK\"\nCompilation date: %s\n", __DATE__);
+#else
+	Msg("\"xrDO_Light\"\nCompilation date: %s\n", __DATE__);
+#endif
 	{
 		char tmpbuf[128];
 		Msg("Startup time: %s",_strtime(tmpbuf));

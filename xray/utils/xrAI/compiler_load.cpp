@@ -4,6 +4,7 @@
 #include "levelgamedef.h"
 #include "level_graph.h"
 #include "AIMapExport.h"
+#include <memory>
 
 IC	const Fvector vertex_position(const CLevelGraph::CPosition &Psrc, const Fbox &bb, const SAIParams &params)
 {
@@ -72,8 +73,14 @@ void xrLoad(LPCSTR name, bool draft_mode)
 			R_ASSERT			(CFORM_CURRENT_VERSION==H.version);
 
 			Fvector*	verts	= (Fvector*)fs->pointer();
-			CDB::TRI*	tris	= (CDB::TRI*)(verts+H.vertcount);
-			Level.build			( verts, H.vertcount, tris, H.facecount );
+			CDB::TRI_Build*	build_tris = (CDB::TRI_Build*)(verts + H.vertcount);
+			auto tris = std::make_unique<CDB::TRI[]>(H.facecount);
+			for (u32 i = 0; i != H.facecount; i++)
+			{
+				memcpy(tris[i].verts, build_tris[i].verts, sizeof(tris[i].verts));
+				tris[i].dummy = build_tris[i].dummy_low;
+			}
+			Level.build(verts, H.vertcount, tris.get(), H.facecount);
 			Level.syncronize	();
 			Msg("* Level CFORM: %dK",Level.memory()/1024);
 
@@ -110,16 +117,30 @@ void xrLoad(LPCSTR name, bool draft_mode)
 			{
 				Surface_Init		();
 				F = fs->open_chunk	(EB_Textures);
+#ifdef _WIN64
+				u32 tex_count = F->length() / sizeof(help_b_texture);
+#else
 				u32 tex_count		= F->length()/sizeof(b_texture);
+#endif
+				bool is_thm_missing = false;
+				bool is_tga_missing = false;
 				for (u32 t=0; t<tex_count; t++)
 				{
 					Progress		(float(t)/float(tex_count));
 
+#ifdef _WIN64
+					// workaround for ptr size mismatching
+					help_b_texture	TEX;
+					F->r(&TEX, sizeof(TEX));
+					b_BuildTexture	BT;
+					CopyMemory(&BT, &TEX, sizeof(TEX) - 4);	// ptr should be copied separately
+					BT.pSurface = (u32*)TEX.pSurface;
+#else
 					b_texture		TEX;
-					F->r			(&TEX,sizeof(TEX));
-
+					F->r(&TEX, sizeof(TEX));
 					b_BuildTexture	BT;
 					CopyMemory		(&BT,&TEX,sizeof(TEX));
+#endif
 
 					// load thumbnail
 					string128		&N = BT.name;
@@ -140,7 +161,13 @@ void xrLoad(LPCSTR name, bool draft_mode)
 						IReader* THM	= FS.r_open("$game_textures$",N);
 //						if (!THM)		continue;
 						
-						R_ASSERT2		(THM,	N);
+//						R_ASSERT2		(THM,	N);
+						if (!THM)
+						{
+							clMsg("cannot find thm: %s", N);
+							is_thm_missing = true;
+							continue;
+						}
 
 						// version
 						u32 version				= 0;
@@ -172,7 +199,13 @@ void xrLoad(LPCSTR name, bool draft_mode)
 								clMsg		("- loading: %s",N);
 								u32			w=0, h=0;
 								BT.pSurface = Surface_Load(N,w,h); 
-								R_ASSERT2	(BT.pSurface,"Can't load surface");
+//								R_ASSERT2	(BT.pSurface,"Can't load surface");
+								if (!BT.pSurface)
+								{
+									clMsg("cannot find tga texture: %s", N);
+									is_tga_missing = true;
+									continue;
+								}
 								if ((w != BT.dwWidth) || (h != BT.dwHeight))
 									Msg		("! THM doesn't correspond to the texture: %dx%d -> %dx%d", BT.dwWidth, BT.dwHeight, w, h);
 								BT.Vflip	();
@@ -185,6 +218,8 @@ void xrLoad(LPCSTR name, bool draft_mode)
 					// save all the stuff we've created
 					g_textures.push_back	(BT);
 				}
+				R_ASSERT2(!is_thm_missing, "Some of required thm's are missing. See log for details.");
+				R_ASSERT2(!is_tga_missing, "Some of required tga_textures are missing. See log for details.");
 			}
 		}
 	}
