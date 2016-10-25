@@ -41,17 +41,17 @@ after_build:
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\*.dll dist\engine\bin_%COR_PLAT%\
 
-    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\bin_%COR_PLAT%\
+    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\engine\bin_%COR_PLAT%\
 
-    md dist\engine\bin_%COR_PLAT%\lua
+    md dist\engine\bin_%COR_PLAT%\lua\jit
 
-    copy SDK\binaries\%COR_PLAT%\lua\* dist\engine\bin_%COR_PLAT%\lua\
+    copy SDK\binaries\%COR_PLAT%\lua\jit\* dist\engine\bin_%COR_PLAT%\lua\jit\
 
-    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\bin_%COR_PLAT%\
+    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\engine\bin_%COR_PLAT%\
 
-    md dist\engine\gamedata
+    md dist\engine\gamedata\scripts
 
-    copy gamedata\* dist\engine\gamedata\
+    copy gamedata\scripts\* dist\engine\gamedata\scripts\
 
     7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z dist\engine\*
 
@@ -73,13 +73,13 @@ after_build:
 
     copy SDK\binaries\%COR_PLAT%\nvtt.dll dist\sdk_%COR_PLAT%\
 
-    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\bin_%COR_PLAT%\
+    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\sdk_%COR_PLAT%\
 
-    md dist\engine\bin_%COR_PLAT%\lua
+    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\sdk_%COR_PLAT%\
 
-    copy SDK\binaries\%COR_PLAT%\lua\* dist\engine\bin_%COR_PLAT%\lua\
+    md dist\engine\bin_%COR_PLAT%\lua\jit
 
-    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\bin_%COR_PLAT%\
+    copy SDK\binaries\%COR_PLAT%\lua\jit\* dist\sdk_%COR_PLAT%\lua\jit\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.dll dist\sdk_%COR_PLAT%\
 
