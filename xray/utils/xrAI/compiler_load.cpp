@@ -73,6 +73,7 @@ void xrLoad(LPCSTR name, bool draft_mode)
 			R_ASSERT			(CFORM_CURRENT_VERSION==H.version);
 
 			Fvector*	verts	= (Fvector*)fs->pointer();
+#ifdef _WIN64
 			CDB::TRI_Build*	build_tris = (CDB::TRI_Build*)(verts + H.vertcount);
 			auto tris = std::make_unique<CDB::TRI[]>(H.facecount);
 			for (u32 i = 0; i != H.facecount; i++)
@@ -81,6 +82,10 @@ void xrLoad(LPCSTR name, bool draft_mode)
 				tris[i].dummy = build_tris[i].dummy_low;
 			}
 			Level.build(verts, H.vertcount, tris.get(), H.facecount);
+#else
+			CDB::TRI*	tris = (CDB::TRI*)(verts + H.vertcount);
+			Level.build(verts, H.vertcount, tris, H.facecount);
+#endif
 			Level.syncronize	();
 			Msg("* Level CFORM: %dK",Level.memory()/1024);
 

@@ -9,7 +9,7 @@ void InternalRender()
 
 }
 
-LRESULT CALLBACK disp_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK disp_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch( msg )
 	{

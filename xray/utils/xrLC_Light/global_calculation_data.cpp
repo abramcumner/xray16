@@ -41,13 +41,18 @@ void global_claculation_data::xrLoad()
 		R_ASSERT			(CFORM_CURRENT_VERSION==H.version);
 		
 		Fvector*	verts	= (Fvector*)fs->pointer();
+#ifdef _WIN64
 		CDB::TRI_Build*	build_tris	= (CDB::TRI_Build*)(verts+H.vertcount);
 		auto tris = std::make_unique<CDB::TRI[]>(H.facecount);
 		for (u32 i = 0; i != H.facecount; i++) {
 			memcpy(tris[i].verts, build_tris[i].verts, sizeof(tris[i].verts));
 			tris[i].dummy = build_tris[i].dummy_low;
 		}
-		RCAST_Model.build	( verts, H.vertcount, tris.get(), H.facecount );
+		RCAST_Model.build(verts, H.vertcount, tris.get(), H.facecount);
+#else
+		CDB::TRI*	tris = (CDB::TRI*)(verts + H.vertcount);
+		RCAST_Model.build(verts, H.vertcount, tris, H.facecount);
+#endif
 		Msg("* Level CFORM: %dK",RCAST_Model.memory()/1024);
 
 		g_rc_faces.resize	(H.facecount);
