@@ -77,7 +77,7 @@ after_build:
 
     copy SDK\binaries\%COR_PLAT%\lua51.dll dist\sdk_%COR_PLAT%\
 
-    md dist\engine\sdk_%COR_PLAT%\lua\jit
+    md dist\sdk_%COR_PLAT%\lua\jit
 
     copy SDK\binaries\%COR_PLAT%\lua\jit\* dist\sdk_%COR_PLAT%\lua\jit\
 
