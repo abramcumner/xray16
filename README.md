@@ -12,7 +12,7 @@ How to Build
 - install boost 1.60.0 (http://www.boost.org/users/history/version_1_60_0.html)
 - set enviroment variable BOOST_1_60_0 to boost path (example C:\Libraries\boost_1_60_0\)
 - open engine.sln
-- build
+- build xrGame
 
 Binaries
 --------
