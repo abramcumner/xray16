@@ -246,13 +246,13 @@ cast_graph::~cast_graph()
 
 LUABIND_API class_id allocate_class_id(type_id const& cls)
 {
-    typedef std::map<type_id, class_id> map_type;
+	typedef std::map<std::string, class_id> map_type;
 
     static map_type registered;
     static class_id id = 0;
 
     std::pair<map_type::iterator, bool> inserted = registered.insert(
-        std::make_pair(cls, id));
+		std::make_pair(cls.name(), id));
 
     if (inserted.second)
         ++id;
