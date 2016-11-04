@@ -49,7 +49,7 @@ IC	bool CScriptEngine::functor(LPCSTR function_to_call, luabindex::functor<_resu
 		return				(false);
 
 	try {
-		lua_function		= luabind::object_cast<luabindex::functor<_result_type> >(object);
+		lua_function		= luabindex::functor<_result_type>(object);
 	}
 	catch(...) {
 		return				(false);
