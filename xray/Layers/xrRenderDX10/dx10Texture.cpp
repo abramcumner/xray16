@@ -333,7 +333,6 @@ ID3DBaseTexture*	CRender::texture_load(LPCSTR fRName, u32& ret_msize, bool bStag
 	if (FS.exist(fn,"$game_saves$",		fname,	".dds"))							goto _DDS;
 	if (FS.exist(fn,"$game_textures$",	fname,	".dds"))							goto _DDS;
 
-
 #ifdef _EDITOR
 	ELog.Msg(mtError,"Can't find texture '%s'",fname);
 	return 0;
@@ -459,14 +458,14 @@ _DDS_2D:
 #else
 			D3DX10_IMAGE_LOAD_INFO LoadInfo;
 #endif
-			//LoadInfo.FirstMipLevel = img_loaded_lod;
+			LoadInfo.FirstMipLevel = img_loaded_lod;
 			LoadInfo.Width	= IMG.Width;
 			LoadInfo.Height	= IMG.Height;
 
-			if (img_loaded_lod)
-			{
-				Reduce(LoadInfo.Width, LoadInfo.Height, IMG.MipLevels, img_loaded_lod);
-			}
+			//if (img_loaded_lod)
+			//{
+			//	Reduce(LoadInfo.Width, LoadInfo.Height, IMG.MipLevels, img_loaded_lod);
+			//}
 
 			//LoadInfo.Usage = D3D_USAGE_IMMUTABLE;
 			if (bStaging)
@@ -485,7 +484,7 @@ _DDS_2D:
 #ifdef USE_DX11
 			R_CHK2(D3DX11CreateTextureFromMemory
 				(
-				HW.pDevice,S->pointer(),S->length(),
+				HW.pDevice, S->pointer(), S->length(),
 				&LoadInfo,
 				0,
 				&pTexture2D,
@@ -494,7 +493,7 @@ _DDS_2D:
 #else
 			R_CHK2(D3DX10CreateTextureFromMemory
 				(
-				HW.pDevice,S->pointer(),S->length(),
+				HW.pDevice, S->pointer(), S->length(),
 				&LoadInfo,
 				0,
 				&pTexture2D,
