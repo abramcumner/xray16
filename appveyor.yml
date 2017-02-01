@@ -57,13 +57,13 @@ after_build:
 
     echo appveyor PushArtifact cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
 
-    echo ===================== engine pdb files =====================
+    rem echo ===================== engine pdb files =====================
 
-    md dist\engine_pdb_%COR_PLAT%
+    rem md dist\engine_pdb_%COR_PLAT%
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\*.pdb dist\engine_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\*.pdb dist\engine_pdb_%COR_PLAT%\
 
-    7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\engine_pdb_%COR_PLAT%\*
+    rem 7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\engine_pdb_%COR_PLAT%\*
 
     echo ===================== sdk files =====================
 
@@ -99,32 +99,32 @@ after_build:
 
     echo appveyor PushArtifact cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
 
-    echo ===================== sdk pdb files =====================
+    rem echo ===================== sdk pdb files =====================
 
-    md dist\sdk_pdb_%COR_PLAT%
+    rem md dist\sdk_pdb_%COR_PLAT%
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.pdb dist\sdk_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.pdb dist\sdk_pdb_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.pdb dist\sdk_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.pdb dist\sdk_pdb_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.pdb dist\sdk_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.pdb dist\sdk_pdb_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.pdb dist\sdk_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.pdb dist\sdk_pdb_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.pdb dist\sdk_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.pdb dist\sdk_pdb_%COR_PLAT%\
 
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.pdb dist\sdk_pdb_%COR_PLAT%\
+    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.pdb dist\sdk_pdb_%COR_PLAT%\
 
-    7z a cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\sdk_pdb_%COR_PLAT%\*
+    rem 7z a cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\sdk_pdb_%COR_PLAT%\*
 artifacts:
 - path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat).7z
   name: release
 - path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat).7z
   name: release
-- path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
-  name: release
-- path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
-  name: release
+#- path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
+#  name: release
+#- path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
+#  name: release
 deploy:
 - provider: GitHub
   auth_token:
