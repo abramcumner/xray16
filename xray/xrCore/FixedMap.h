@@ -31,8 +31,15 @@ private:
 		TNode*	newNodes = (TNode*)allocator::alloc(sizeof(TNode)*newLimit);
 		VERIFY(newNodes);
 
-		ZeroMemory(newNodes, Size(newLimit));
-		if (limit) CopyMemory	(newNodes, nodes, Size(limit));
+		if (std::is_pod<T>::value) {
+			ZeroMemory(newNodes, Size(newLimit));
+			if (limit) CopyMemory(newNodes, nodes, Size(limit));
+		}
+		else {
+			std::move(nodes, nodes + limit, newNodes);
+			for (TNode* i = newNodes + limit; i != newNodes + newLimit; ++i)
+				new (i) TNode();
+		}
 
 		for (u32 I=0; I<pool; I++)
 		{
@@ -229,14 +236,14 @@ public:
 	IC void		getANY_P	(xr_vector<TNode*,typename allocator::template helper<TNode*>::result>&	D)
 	{
 		D.resize			(size());
-		TNode** _it			= &*D.begin();
+		auto _it			= D.begin();
 		TNode*	_end		= end();
 		for (TNode* cur = begin(); cur!=_end; cur++,_it++) *_it = cur;
 	}
 	IC void		getANY_P	(xr_vector<void*,typename allocator::template helper<void*>::result>&	D)
 	{
 		D.resize			(size());
-		void** _it			= &*D.begin();
+		auto _it			= D.begin();
 		TNode*	_end		= end();
 		for (TNode* cur = begin(); cur!=_end; cur++,_it++) *_it = cur;
 	}

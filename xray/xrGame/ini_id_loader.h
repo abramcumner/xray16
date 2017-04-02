@@ -126,16 +126,11 @@ const typename ITEM_DATA* CSINI_IdToIndex::GetById (const T_ID& str_id, bool no_
 		m_pItemDataVector->end() != it; it++)
 	{
 		if(!xr_strcmp((*it).id, str_id))
-			break;
+			return &(*it);
 	}
 
-	if(m_pItemDataVector->end() == it)
-	{
-		R_ASSERT3(no_assert, "item not found, id", *str_id);
-		return NULL;
-	}
-
-	return &(*it);
+	R_ASSERT3(no_assert, "item not found, id", *str_id);
+	return NULL;
 }
 
 TEMPLATE_SPECIALIZATION

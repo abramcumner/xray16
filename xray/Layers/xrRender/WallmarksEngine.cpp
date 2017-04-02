@@ -101,12 +101,10 @@ void		CWallmarksEngine::static_wm_render		(CWallmarksEngine::static_wallmark*	W,
 	float		a		= 1-(W->ttl/ps_r__WallmarkTTL);
 	int			aC		= iFloor	( a * 255.f);	clamp	(aC,0,255);
 	u32			C		= color_rgba(128,128,128,aC);
-	FVF::LIT*	S		= &*W->verts.begin	();
-	FVF::LIT*	E		= &*W->verts.end	();
-	for (; S!=E; S++, V++){
-		V->p.set		(S->p);
+	for (const auto& el: W->verts) {
+		V->p.set		(el.p);
 		V->color		= C;
-		V->t.set		(S->t);
+		V->t.set		(el.t);
 	}
 }
 //--------------------------------------------------------------------------------
@@ -235,10 +233,8 @@ void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVer
 	}else 
 	{
 		Fbox bb;	bb.invalidate();
-
-		FVF::LIT* I=&*W->verts.begin	();
-		FVF::LIT* E=&*W->verts.end		();
-		for (; I!=E; I++)	bb.modify	(I->p);
+		for (const auto& el: W->verts)
+			bb.modify(el.p);
 		bb.getsphere					(W->bounds.P, W->bounds.R);
 	}
 
@@ -369,7 +365,9 @@ void CWallmarksEngine::Render()
 		BeginStream	(hGeom,w_offset,w_verts,w_start);
 		wm_slot* slot			= *slot_it;	
 		// static wallmarks
-		for (StaticWMVecIt w_it=slot->static_items.begin(); w_it!=slot->static_items.end(); ){
+		static_wallmark** w_it = slot->static_items.data();
+		static_wallmark** w_end = w_it + slot->static_items.size();
+		while ( w_it != w_end ) {
 			static_wallmark* W	= *w_it;
 			if (RImplementation.ViewBase.testSphere_dirty(W->bounds.P,W->bounds.R)){
 				Device.Statistic->RenderDUMP_WMS_Count++;
@@ -390,11 +388,13 @@ void CWallmarksEngine::Render()
 			if (W->ttl<=EPS){	
 				static_wm_destroy	(W);
 				*w_it				= slot->static_items.back();
-				slot->static_items.pop_back();
+				w_end--;
 			}else{
 				w_it++;
 			}
 		}
+		slot->static_items.resize(w_end - slot->static_items.data());
+
 		// Flush stream
 		FlushStream				(hGeom,slot->shader,w_offset,w_verts,w_start,FALSE);	//. remove line if !(suppress cull needed)
 		BeginStream				(hGeom,w_offset,w_verts,w_start);

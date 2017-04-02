@@ -208,7 +208,7 @@ void  __stdcall
 /*//////////////////////////////////////////////////////////////////////
                            _DEBUG Is Defined
 //////////////////////////////////////////////////////////////////////*/
-#ifdef _DEBUG
+#ifdef DEBUG
 
 /*//////////////////////////////////////////////////////////////////////
                                 Defines
@@ -245,7 +245,7 @@ void  __stdcall
         if ( !(x)                                               &&  \
              DiagAssert ( a , _T ( #x ) , __FILE__  , __LINE__)    )\
         {                                                           \
-                __asm int 3                                         \
+                DebugBreak ( ) ;                                        \
         }                                                           \
     } while (0)
 #endif  // PORTABLE_BUGSLAYERUTIL

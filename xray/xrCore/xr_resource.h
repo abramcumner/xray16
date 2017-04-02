@@ -58,7 +58,10 @@ protected:
 	typedef resptr_core<T,C>	self;
 public:
 						// construction
-						resptr_core		()												{	p_ = 0;						}
+						resptr_core		()	
+						{
+							p_ = 0;
+						}
 						resptr_core		(T * p, bool add_ref = true) 					{	p_ = p;	if(add_ref)	_inc(); }
 						resptr_core		(const self & rhs)								{	p_ = rhs.p_; _inc();		}
 						~resptr_core	()												{	_dec();						}
