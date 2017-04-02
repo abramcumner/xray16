@@ -10,7 +10,7 @@
 
 static int inited = 0;
 
-//#define DEBUG_MEM
+#define DEBUG_MEM
 #ifdef DEBUG_MEM
 static char buf[100];
 #endif
@@ -38,6 +38,8 @@ void* XR_MMAP(size_t size)
 	OutputDebugString(buf);
 #endif
 	if (ptr == NULL)
+		ptr = MFAIL;
+	if (ptr >= 2ull * 1024 * 1024 * 1024)
 		ptr = MFAIL;
 	return ptr;
 }
