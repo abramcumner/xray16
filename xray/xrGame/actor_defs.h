@@ -1,5 +1,5 @@
-#include "PHSynchronize.h"
-#include "xrserver_space.h"
+#include "../xrServerEntities/PHSynchronize.h"
+#include "../xrServerEntities/xrserver_space.h"
 
 #pragma once
 

@@ -1,5 +1,6 @@
 #pragma once
-#include "inventory_space.h"
+
+#include "../xrServerEntities/inventory_space.h"
 #include "GameObject.h"
 
 class CInventoryBox :public CGameObject

@@ -1,7 +1,8 @@
 #pragma once
+
 #include "uigamecustom.h"
 #include "ui/UIDialogWnd.h"
-#include "game_graph_space.h"
+#include "../xrServerEntities/game_graph_space.h"
 
 class CUITradeWnd;			
 class CUITalkWnd;			

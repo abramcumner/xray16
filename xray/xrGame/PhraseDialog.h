@@ -1,10 +1,10 @@
 #pragma once
 
-#include "shared_data.h"
+#include "../xrServerEntities/shared_data.h"
 #include "phrase.h"
 #include "graph_abstract.h"
 #include "PhraseDialogDefs.h"
-#include "xml_str_id_loader.h"
+#include "../xrServerEntities/xml_str_id_loader.h"
 
 typedef CGraphAbstract<CPhrase*, float, shared_str> CPhraseGraph;
 

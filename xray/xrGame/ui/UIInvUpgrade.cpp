@@ -7,19 +7,15 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "pch_script.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "../string_table.h"
-
 #include "UIInvUpgrade.h"
-
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"
-
-#include "ai_space.h"
-#include "alife_simulator.h"
-#include "inventory_upgrade_manager.h"
-#include "inventory_upgrade.h"
-
+#include "../ai_space.h"
+#include "../alife_simulator.h"
+#include "../inventory_upgrade_manager.h"
+#include "../inventory_upgrade.h"
 #include "UIInventoryUpgradeWnd.h"
 
 UIUpgrade::UIUpgrade( CUIInventoryUpgradeWnd* parent_wnd )

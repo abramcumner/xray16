@@ -1,15 +1,12 @@
 #include "pch_script.h"
-
 #include "uiiteminfo.h"
 #include "uistatic.h"
 #include "UIXmlInit.h"
-
 #include "UIProgressBar.h"
 #include "UIScrollView.h"
 #include "UIFrameWindow.h"
-
-#include "ai_space.h"
-#include "alife_simulator.h"
+#include "../ai_space.h"
+#include "../alife_simulator.h"
 #include "../string_table.h"
 #include "../Inventory_Item.h"
 #include "UIInventoryUtilities.h"

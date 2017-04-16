@@ -1,8 +1,7 @@
 #pragma once
 
 //#include "gameobject.h"
-
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 
 class CInventory;
 class CGameObject;

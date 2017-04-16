@@ -1,7 +1,5 @@
 #include "stdafx.h"
-
 #include "UIGameDM.h"
-
 #include "ui/UISkinSelector.h"
 #include "ui/UIPdaWnd.h"
 #include "ui/UIMapDesc.h"
@@ -11,7 +9,7 @@
 #include "Spectator.h"
 #include "Inventory.h"
 #include "InventoryOwner.h"
-#include "xrserver_objects_alife_items.h"
+#include "../xrServerEntities/xrserver_objects_alife_items.h"
 #include "xr_level_controller.h"
 #include "ui/xrUIXmlParser.h"
 #include "game_cl_Deathmatch.h"
@@ -21,7 +19,7 @@
 #include "ui/UIActorMenu.h"
 #include "ui/UIHelper.h"
 #include "UITeamPanels.h"
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 
 #define MSGS_OFFS 510
 

@@ -3,7 +3,7 @@
 #include "hud_item_object.h"
 #include "hit_immunity.h"
 #include "../xrphysics/PHUpdateObject.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 #include "patrol_path.h"
 
 class SArtefactActivation;

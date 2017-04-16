@@ -8,7 +8,7 @@
 #ifndef	UI_ACTOR_STATE_INFO_H_INCLUDED
 #define UI_ACTOR_STATE_INFO_H_INCLUDED
 
-#include "alife_space.h"
+#include "../../xrServerEntities/alife_space.h"
 #include "UIHint.h"
 
 class CUIProgressBar;

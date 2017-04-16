@@ -2,7 +2,7 @@
 
 #include "encyclopedia_article_defs.h"
 #include "GameTaskDefs.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 #include <luabindex/functor.hpp>
 
 class CGameTaskManager;

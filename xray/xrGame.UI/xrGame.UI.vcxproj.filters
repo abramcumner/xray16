@@ -1,0 +1,1388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="pch">
+      <UniqueIdentifier>{7a2a5ec2-b05e-4cc4-96eb-92b6d981a8a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{57d4e7bf-af9f-442c-b01b-90bda7fdfb5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common">
+      <UniqueIdentifier>{10f87d8a-d277-45b2-9403-5f0821bab1e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\InventoryWnd">
+      <UniqueIdentifier>{7ffd64a6-3800-4794-83f6-c12ec2d912f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\InventoryWnd\InventoryUpgrade">
+      <UniqueIdentifier>{f11f191e-60c1-49f1-b3b1-22e15eade32f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA">
+      <UniqueIdentifier>{19a6705b-5405-462c-bb3e-b9398e101533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA\MAP">
+      <UniqueIdentifier>{db3a8e2b-4383-4aff-8d40-7e35b21e159d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA\Statistics &amp; Rankings">
+      <UniqueIdentifier>{774e4ad5-2f0c-4c03-98d5-4b76f94d5f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA\Tasks">
+      <UniqueIdentifier>{c01c7a7b-e142-4b4b-8948-2d1e730d04a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA\FactionWar">
+      <UniqueIdentifier>{af312e4d-cd04-443b-821a-d0463c092df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA\logs">
+      <UniqueIdentifier>{355aaa03-48e8-49b2-a02d-b8714ca69b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\PDA\logs\News">
+      <UniqueIdentifier>{12e0dc78-7880-4005-99ce-dc42427e318f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\ui-item-infos">
+      <UniqueIdentifier>{608e52d5-d1de-42b6-9490-2530dad62ab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\ui-item-infos\CharacterInfo">
+      <UniqueIdentifier>{16a1de1f-9bbf-4c8a-8628-dde7432cfc5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\TALK">
+      <UniqueIdentifier>{0be020c4-8983-468c-b469-1d33333462d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\MainIngame">
+      <UniqueIdentifier>{7934992c-3af0-497c-8cb3-4f2ea0cfd967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\OptionsItem">
+      <UniqueIdentifier>{58f1cefd-000d-4dd4-a445-ed9e23754cd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\OptionsConsoleCommands">
+      <UniqueIdentifier>{45195893-26d8-49fa-a379-b0c3199b8266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\MainMenu">
+      <UniqueIdentifier>{137313f4-20b3-42d4-be25-86b0fc9cc65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\MainMenu\KeyBinding">
+      <UniqueIdentifier>{e2609a30-369e-4632-b373-cd5a49af6cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\InventoryUtilities">
+      <UniqueIdentifier>{8c9e102e-c39d-46f4-acef-6a2dd966d5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\Inventory">
+      <UniqueIdentifier>{cba3a7b8-1285-484d-96d9-6c0b9dac0b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Common\_Debug Fonts">
+      <UniqueIdentifier>{839ccf51-832e-4d1d-905b-737c885ace38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\HUD">
+      <UniqueIdentifier>{218f8cb2-d66e-4dcf-8453-a6c5c208210e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes">
+      <UniqueIdentifier>{6061a65d-1f02-4ea5-beb9-2e93a3700bf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes\GameCustom">
+      <UniqueIdentifier>{0d640868-fbd3-4fb8-a40d-3de39c124bb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes\Deathmatch">
+      <UniqueIdentifier>{97e5a922-6319-4434-8293-6ab7b922453c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes\Single">
+      <UniqueIdentifier>{dcc05837-9095-437c-8668-feb8638fd5b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes\TeamDeathmatch">
+      <UniqueIdentifier>{6c7446c2-0a4d-48d3-8925-1d5d6da721ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes\ArtefactHunt">
+      <UniqueIdentifier>{18173ee7-bef0-452a-837d-16951b104621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\GameTypes\CaptureTheArtefact">
+      <UniqueIdentifier>{11f520ee-cb43-46c3-ae83-77cfa1795ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer">
+      <UniqueIdentifier>{32abb26c-6cbd-4401-8bd0-b984059ab5be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\MM_MP">
+      <UniqueIdentifier>{d44a7bee-61a1-446e-a72c-ea2e24a185ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\MM_MP\CDkey">
+      <UniqueIdentifier>{fa626713-e5be-468e-80c2-b928fdc33687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\MM_MP\MapList">
+      <UniqueIdentifier>{9fb79032-f936-4f23-8732-b86a75a96727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\MM_MP\ServerList">
+      <UniqueIdentifier>{b81e7772-89f2-47fe-8ef6-ec8ca495e684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\MM_MP\TeamInfo">
+      <UniqueIdentifier>{f1af8081-1fa0-4615-bb31-6c39a45ac745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD">
+      <UniqueIdentifier>{5d005173-0564-4f45-870b-fb91730be27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\Stats">
+      <UniqueIdentifier>{5b1f3e18-1ebc-4f65-ad7c-b43317f6cbf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\Stats\icons">
+      <UniqueIdentifier>{d1a294d0-d06b-47ec-bfc0-4a883877ca65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\Stats\TeamStates">
+      <UniqueIdentifier>{e4b0683c-76c9-45f2-9ccf-2f63dbe44453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\Chat">
+      <UniqueIdentifier>{3d24eb82-4631-40c8-ae16-3be13009e283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\GameLog">
+      <UniqueIdentifier>{7cbedcc9-dbea-4634-bdf8-cd65cd119b07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\SpeechMenu">
+      <UniqueIdentifier>{d21594d8-1d7a-4f9c-a15e-2f6f93850b99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\HUD\common">
+      <UniqueIdentifier>{9ef4f403-669f-4bc1-8b6e-d28b28320111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\BuyWeaponWnd">
+      <UniqueIdentifier>{82e1efe5-03b2-4f7f-b3f7-b32e5e07f8a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\BuyWeaponWnd\rank_restrictions">
+      <UniqueIdentifier>{4d812aec-177c-423c-bd62-02e65794d501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\BuyWeaponWnd\TAB">
+      <UniqueIdentifier>{34820437-4970-4e84-8b3d-331993deb50d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\team_skin_info">
+      <UniqueIdentifier>{02e7e4b6-071a-49bc-97d3-ccf0c0c47fe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\team_skin_info\MapDesc">
+      <UniqueIdentifier>{1caf802c-1fb1-41a6-94c1-9bf411425b37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\team_skin_info\MapDesc\MapInfo">
+      <UniqueIdentifier>{78300b3f-7f9b-4c66-8e7b-8857eadb70ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\team_skin_info\Spawn">
+      <UniqueIdentifier>{6188c7b2-2f63-43ef-b966-551a61b018df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\team_skin_info\SkinSelector">
+      <UniqueIdentifier>{2406802f-89a1-4c55-9878-092eee3788e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\team_skin_info\ServerInfo">
+      <UniqueIdentifier>{278d5d88-7fb4-4984-bfe2-edd57ce9afaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\Voting">
+      <UniqueIdentifier>{6aa19553-41c1-491d-96ec-a01f6612f510}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\DemoPlayControl">
+      <UniqueIdentifier>{7f2a40be-b9c7-48f7-8743-b18b8ea86eca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\Achivements">
+      <UniqueIdentifier>{1f5d261e-e50a-4562-a098-1b0fe98161c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Multiplayer\AdminMenu">
+      <UniqueIdentifier>{b65a2e51-2c09-40b9-a1a8-312c1ffa6f84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cursor">
+      <UniqueIdentifier>{483cbc45-c5f5-4b70-ae05-8c2c325ae717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Tutorial">
+      <UniqueIdentifier>{bffb57a4-6d2f-45f4-b623-fbd587dbb5ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows">
+      <UniqueIdentifier>{9f44e5f4-afb6-45b7-9324-252ca63997f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\arrow">
+      <UniqueIdentifier>{ee44b6ed-40c8-4de2-a90e-ca7fbf3a6d9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\Buttons">
+      <UniqueIdentifier>{e5d54810-af8d-4945-ace4-46901ae44538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\ComboBox">
+      <UniqueIdentifier>{b62b6f15-5236-4cdd-a3dd-90e3e6e0922c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\DragDrop">
+      <UniqueIdentifier>{30a49d97-7fa6-4878-afb4-deb90ecaf979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\EditBox">
+      <UniqueIdentifier>{6ecf6db1-9ea5-40bb-80d9-6d095bc45185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\EditBox\customEB">
+      <UniqueIdentifier>{cd7fbbde-9d34-49e5-80da-a790dfe783a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\Frames">
+      <UniqueIdentifier>{cc52440b-fc14-4994-a72c-6f671fd0c716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\ListBox">
+      <UniqueIdentifier>{cb0329e8-9e16-4392-b03c-46666c910cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\Hint">
+      <UniqueIdentifier>{3a65c426-b6ae-47d0-aa34-93cbca34a17e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\InteractiveBackground">
+      <UniqueIdentifier>{c3b3eb27-d3cd-4386-96be-7f229e5dcfb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\Lines">
+      <UniqueIdentifier>{bbc0aa84-5ec8-4263-aee5-894f5b5810a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\MessageBox">
+      <UniqueIdentifier>{f254f544-7146-4713-b921-1f418f3ed3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\ProgressBar">
+      <UniqueIdentifier>{93910538-680a-47d4-898b-ebefc498dabe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\PropertiesBox">
+      <UniqueIdentifier>{9c83bcdf-fc6a-4823-909c-2a3174d39a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\ScriptWnd">
+      <UniqueIdentifier>{adbc2c76-3e5b-4827-b8c0-5dff188d484e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\ScrollBar">
+      <UniqueIdentifier>{3481bc86-7ac1-4b6b-b748-b958308c4028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\ScrollView">
+      <UniqueIdentifier>{4a937be1-c8af-46c3-ab45-cc6aa64f9d24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\SpinBox">
+      <UniqueIdentifier>{f2c3babc-b22a-45c5-b1a5-f448d048cd62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\Static">
+      <UniqueIdentifier>{626bce98-88a5-469a-b25a-098efdd11339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\TabControl">
+      <UniqueIdentifier>{931eae7b-6d03-4bc5-809e-c671d29080b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\TrackBar">
+      <UniqueIdentifier>{29edbc10-a0a3-431b-b2bd-43c73ad78bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\Windows">
+      <UniqueIdentifier>{afad04ea-65ff-4845-b15a-a2f40f90a989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\UIWindows\XML">
+      <UniqueIdentifier>{3f956a8d-6e7c-44d3-bcd5-577085a128fd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\xrGame\ui\ui_arrow.h">
+      <Filter>UI\UIWindows\arrow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UI3tButton.h">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIBtnHint.h">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIButton.h">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICheckButton.h">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIRadioButton.h">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIComboBox.h">
+      <Filter>UI\UIWindows\ComboBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICellCustomItems.h">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICellItem.h">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICellItemFactory.h">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIDragDropListEx.h">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIDragDropReferenceList.h">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIEditBox.h">
+      <Filter>UI\UIWindows\EditBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIEditBoxEx.h">
+      <Filter>UI\UIWindows\EditBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICustomEdit.h">
+      <Filter>UI\UIWindows\EditBox\customEB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIHint.h">
+      <Filter>UI\UIWindows\Hint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIInteractiveBackground.h">
+      <Filter>UI\UIWindows\InteractiveBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UI_IB_Static.h">
+      <Filter>UI\UIWindows\InteractiveBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UILine.h">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UILines.h">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\uilinestd.h">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISubLine.h">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIListBox.h">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIListBoxItem.h">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIListBoxItemMsgChain.h">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMessageBox.h">
+      <Filter>UI\UIWindows\MessageBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMessageBoxEx.h">
+      <Filter>UI\UIWindows\MessageBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIDoubleProgressBar.h">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIProgressBar.h">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIProgressShape.h">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIPropertiesBox.h">
+      <Filter>UI\UIWindows\PropertiesBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIScriptWnd.h">
+      <Filter>UI\UIWindows\ScriptWnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\uiscriptwnd_script.h">
+      <Filter>UI\UIWindows\ScriptWnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIFixedScrollBar.h">
+      <Filter>UI\UIWindows\ScrollBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIScrollBar.h">
+      <Filter>UI\UIWindows\ScrollBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIScrollBox.h">
+      <Filter>UI\UIWindows\ScrollBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIScrollView.h">
+      <Filter>UI\UIWindows\ScrollView</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICustomSpin.h">
+      <Filter>UI\UIWindows\SpinBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISpinNum.h">
+      <Filter>UI\UIWindows\SpinBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISpinText.h">
+      <Filter>UI\UIWindows\SpinBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIStaticItem.h">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIAnimatedStatic.h">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UILanimController.h">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIStatic.h">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITabButton.h">
+      <Filter>UI\UIWindows\TabControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITabControl.h">
+      <Filter>UI\UIWindows\TabControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITrackBar.h">
+      <Filter>UI\UIWindows\TrackBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITrackButton.h">
+      <Filter>UI\UIWindows\TrackBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIDialogWnd.h">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIFrameLineWnd.h">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIFrameWindow.h">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIWindow.h">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITextureMaster.h">
+      <Filter>UI\UIWindows\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIXmlInit.h">
+      <Filter>UI\UIWindows\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\xrUIXmlParser.h">
+      <Filter>UI\UIWindows\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\callback_info.h">
+      <Filter>UI\UIWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\uiabstract.h">
+      <Filter>UI\UIWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMessages.h">
+      <Filter>UI\UIWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIWndCallback.h">
+      <Filter>UI\UIWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="pch_script.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIDialogHolder.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui_base.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui_defs.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIInventoryUpgradeWnd.h">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIInvUpgrade.h">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIInvUpgradeInfo.h">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIInvUpgradeProperty.h">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIPdaWnd.h">
+      <Filter>UI\Common\PDA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\map_spot.h">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\map_hint.h">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMap.h">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapWnd.h">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapWndActions.h">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapWndActionsSpace.h">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIAchievements.h">
+      <Filter>UI\Common\PDA\Statistics &amp; Rankings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIRankingWnd.h">
+      <Filter>UI\Common\PDA\Statistics &amp; Rankings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapLegend.h">
+      <Filter>UI\Common\PDA\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISecondTaskWnd.h">
+      <Filter>UI\Common\PDA\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITaskWnd.h">
+      <Filter>UI\Common\PDA\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\FactionState.h">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\FactionState_inline.h">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIFactionWarWnd.h">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIWarState.h">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UILogsWnd.h">
+      <Filter>UI\Common\PDA\logs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UINewsItemWnd.h">
+      <Filter>UI\Common\PDA\logs\News</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIBoosterInfo.h">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIItemInfo.h">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIOutfitInfo.h">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIWpnParams.h">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\ui_af_params.h">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICharacterInfo.h">
+      <Filter>UI\Common\ui-item-infos\CharacterInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITalkDialogWnd.h">
+      <Filter>UI\Common\TALK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITalkWnd.h">
+      <Filter>UI\Common\TALK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIZoneMap.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICarPanel.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIHudStatesWnd.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMainIngameWnd.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMessagesWindow.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMoneyIndicator.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMotionIcon.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIPdaMsgListItem.h">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIOptionsItem.h">
+      <Filter>UI\Common\OptionsItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIOptionsManager.h">
+      <Filter>UI\Common\OptionsItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIOptionsManagerScript.h">
+      <Filter>UI\Common\OptionsItem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIOptConCom.h">
+      <Filter>UI\Common\OptionsConsoleCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\MainMenu.h">
+      <Filter>UI\Common\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\MMSound.h">
+      <Filter>UI\Common\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMMShniaga.h">
+      <Filter>UI\Common\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIEditKeyBind.h">
+      <Filter>UI\Common\MainMenu\KeyBinding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIKeyBinding.h">
+      <Filter>UI\Common\MainMenu\KeyBinding</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIHelper.h">
+      <Filter>UI\Common\InventoryUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIInventoryUtilities.h">
+      <Filter>UI\Common\InventoryUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIActorMenu.h">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIActorStateInfo.h">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIDebugFonts.h">
+      <Filter>UI\Common\_Debug Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\HitMarker.h">
+      <Filter>UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\HUDManager.h">
+      <Filter>UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameCustom.h">
+      <Filter>UI\GameTypes\GameCustom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameMP.h">
+      <Filter>UI\GameTypes\GameCustom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameDM.h">
+      <Filter>UI\GameTypes\Deathmatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIRankIndicator.h">
+      <Filter>UI\GameTypes\Deathmatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIVoteStatusWnd.h">
+      <Filter>UI\GameTypes\Deathmatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameSP.h">
+      <Filter>UI\GameTypes\Single</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameTDM.h">
+      <Filter>UI\GameTypes\TeamDeathmatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameAHunt.h">
+      <Filter>UI\GameTypes\ArtefactHunt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIGameCTA.h">
+      <Filter>UI\GameTypes\CaptureTheArtefact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\player_name_modifyer.h">
+      <Filter>UI\Multiplayer\MM_MP\CDkey</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UICDkey.h">
+      <Filter>UI\Multiplayer\MM_MP\CDkey</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapList.h">
+      <Filter>UI\Multiplayer\MM_MP\MapList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\ServerList.h">
+      <Filter>UI\Multiplayer\MM_MP\ServerList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIListItemServer.h">
+      <Filter>UI\Multiplayer\MM_MP\ServerList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\TeamInfo.h">
+      <Filter>UI\Multiplayer\MM_MP\TeamInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIStats.h">
+      <Filter>UI\Multiplayer\HUD\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIStatsPlayerInfo.h">
+      <Filter>UI\Multiplayer\HUD\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIStatsPlayerList.h">
+      <Filter>UI\Multiplayer\HUD\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIStatsIcon.h">
+      <Filter>UI\Multiplayer\HUD\Stats\icons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIPanelsClassFactory.h">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIPlayerItem.h">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UITeamHeader.h">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UITeamPanels.h">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UITeamState.h">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIChatWnd.h">
+      <Filter>UI\Multiplayer\HUD\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIGameLog.h">
+      <Filter>UI\Multiplayer\HUD\GameLog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISpeechMenu.h">
+      <Filter>UI\Multiplayer\HUD\SpeechMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\KillMessageStruct.h">
+      <Filter>UI\Multiplayer\HUD\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIPdaKillMessage.h">
+      <Filter>UI\Multiplayer\HUD\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIBuyWndBase.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIBuyWndShared.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMpItemsStoreWnd.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMpTradeWnd.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\Restrictions.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd\rank_restrictions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIBuyWeaponTab.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd\TAB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITabButtonMP.h">
+      <Filter>UI\Multiplayer\BuyWeaponWnd\TAB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapDesc.h">
+      <Filter>UI\Multiplayer\team_skin_info\MapDesc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMapInfo.h">
+      <Filter>UI\Multiplayer\team_skin_info\MapDesc\MapInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISpawnWnd.h">
+      <Filter>UI\Multiplayer\team_skin_info\Spawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UISkinSelector.h">
+      <Filter>UI\Multiplayer\team_skin_info\SkinSelector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIStatix.h">
+      <Filter>UI\Multiplayer\team_skin_info\SkinSelector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIServerInfo.h">
+      <Filter>UI\Multiplayer\team_skin_info\ServerInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIChangeMap.h">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIChangeWeather.h">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIKickPlayer.h">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UITextVote.h">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIVote.h">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIVotingCategory.h">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIDemoPlayControl.h">
+      <Filter>UI\Multiplayer\DemoPlayControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UIAchivementsIndicator.h">
+      <Filter>UI\Multiplayer\Achivements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMPAdminMenu.h">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMPChangeMapAdm.h">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMPPlayersAdm.h">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIMPServerAdm.h">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\HUDCrosshair.h">
+      <Filter>UI\Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\HUDTarget.h">
+      <Filter>UI\Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\UICursor.h">
+      <Filter>UI\Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xrGame\ui\UIGameTutorial.h">
+      <Filter>UI\Tutorial</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\xrGame\ui\ui_arrow.cpp">
+      <Filter>UI\UIWindows\arrow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UI3tButton.cpp">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIBtnHint.cpp">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIButton.cpp">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIButton_script.cpp">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICheckButton.cpp">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIRadioButton.cpp">
+      <Filter>UI\UIWindows\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIComboBox.cpp">
+      <Filter>UI\UIWindows\ComboBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIComboBox_script.cpp">
+      <Filter>UI\UIWindows\ComboBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICellCustomItems.cpp">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICellItem.cpp">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICellItemFactory.cpp">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIDragDropListEx.cpp">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIDragDropReferenceList.cpp">
+      <Filter>UI\UIWindows\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIEditBox.cpp">
+      <Filter>UI\UIWindows\EditBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIEditBoxEx.cpp">
+      <Filter>UI\UIWindows\EditBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICustomEdit.cpp">
+      <Filter>UI\UIWindows\EditBox\customEB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIEditBox_script.cpp">
+      <Filter>UI\UIWindows\EditBox\customEB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIHint.cpp">
+      <Filter>UI\UIWindows\Hint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UI_IB_Static.cpp">
+      <Filter>UI\UIWindows\InteractiveBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UILine.cpp">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UILines.cpp">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISubLine.cpp">
+      <Filter>UI\UIWindows\Lines</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIListBox.cpp">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIListBoxItem.cpp">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIListBoxItemMsgChain.cpp">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIListBox_script.cpp">
+      <Filter>UI\UIWindows\ListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMessageBox.cpp">
+      <Filter>UI\UIWindows\MessageBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMessageBoxEx.cpp">
+      <Filter>UI\UIWindows\MessageBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMessageBox_script.cpp">
+      <Filter>UI\UIWindows\MessageBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIDoubleProgressBar.cpp">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIProgressBar.cpp">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIProgressBar_script.cpp">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIProgressShape.cpp">
+      <Filter>UI\UIWindows\ProgressBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIPropertiesBox.cpp">
+      <Filter>UI\UIWindows\PropertiesBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIPropertiesBox_script.cpp">
+      <Filter>UI\UIWindows\PropertiesBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIScriptWnd.cpp">
+      <Filter>UI\UIWindows\ScriptWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIScriptWnd_script.cpp">
+      <Filter>UI\UIWindows\ScriptWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\uiscriptwnd_script2.cpp">
+      <Filter>UI\UIWindows\ScriptWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIFixedScrollBar.cpp">
+      <Filter>UI\UIWindows\ScrollBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIScrollBar.cpp">
+      <Filter>UI\UIWindows\ScrollBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIScrollBox.cpp">
+      <Filter>UI\UIWindows\ScrollBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIScrollView.cpp">
+      <Filter>UI\UIWindows\ScrollView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICustomSpin.cpp">
+      <Filter>UI\UIWindows\SpinBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISpinNum.cpp">
+      <Filter>UI\UIWindows\SpinBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISpinText.cpp">
+      <Filter>UI\UIWindows\SpinBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIStaticItem.cpp">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIAnimatedStatic.cpp">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UILanimController.cpp">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStatic.cpp">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStatic_script.cpp">
+      <Filter>UI\UIWindows\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITabButton.cpp">
+      <Filter>UI\UIWindows\TabControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITabControl.cpp">
+      <Filter>UI\UIWindows\TabControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITabControl_script.cpp">
+      <Filter>UI\UIWindows\TabControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITrackBar.cpp">
+      <Filter>UI\UIWindows\TrackBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITrackButton.cpp">
+      <Filter>UI\UIWindows\TrackBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIDialogWnd.cpp">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIFrameLineWnd.cpp">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIFrameWindow.cpp">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIWindow.cpp">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIWindow_script.cpp">
+      <Filter>UI\UIWindows\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITextureMaster.cpp">
+      <Filter>UI\UIWindows\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIXmlInit.cpp">
+      <Filter>UI\UIWindows\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\xrUIXmlParser.cpp">
+      <Filter>UI\UIWindows\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIWndCallback.cpp">
+      <Filter>UI\UIWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="pch_script.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIDialogHolder.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui_base.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIInventoryUpgradeWnd.cpp">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIInventoryUpgradeWnd_add.cpp">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIInvUpgrade.cpp">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIInvUpgradeInfo.cpp">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIInvUpgradeProperty.cpp">
+      <Filter>UI\Common\InventoryWnd\InventoryUpgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIPdaWnd.cpp">
+      <Filter>UI\Common\PDA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\map_spot.cpp">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\map_hint.cpp">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMap.cpp">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapWnd.cpp">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapWnd2.cpp">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapWndActions.cpp">
+      <Filter>UI\Common\PDA\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIAchievements.cpp">
+      <Filter>UI\Common\PDA\Statistics &amp; Rankings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIRankFraction.cpp">
+      <Filter>UI\Common\PDA\Statistics &amp; Rankings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIRankingWnd.cpp">
+      <Filter>UI\Common\PDA\Statistics &amp; Rankings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapLegend.cpp">
+      <Filter>UI\Common\PDA\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISecondTaskWnd.cpp">
+      <Filter>UI\Common\PDA\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITaskWnd.cpp">
+      <Filter>UI\Common\PDA\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\FactionState.cpp">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIFactionWarWnd.cpp">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIWarState.cpp">
+      <Filter>UI\Common\PDA\FactionWar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UILogsWnd.cpp">
+      <Filter>UI\Common\PDA\logs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UINewsItemWnd.cpp">
+      <Filter>UI\Common\PDA\logs\News</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIBoosterInfo.cpp">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIItemInfo.cpp">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIOutfitInfo.cpp">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIWpnParams.cpp">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\ui_af_params.cpp">
+      <Filter>UI\Common\ui-item-infos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICharacterInfo.cpp">
+      <Filter>UI\Common\ui-item-infos\CharacterInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITalkDialogWnd.cpp">
+      <Filter>UI\Common\TALK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITalkWnd.cpp">
+      <Filter>UI\Common\TALK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIZoneMap.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICarPanel.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIHudStatesWnd.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMainIngameWnd.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMessagesWindow.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMoneyIndicator.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMotionIcon.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIPdaMsgListItem.cpp">
+      <Filter>UI\Common\MainIngame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIOptionsItem.cpp">
+      <Filter>UI\Common\OptionsItem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIOptionsManager.cpp">
+      <Filter>UI\Common\OptionsItem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIOptionsManagerScript.cpp">
+      <Filter>UI\Common\OptionsItem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIOptConCom.cpp">
+      <Filter>UI\Common\OptionsConsoleCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\MainMenu.cpp">
+      <Filter>UI\Common\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\MMSound.cpp">
+      <Filter>UI\Common\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMMShniaga.cpp">
+      <Filter>UI\Common\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIEditKeyBind.cpp">
+      <Filter>UI\Common\MainMenu\KeyBinding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIKeyBinding.cpp">
+      <Filter>UI\Common\MainMenu\KeyBinding</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIHelper.cpp">
+      <Filter>UI\Common\InventoryUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIInventoryUtilities.cpp">
+      <Filter>UI\Common\InventoryUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenu.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenuDeadBodySearch.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenuInitialize.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenuInventory.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenuTrade.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenuUpgrade.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenu_action.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorMenu_script.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIActorStateInfo.cpp">
+      <Filter>UI\Common\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIDebugFonts.cpp">
+      <Filter>UI\Common\_Debug Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\HitMarker.cpp">
+      <Filter>UI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\HUDManager.cpp">
+      <Filter>UI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameCustom.cpp">
+      <Filter>UI\GameTypes\GameCustom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameCustom_script.cpp">
+      <Filter>UI\GameTypes\GameCustom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameMP.cpp">
+      <Filter>UI\GameTypes\GameCustom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameDM.cpp">
+      <Filter>UI\GameTypes\Deathmatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIRankIndicator.cpp">
+      <Filter>UI\GameTypes\Deathmatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIVoteStatusWnd.cpp">
+      <Filter>UI\GameTypes\Deathmatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameSP.cpp">
+      <Filter>UI\GameTypes\Single</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameTDM.cpp">
+      <Filter>UI\GameTypes\TeamDeathmatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameAHunt.cpp">
+      <Filter>UI\GameTypes\ArtefactHunt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIGameCTA.cpp">
+      <Filter>UI\GameTypes\CaptureTheArtefact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\player_name_modifyer.cpp">
+      <Filter>UI\Multiplayer\MM_MP\CDkey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UICDkey.cpp">
+      <Filter>UI\Multiplayer\MM_MP\CDkey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapList.cpp">
+      <Filter>UI\Multiplayer\MM_MP\MapList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\ServerList.cpp">
+      <Filter>UI\Multiplayer\MM_MP\ServerList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\ServerList_GameSpy_func.cpp">
+      <Filter>UI\Multiplayer\MM_MP\ServerList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIListItemServer.cpp">
+      <Filter>UI\Multiplayer\MM_MP\ServerList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\TeamInfo.cpp">
+      <Filter>UI\Multiplayer\MM_MP\TeamInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStats.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStatsPlayerInfo.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStatsPlayerList.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStatsIcon.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats\icons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIPanelsClassFactory.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIPlayerItem.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UITeamHeader.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UITeamPanels.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UITeamState.cpp">
+      <Filter>UI\Multiplayer\HUD\Stats\TeamStates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIChatWnd.cpp">
+      <Filter>UI\Multiplayer\HUD\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIGameLog.cpp">
+      <Filter>UI\Multiplayer\HUD\GameLog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISpeechMenu.cpp">
+      <Filter>UI\Multiplayer\HUD\SpeechMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIPdaKillMessage.cpp">
+      <Filter>UI\Multiplayer\HUD\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIBuyWndShared.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpItemsStoreWnd.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpTradeWnd.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpTradeWnd_init.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpTradeWnd_items.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpTradeWnd_misc.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpTradeWnd_trade.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMpTradeWnd_wpn.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\Restrictions.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd\rank_restrictions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIBuyWeaponTab.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd\TAB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITabButtonMP.cpp">
+      <Filter>UI\Multiplayer\BuyWeaponWnd\TAB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapDesc.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\MapDesc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapInfo.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\MapDesc\MapInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMapInfo_script.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\MapDesc\MapInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISpawnWnd.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\Spawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UISkinSelector.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\SkinSelector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIStatix.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\SkinSelector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIServerInfo.cpp">
+      <Filter>UI\Multiplayer\team_skin_info\ServerInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIChangeMap.cpp">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIChangeWeather.cpp">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIKickPlayer.cpp">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UITextVote.cpp">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIVote.cpp">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIVotingCategory.cpp">
+      <Filter>UI\Multiplayer\Voting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIDemoPlayControl.cpp">
+      <Filter>UI\Multiplayer\DemoPlayControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UIAchivementsIndicator.cpp">
+      <Filter>UI\Multiplayer\Achivements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMPAdminMenu.cpp">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMPChangeMapAdm.cpp">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMPPlayersAdm.cpp">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIMPServerAdm.cpp">
+      <Filter>UI\Multiplayer\AdminMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\HUDCrosshair.cpp">
+      <Filter>UI\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\HUDTarget.cpp">
+      <Filter>UI\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\UICursor.cpp">
+      <Filter>UI\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIGameTutorial.cpp">
+      <Filter>UI\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIGameTutorialSimpleItem.cpp">
+      <Filter>UI\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrGame\ui\UIGameTutorialVideoItem.cpp">
+      <Filter>UI\Tutorial</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\xrGame\ui\UIRankFaction.h">
+      <Filter>UI\Common\PDA\Statistics &amp; Rankings</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

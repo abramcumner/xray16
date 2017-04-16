@@ -1,4 +1,3 @@
-
 #include "pch_script.h"
 #include "UIInventoryUtilities.h"
 #include "../WeaponAmmo.h"
@@ -10,15 +9,12 @@
 #include "../string_table.h"
 #include "../Inventory.h"
 #include "../InventoryOwner.h"
-
 #include "../InfoPortion.h"
-#include "game_base_space.h"
+#include "../../xrServerEntities/game_base_space.h"
 #include "../actor.h"
-
 #include "../ai_space.h"
 #include "../../xrServerEntities/script_engine.h"
-
-#include "../Include/xrRender/UIShader.h"
+#include "../../Include/xrRender/UIShader.h"
 
 #define BUY_MENU_TEXTURE "ui\\ui_mp_buy_menu"
 #define CHAR_ICONS		 "ui\\ui_icons_npc"

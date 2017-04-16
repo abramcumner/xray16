@@ -14,9 +14,9 @@
 #include "UIXmlInit.h"
 #include "UIFrameWindow.h"
 #include "UIInvUpgradeProperty.h"
-#include "inventory_upgrade.h"
-#include "inventory_upgrade_property.h"
-#include "../xrServerEntities/script_engine.h"
+#include "../inventory_upgrade.h"
+#include "../inventory_upgrade_property.h"
+#include "../../xrServerEntities/script_engine.h"
 
 
 UIInvUpgradeInfo::UIInvUpgradeInfo()

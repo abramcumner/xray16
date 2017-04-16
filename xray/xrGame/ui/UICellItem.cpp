@@ -1,18 +1,18 @@
 #include "stdafx.h"
 #include "UICellItem.h"
-#include "uicursor.h"
+#include "../uicursor.h"
 #include "../inventory_item.h"
 #include "UIDragDropListEx.h"
 #include "../xr_level_controller.h"
 #include "../../xrEngine/xr_input.h"
 #include "../level.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "UIXmlInit.h"
 #include "UIProgressBar.h"
 
-#include "Weapon.h"
-#include "CustomOutfit.h"
-#include "ActorHelmet.h"
+#include "../Weapon.h"
+#include "../CustomOutfit.h"
+#include "../ActorHelmet.h"
 
 CUICellItem* CUICellItem::m_mouse_selected_item = NULL;
 

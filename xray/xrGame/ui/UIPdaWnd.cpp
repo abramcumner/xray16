@@ -1,25 +1,21 @@
 #include "stdafx.h"
 #include "UIPdaWnd.h"
 #include "../Pda.h"
-
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"
 #include "UIInventoryUtilities.h"
-
 #include "../level.h"
-#include "UIGameCustom.h"
-
+#include "../UIGameCustom.h"
 #include "UIStatic.h"
 #include "UIFrameWindow.h"
 #include "UITabControl.h"
 #include "UIMapWnd.h"
 #include "UIFrameLineWnd.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "UIMessagesWindow.h"
 #include "UIMainIngameWnd.h"
 #include "UITabButton.h"
 #include "UIAnimatedStatic.h"
-
 #include "UIHelper.h"
 #include "UIHint.h"
 #include "UIBtnHint.h"

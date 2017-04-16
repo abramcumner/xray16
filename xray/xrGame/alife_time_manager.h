@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "object_interfaces.h"
-#include "alife_space.h"
+#include "../xrServerEntities/object_interfaces.h"
+#include "../xrServerEntities/alife_space.h"
 
 class CALifeTimeManager {
 private:

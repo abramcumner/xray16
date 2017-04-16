@@ -7,7 +7,7 @@ class CInventoryItem;
 class CMotionDef;
 
 #include "actor_defs.h"
-#include "inventory_space.h"
+#include "../xrServerEntities/inventory_space.h"
 #include "hudsound.h"
 
 struct attachable_hud_item;

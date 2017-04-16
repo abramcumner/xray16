@@ -1,18 +1,16 @@
 #include "stdafx.h"
-
 #include "UIMapDesc.h"
 #include "UIStatic.h"
-#include "UICursor.h"
+#include "../UICursor.h"
 #include "UIScrollView.h"
 #include "UIXmlInit.h"
 #include "UI3tButton.h"
-#include "UIGameCustom.h"
+#include "../UIGameCustom.h"
 #include "../level.h"
 #include "../game_cl_teamdeathmatch.h"
 #include "UIMapInfo.h"
 #include "../xr_level_controller.h"
 #include <dinput.h>
-
 #include "UIStatsPlayerList.h"
 
 CUIMapDesc::CUIMapDesc(){

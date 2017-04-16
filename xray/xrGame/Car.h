@@ -14,12 +14,17 @@
 #include "DamagableItem.h"
 #include "phcollisiondamagereceiver.h"
 #include "CarDamageParticles.h"
-#include "xrserver_objects_alife.h"
+#include "../xrServerEntities/xrserver_objects_alife.h"
 #include "CarDamageParticles.h"
 #include "hit_immunity.h"
 #include "Explosive.h"
 #include "PHDestroyable.h"
 #include "DelayedActionFuse.h"
+#ifdef DEBUG
+#include "../xrEngine/StatGraph.h"
+#include "PHDebug.h"
+#endif
+
 // refs
 class ENGINE_API			CBoneInstance;
 class						CActor;
@@ -29,11 +34,6 @@ class						CCarWeapon;
 struct						dxGeomUserData;
 struct						dSurfaceParameters;
 // defs
-
-#ifdef DEBUG
-	#include "../xrEngine/StatGraph.h"
-	#include "PHDebug.h"
-#endif
 
 class CScriptEntityAction;
 class car_memory;

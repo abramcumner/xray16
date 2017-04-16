@@ -1,26 +1,21 @@
 #include "stdafx.h"
 #include "hudtarget.h"
 #include "../xrEngine/gamemtllib.h"
-
 #include "../xrEngine/Environment.h"
 #include "../xrEngine/CustomHUD.h"
 #include "Entity.h"
 #include "level.h"
 #include "game_cl_base.h"
 #include "../xrEngine/igame_persistent.h"
-
 #include "ui_base.h"
 #include "InventoryOwner.h"
 #include "relation_registry.h"
-#include "character_info.h"
-
+#include "../xrServerEntities/character_info.h"
 #include "string_table.h"
 #include "entity_alive.h"
-
 #include "inventory_item.h"
 #include "inventory.h"
-
-#include <ai/monsters/poltergeist/poltergeist.h>
+#include "ai/monsters/poltergeist/poltergeist.h"
 
 
 u32 C_ON_ENEMY		D3DCOLOR_RGBA(0xff,0,0,0x80);

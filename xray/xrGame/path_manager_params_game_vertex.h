@@ -9,7 +9,7 @@
 #pragma once
 
 #include "path_manager_params.h"
-#include "game_graph_space.h"
+#include "../xrServerEntities/game_graph_space.h"
 
 template <
 	typename _dist_type,

@@ -1,19 +1,18 @@
 #include "StdAfx.h"
-
 #include "UIMMShniaga.h"
-#include "UICursor.h"
+#include "../UICursor.h"
 #include "UIStatic.h"
 #include "UIScrollView.h"
 #include "UIXmlInit.h"
 #include "MMsound.h"
-#include "game_base_space.h"
+#include "../../xrServerEntities/game_base_space.h"
 #include "../level.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include <math.h>
 #include "../Actor.h"
 #include "../saved_game_wrapper.h"
 #include "../login_manager.h"
-#include "MainMenu.h"
+#include "../MainMenu.h"
 #include "../gamespy/GameSpy_Full.h"
 
 extern string_path g_last_saved_game;

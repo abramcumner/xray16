@@ -14,8 +14,8 @@
 #	include "../xrEngine/xrLevel.h"
 #endif // AI_COMPILER
 
-#include "alife_space.h"
-#include "game_graph_space.h"
+#include "../xrServerEntities/alife_space.h"
+#include "../xrServerEntities/game_graph_space.h"
 
 #define CROSS_TABLE_NAME					"level.gct"
 

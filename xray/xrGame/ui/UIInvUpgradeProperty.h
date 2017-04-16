@@ -10,8 +10,8 @@
 #define UI_INVENTORY_UPGRADE_PROPERTY_H_INCLUDED
 
 #include "UIStatic.h"
-#include "inventory_item.h"
-#include "inventory_upgrade_property.h"
+#include "../inventory_item.h"
+#include "../inventory_upgrade_property.h"
 
 namespace inventory { namespace upgrade {
 	class Upgrade;

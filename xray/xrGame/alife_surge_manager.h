@@ -9,7 +9,7 @@
 #pragma once
 
 #include "alife_simulator_base.h"
-#include "xrserver_space.h"
+#include "../xrServerEntities/xrserver_space.h"
 
 class CSE_ALifeTrader;
 

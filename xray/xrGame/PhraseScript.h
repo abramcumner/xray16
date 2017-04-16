@@ -2,11 +2,9 @@
 // PhraseScript.h
 // классы для связи диалогов со скриптами
 ///////////////////////////////////////////////////////////////
-
-
-#include "InfoPortionDefs.h"
-
 #pragma once
+
+#include "../xrServerEntities/InfoPortionDefs.h"
 
 class CGameObject;
 class CInventoryOwner;

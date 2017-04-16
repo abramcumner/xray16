@@ -2,9 +2,9 @@
 #include "ui_af_params.h"
 #include "UIStatic.h"
 
-#include "..\actor.h"
-#include "..\ActorCondition.h"
-#include "object_broker.h"
+#include "../actor.h"
+#include "../ActorCondition.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "UIXmlInit.h"
 #include "UIHelper.h"
 #include "../string_table.h"

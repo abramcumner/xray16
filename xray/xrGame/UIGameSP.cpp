@@ -3,24 +3,20 @@
 #include "actor.h"
 #include "level.h"
 #include "../xrEngine/xr_input.h"
-
 #ifdef DEBUG
 #include "attachable_item.h"
 #endif
-
 #include "game_cl_Single.h"
 #include "xr_level_controller.h"
 #include "actorcondition.h"
 #include "../xrEngine/xr_ioconsole.h"
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 #include "GameTaskManager.h"
 #include "GameTask.h"
-
 #include "ui/UIActorMenu.h"
 #include "ui/UIPdaWnd.h"
 #include "ui/UITalkWnd.h"
 #include "ui/UIMessageBox.h"
-
 
 CUIGameSP::CUIGameSP()
 :m_game(NULL),m_game_objective(NULL)

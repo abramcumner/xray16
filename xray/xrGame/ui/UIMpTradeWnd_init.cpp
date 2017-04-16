@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "UIMpTradeWnd.h"
-
 #include "UIXmlInit.h"
 #include "UIMpItemsStoreWnd.h"
 #include "UITabControl.h"
@@ -9,8 +8,7 @@
 #include "UIItemInfo.h"
 #include "UIHelper.h"
 #include "UIBuyWeaponTab.h"
-
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 
 
 LPCSTR _list_names[]= {

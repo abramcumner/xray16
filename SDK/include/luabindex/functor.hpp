@@ -1,6 +1,7 @@
 #pragma once
 
 #include <luabind/object.hpp>
+#include <luabind/function.hpp>
 
 namespace luabindex
 {

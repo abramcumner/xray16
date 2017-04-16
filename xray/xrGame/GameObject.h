@@ -7,8 +7,8 @@
 #pragma once
 
 #include "../xrEngine/xr_object.h"
-#include "xrServer_Space.h"
-#include "alife_space.h"
+#include "../xrServerEntities/xrServer_Space.h"
+#include "../xrServerEntities/alife_space.h"
 #include "UsableScriptObject.h"
 #include "script_binder.h"
 #include "Hit.h"

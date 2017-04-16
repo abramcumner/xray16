@@ -10,7 +10,7 @@
 
 #include "../inventory_item.h"
 #include "../PhysicsShellHolder.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include <dinput.h>
 
 #include "UICellCustomItems.h"

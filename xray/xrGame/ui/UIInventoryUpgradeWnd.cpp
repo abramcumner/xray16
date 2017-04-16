@@ -7,23 +7,19 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "pch_script.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "UIInventoryUpgradeWnd.h"
-
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"
 #include "../string_table.h"
-
 #include "../actor.h"
 #include "../../xrServerEntities/script_process.h"
 #include "../inventory.h"
-
-#include "ai_space.h"
-#include "alife_simulator.h"
-#include "inventory_upgrade_manager.h"
-#include "inventory_upgrade.h"
-#include "inventory_upgrade_property.h"
-
+#include "../ai_space.h"
+#include "../alife_simulator.h"
+#include "../inventory_upgrade_manager.h"
+#include "../inventory_upgrade.h"
+#include "../inventory_upgrade_property.h"
 #include "UIInventoryUtilities.h"
 #include "UIActorMenu.h"
 #include "UIItemInfo.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ui/UIStatic.h"
-#include "alife_space.h"
+#include "../xrServerEntities/alife_space.h"
 
 class CMapLocation;
 class CUIXml;

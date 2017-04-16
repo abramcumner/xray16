@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "UIGameAHunt.h"
-
 #include "team_base_zone.h"
 #include "level.h"
 #include "game_cl_ArtefactHunt.h"
@@ -11,7 +10,7 @@
 #include "ui/UIRankIndicator.h"
 #include "ui/UIHelper.h"
 #include "UITeamPanels.h"
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 
 #define TEAM_PANELS_AHUNT_XML_NAME "ui_team_panels_ahunt.xml"
 

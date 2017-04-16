@@ -7,12 +7,12 @@
 #include "UIListBoxItem.h"
 #include <dinput.h>
 #include "UIDemoPlayControl.h"
-#include "UICursor.h"
-#include "../xrEngine/XR_IOConsole.h"
-#include "string_table.h"
-#include "level.h"
-#include "demoinfo.h"
-#include "demoplay_control.h"
+#include "../UICursor.h"
+#include "../../xrEngine/XR_IOConsole.h"
+#include "../string_table.h"
+#include "../level.h"
+#include "../demoinfo.h"
+#include "../demoplay_control.h"
 
 CUIDemoPlayControl::CUIDemoPlayControl()
 {

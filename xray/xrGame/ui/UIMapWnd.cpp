@@ -2,13 +2,11 @@
 #include "UIMapWnd.h"
 #include "UIMap.h"
 #include "UIXmlInit.h"
-
 #include "../Actor.h"
 #include "../map_manager.h"
 #include "UIInventoryUtilities.h"
 #include "../map_spot.h"
 #include "../map_location.h"
-
 #include "UIFixedScrollBar.h"
 #include "UIFrameWindow.h"
 #include "UIFrameLineWnd.h"
@@ -18,8 +16,7 @@
 #include "UIMapWndActionsSpace.h"
 #include "UIHint.h"
 #include "map_hint.h"
-#include "uicursor.h"
-
+#include "../UICursor.h"
 #include "../../xrEngine/xr_input.h"		//remove me !!!
 
 CUIMapWnd* g_map_wnd = NULL; // quick temporary solution -(

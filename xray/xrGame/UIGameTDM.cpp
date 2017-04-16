@@ -1,15 +1,10 @@
 #include "stdafx.h"
 #include "UIGameTDM.h"
-
 #include "game_cl_base.h"
-
 #include "game_cl_TeamDeathmatch.h"
-
 #include "ui/TeamInfo.h"
 #include <dinput.h>
-
-#include "object_broker.h"
-
+#include "../xrServerEntities/object_broker.h"
 #include "UITeamPanels.h"
 #include "ui/UIMoneyIndicator.h"
 #include "ui/UIRankIndicator.h"

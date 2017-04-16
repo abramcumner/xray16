@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "UIHudStatesWnd.h"
-
 #include "../Actor.h"
 #include "../ActorCondition.h"
 #include "../EntityCondition.h"
@@ -8,7 +7,6 @@
 #include "../ActorHelmet.h"
 #include "../inventory.h"
 #include "../RadioactiveZone.h"
-
 #include "UIStatic.h"
 #include "UIProgressBar.h"
 #include "UIProgressShape.h"
@@ -16,10 +14,10 @@
 #include "UIHelper.h"
 #include "ui_arrow.h"
 #include "UIInventoryUtilities.h"
-#include "CustomDetector.h"
+#include "../CustomDetector.h"
 #include "../ai/monsters/basemonster/base_monster.h"
 #include "../PDA.h"
-#include "WeaponMagazinedWGrenade.h"
+#include "../WeaponMagazinedWGrenade.h"
 
 CUIHudStatesWnd::CUIHudStatesWnd()
 :m_b_force_update(true),

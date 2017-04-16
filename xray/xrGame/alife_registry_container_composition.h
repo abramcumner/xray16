@@ -8,18 +8,14 @@
 
 #pragma once
 
-#include "InfoPortionDefs.h"
+#include "../xrServerEntities/InfoPortionDefs.h"
 #include "PdaMsg.h"
 #include "encyclopedia_article_defs.h"
-
-#include "character_info_defs.h"
+#include "../xrServerEntities/character_info_defs.h"
 #include "relation_registry_defs.h"
-
-
 #include "gametaskdefs.h"
 #include "game_news.h"
 #include "map_location_defs.h"
-
 #include "actor_statistic_defs.h"
 
 #pragma warning(push)

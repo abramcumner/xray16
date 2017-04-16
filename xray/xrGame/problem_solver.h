@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "associative_vector.h"
+#include "../xrServerEntities/associative_vector.h"
 
 template <
 	typename _operator_condition,
@@ -141,8 +141,6 @@ public:
 #ifndef AI_COMPILER
 #	include "ai_space.h"
 #endif
-
 #include "graph_engine.h"
-#include "object_broker.h"
-
+#include "../xrServerEntities/object_broker.h"
 #include "problem_solver_inline.h"

@@ -11,17 +11,15 @@
 #include "UIMessageBoxEx.h"
 #include "UIPropertiesBox.h"
 #include "UI3tButton.h"
-
 #include "UIInventoryUpgradeWnd.h"
 #include "UIInvUpgradeInfo.h"
-
-#include "ai_space.h"
-#include "alife_simulator.h"
-#include "object_broker.h"
+#include "../ai_space.h"
+#include "../alife_simulator.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "UIWndCallback.h"
 #include "UIHelper.h"
 #include "UIProgressBar.h"
-#include "ui_base.h"
+#include "../ui_base.h"
 #include "../string_table.h"
 
 CUIActorMenu::CUIActorMenu()

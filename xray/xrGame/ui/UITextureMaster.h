@@ -9,8 +9,9 @@
 
 #pragma once
 
+#include "../ui_defs.h"
+
 class CUIStaticItem;
-#include "ui_defs.h"
 
 struct TEX_INFO{
 	shared_str	file;

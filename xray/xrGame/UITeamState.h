@@ -4,13 +4,11 @@
 #include "ui/UIWindow.h"
 #include "ui/xrUIXmlParser.h"
 #include "ui/UIXmlInit.h"
-
 #include "game_cl_base.h"
 #include "string_table.h"
 #include "game_base.h"
 #include "level.h"
-
-#include "associative_vector.h"
+#include "../xrServerEntities/associative_vector.h"
 
 class UITeamPanels;
 class CUIFrameLineWnd;

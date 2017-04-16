@@ -14,9 +14,8 @@
 #include "UIPropertiesBox.h"
 #include "UIListBoxItem.h"
 #include "UIMainIngameWnd.h"
-#include "UIGameCustom.h"
-#include "eatable_item_object.h"
-
+#include "../UIGameCustom.h"
+#include "../eatable_item_object.h"
 #include "../silencer.h"
 #include "../scope.h"
 #include "../grenadelauncher.h"
@@ -33,7 +32,6 @@
 #include "../player_hud.h"
 #include "../CustomDetector.h"
 #include "../PDA.h"
-
 #include "../actor_defs.h"
 
 

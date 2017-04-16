@@ -5,13 +5,12 @@
 #include "UIAnimatedStatic.h"
 #include "UI3tButton.h"
 #include "UIStatix.h"
-#include "uicursor.h"
+#include "../uicursor.h"
 #include "../UIGameCustom.h"
 #include "../game_cl_deathmatch.h"
 #include "../xr_level_controller.h"
 #include "../level.h"
-
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 
 CUISkinSelectorWnd::CUISkinSelectorWnd(const char* strSectionName, s16 team)
 {	

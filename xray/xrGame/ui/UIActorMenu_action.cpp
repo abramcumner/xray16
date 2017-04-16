@@ -13,11 +13,10 @@
 #include "../inventory.h"
 #include "../inventory_item.h"
 #include "../InventoryBox.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "UIInventoryUtilities.h"
-#include "game_cl_base.h"
-
-#include "UICursor.h"
+#include "../game_cl_base.h"
+#include "../UICursor.h"
 #include "UICellItem.h"
 #include "UICharacterInfo.h"
 #include "UIItemInfo.h"
@@ -28,7 +27,6 @@
 #include "UIMessageBoxEx.h"
 #include "UIPropertiesBox.h"
 #include "UIMainIngameWnd.h"
-
 
 bool  CUIActorMenu::AllowItemDrops(EDDListType from, EDDListType to)
 {

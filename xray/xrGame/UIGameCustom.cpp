@@ -3,9 +3,8 @@
 #include "level.h"
 #include "ui/UIXmlInit.h"
 #include "ui/UIStatic.h"
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 #include "string_table.h"
-
 #include "InventoryOwner.h"
 #include "ui/UIActorMenu.h"
 #include "ui/UIPdaWnd.h"
@@ -15,7 +14,6 @@
 #include "actor.h"
 #include "inventory.h"
 #include "game_cl_base.h"
-
 #include "../xrEngine/x_ray.h"
 
 EGameIDs ParseStringToGameType(LPCSTR str);

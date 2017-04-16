@@ -8,11 +8,11 @@
 
 #pragma once
 
-#include "inventory_space.h"
+#include "../xrServerEntities/inventory_space.h"
 #include "hit_immunity.h"
 #include "attachable_item.h"
-#include "xrserver_objects_alife.h"
-#include "xrserver_objects_alife_items.h"
+#include "../xrServerEntities/xrserver_objects_alife.h"
+#include "../xrServerEntities/xrserver_objects_alife_items.h"
 
 enum EHandDependence{
 	hdNone	= 0,

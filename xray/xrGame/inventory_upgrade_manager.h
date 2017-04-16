@@ -10,11 +10,9 @@
 #define INVENTORY_UPGRADE_MANAGER_H_INCLUDED
 
 #include <boost/noncopyable.hpp>
-#include "associative_vector.h"
+#include "../xrServerEntities/associative_vector.h"
 #include "inventory_item_object.h"
-
 #include "inventory_upgrade_base.h"
-
 
 namespace inventory
 {

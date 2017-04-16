@@ -9,17 +9,14 @@
 #include "pch_script.h"
 #include "UIInvUpgradeProperty.h"
 #include "UIInvUpgradeInfo.h"
-
 #include "UIStatic.h"
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"
-
-#include "ai_space.h"
-#include "alife_simulator.h"
-#include "inventory_upgrade_manager.h"
-#include "inventory_upgrade.h"
-#include "inventory_upgrade_property.h"
-
+#include "../ai_space.h"
+#include "../alife_simulator.h"
+#include "../inventory_upgrade_manager.h"
+#include "../inventory_upgrade.h"
+#include "../inventory_upgrade_property.h"
 
 UIProperty::UIProperty()
 {

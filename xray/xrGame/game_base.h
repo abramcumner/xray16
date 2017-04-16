@@ -1,8 +1,8 @@
 #pragma once
 
-#include "game_base_space.h"
-#include "alife_space.h"
-#include "gametype_chooser.h"
+#include "../xrServerEntities/game_base_space.h"
+#include "../xrServerEntities/alife_space.h"
+#include "../xrServerEntities/gametype_chooser.h"
 #include "player_account.h"
 
 #pragma pack(push,1)

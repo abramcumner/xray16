@@ -6,10 +6,10 @@
 #include "../xrEngine/IGame_Level.h"
 #include "../xrEngine/CameraManager.h"
 #include "xr_Level_controller.h"
-#include "ui\UITextureMaster.h"
-#include "ui\UIXmlInit.h"
+#include "ui/UITextureMaster.h"
+#include "ui/UIXmlInit.h"
 #include <dinput.h>
-#include "ui\UIBtnHint.h"
+#include "ui/UIBtnHint.h"
 #include "UICursor.h"
 #include "gamespy/GameSpy_Full.h"
 #include "gamespy/GameSpy_HTTP.h"
@@ -17,15 +17,11 @@
 #include "gamespy/CdkeyDecode/cdkeydecode.h"
 #include "string_table.h"
 #include "../xrCore/os_clipboard.h"
-
 #include "DemoInfo.h"
 #include "DemoInfo_Loader.h"
-
 #include "ui/UICDkey.h"
-
 #include <shellapi.h>
-
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 #include "account_manager.h"
 #include "login_manager.h"
 #include "profile_store.h"

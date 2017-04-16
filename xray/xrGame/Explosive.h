@@ -7,11 +7,12 @@
 #include "../xrEngine/Render.h"
 #include "../xrEngine/feel_touch.h"
 #include "inventory_item.h"
-#include "ai_sounds.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/ai_sounds.h"
+#include "../xrServerEntities/script_export_space.h"
 #include "../xrphysics/DamageSource.h"
 #include "wallmark_manager.h"
 #include "ParticlesObject.h"
+
 class IRender_Light;
 DEFINE_VECTOR(CPhysicsShellHolder*,BLASTED_OBJECTS_V,BLASTED_OBJECTS_I);
 class CExplosive : 

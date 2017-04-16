@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "UIButton.h"
 #include "UIBtnHint.h"
-#include "UICursor.h"
-#include "ui_base.h"
+#include "../UICursor.h"
+#include "../ui_base.h"
 #include "../../xrEngine/xr_input.h"	
-#include "xr_level_controller.h"
+#include "../xr_level_controller.h"
 
 #define PUSH_OFFSET_RIGHT 1
 #define PUSH_OFFSET_DOWN  1

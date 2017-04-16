@@ -14,9 +14,9 @@
 #	include "../../xrEngine/xrLevel.h"
 #endif
 
-#include "alife_space.h"
+#include "../xrServerEntities/alife_space.h"
 #include "level_graph_space.h"
-#include "game_graph_space.h"
+#include "../xrServerEntities/game_graph_space.h"
 
 #include "../Include/xrRender/DebugShader.h"
 

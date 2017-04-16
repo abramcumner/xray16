@@ -2,11 +2,11 @@
 #include "UIServerInfo.h"
 
 #include "UIStatic.h"
-#include "UICursor.h"
+#include "../UICursor.h"
 #include "UIScrollView.h"
 #include "UIXmlInit.h"
 #include "UI3tButton.h"
-#include "UIGameCustom.h"
+#include "../UIGameCustom.h"
 #include "../level.h"
 #include "../game_cl_mp.h"
 #include <dinput.h>

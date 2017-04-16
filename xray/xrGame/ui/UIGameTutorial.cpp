@@ -3,7 +3,7 @@
 #include "UIWindow.h"
 #include "UIStatic.h"
 #include "UIXmlInit.h"
-#include "object_broker.h"
+#include "../../xrServerEntities/object_broker.h"
 #include "../../xrEngine/xr_input.h"
 #include "../xr_level_controller.h"
 #include "../../xrServerEntities/script_engine.h"

@@ -1,16 +1,14 @@
 #include "stdafx.h"
 #include "map_spot.h"
 #include "map_location.h"
-
 #include "ui/UIXmlInit.h"
 #include "ui/UIMApWnd.h"
 #include "level.h"
 #include "ui/UIInventoryUtilities.h"
 #include "../xrEngine/xr_object.h"
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 #include "ui/UITextureMaster.h"
 #include "ui/UIHelper.h"
-
 #include "../Include/xrRender/UIShader.h"
 #include "gametaskmanager.h"
 #include "gametask.h"

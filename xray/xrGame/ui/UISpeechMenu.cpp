@@ -2,7 +2,7 @@
 #include "UISpeechMenu.h"
 #include "UIScrollView.h"
 #include "UIStatic.h"
-#include "UIGameCustom.h"
+#include "../UIGameCustom.h"
 #include "UIXmlInit.h"
 #include "../game_cl_mp.h"
 #include <dinput.h>

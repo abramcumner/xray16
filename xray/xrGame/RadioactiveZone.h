@@ -1,6 +1,7 @@
 #pragma once
+
 #include "customzone.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 
 class CRadioactiveZone : public CCustomZone
 {

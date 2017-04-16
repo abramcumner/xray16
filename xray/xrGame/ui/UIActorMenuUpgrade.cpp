@@ -3,11 +3,9 @@
 #include "UIActorMenu.h"
 #include "UIInventoryUpgradeWnd.h"
 #include "UIInvUpgradeInfo.h"
-
 #include "UIDragDropListEx.h"
 #include "UIDragDropReferenceList.h"
 #include "UICharacterInfo.h"
-
 #include "../inventory_item.h"
 #include "UICellItem.h"
 #include "../InventoryOwner.h"
@@ -15,8 +13,7 @@
 #include "../actor.h"
 #include "../uigamesp.h"
 #include "UI3tButton.h"
-
-#include "inventory_upgrade.h"
+#include "../inventory_upgrade.h"
 #include "UITalkWnd.h"
 
 void CUIActorMenu::InitUpgradeMode()

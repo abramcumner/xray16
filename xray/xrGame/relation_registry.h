@@ -5,10 +5,9 @@
 
 #pragma once
 
-#include "character_info_defs.h"
+#include "../xrServerEntities/character_info_defs.h"
 
 class CRelationRegistryWrapper;
-
 class CInventoryOwner;
 class CEntityAlive;
 

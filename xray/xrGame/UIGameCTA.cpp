@@ -1,28 +1,22 @@
 #include "stdafx.h"
 #include "UIGameCTA.h"
-
 #include <dinput.h>
-
 #include "UITeamPanels.h"
-
 #include "game_cl_base.h"
 #include "game_cl_capture_the_artefact.h"
 #include "game_cl_mp.h"
-
 #include "level.h"
 #include "actor.h"
 #include "artefact.h"
 #include "inventory.h"
-#include "xrServer_Objects_ALife_Items.h"
+#include "../xrServerEntities/xrServer_Objects_ALife_Items.h"
 #include "weapon.h"
 #include "WeaponMagazinedWGrenade.h"
 #include "WeaponKnife.h"
 #include "xr_level_controller.h"
-
-#include "object_broker.h"
+#include "../xrServerEntities/object_broker.h"
 //#include "clsid_game.h"
 #include "weaponknife.h"
-
 #include "ui/UISkinSelector.h"
 //.#include "ui/UIInventoryWnd.h"
 #include "ui/UIPdaWnd.h"

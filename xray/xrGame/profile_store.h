@@ -4,12 +4,11 @@
 #include <boost/noncopyable.hpp>
 #include "../xrEngine/ISheduled.h"
 #include "profile_data_types.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 #include "queued_async_method.h"
 #include "gsc_dsigned_ltx.h"
 #include "best_scores_store.h"
 #include "awards_store.h"
-
 
 class CGameSpy_Full;
 class CGameSpy_SAKE;

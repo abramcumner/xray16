@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "pch_script.h"
 #include "login_manager.h"
 
 using namespace luabind;

@@ -6,7 +6,7 @@
 #pragma once
 
 #include "inventory_item_object.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 
 class CScope : public CInventoryItemObject {
 private:

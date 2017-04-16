@@ -9,8 +9,8 @@
 #pragma once
 
 #include "gameobject.h"
-#include "restriction_space.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/restriction_space.h"
+#include "../xrServerEntities/script_export_space.h"
 
 class CSpaceRestrictor : public CGameObject {
 private:

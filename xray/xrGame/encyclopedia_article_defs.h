@@ -1,8 +1,7 @@
 #pragma	once
 
-#include "alife_space.h"
-
-#include "object_interfaces.h"
+#include "../xrServerEntities/alife_space.h"
+#include "../xrServerEntities/object_interfaces.h"
 
 struct ARTICLE_DATA : public IPureSerializeObject<IReader,IWriter>
 {

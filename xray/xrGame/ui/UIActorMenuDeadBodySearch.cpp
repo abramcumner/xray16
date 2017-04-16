@@ -7,8 +7,7 @@
 #include "UICellItem.h"
 #include "UICellItemFactory.h"
 #include "UIFrameLineWnd.h"
-
-#include "xrMessages.h"
+#include "../../xrServerEntities/xrMessages.h"
 #include "../alife_registry_wrappers.h"
 #include "../GameObject.h"
 #include "../InventoryOwner.h"

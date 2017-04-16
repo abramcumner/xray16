@@ -4,7 +4,7 @@
 #include <boost/noncopyable.hpp>
 #include "mixed_delegate.h"
 #include "GameSpy/GameSpy_FuncDefs.h"
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 #include "queued_async_method.h"
 #include "profile_data_types_script.h"
 

@@ -1,8 +1,8 @@
-
 #pragma once
-#include "object_interfaces.h"
-#include "alife_space.h"
-#include "game_graph_space.h"
+
+#include "../xrServerEntities/object_interfaces.h"
+#include "../xrServerEntities/alife_space.h"
+#include "../xrServerEntities/game_graph_space.h"
 
 class CMapSpot;
 class CMiniMapSpot;

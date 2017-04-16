@@ -2,10 +2,8 @@
 
 #include "../xrEngine/feel_touch.h"
 #include "inventory_item_object.h"
-
-#include "InfoPortionDefs.h"
-#include "character_info_defs.h"
-
+#include "../xrServerEntities/InfoPortionDefs.h"
+#include "../xrServerEntities/character_info_defs.h"
 #include "PdaMsg.h"
 
 class CInventoryOwner;

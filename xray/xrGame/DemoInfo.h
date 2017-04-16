@@ -2,7 +2,7 @@
 #define DEMOINFO_H
 
 #include <boost/noncopyable.hpp>
-#include "script_export_space.h"
+#include "../xrServerEntities/script_export_space.h"
 
 class CStreamReader;
 class IWriter;

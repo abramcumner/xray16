@@ -5,7 +5,8 @@
 /////////////////////////////////////////////////////
 
 #pragma once
-#include "alife_space.h"
+
+#include "../xrServerEntities/alife_space.h"
 #include "pda_space.h"
 
 //структура для описания сообщения PDA,

@@ -5,7 +5,7 @@
 #include "UIKickPlayer.h"
 #include "UIChangeMap.h"
 #include "UIChangeWeather.h"
-#include "UIGameCustom.h"
+#include "../UIGameCustom.h"
 
 #include "../game_cl_teamdeathmatch.h"
 #include "../game_sv_mp_vote_flags.h"
