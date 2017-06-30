@@ -1137,12 +1137,6 @@
     <ProjectReference Include="..\..\3rd party\openal\OpenAL-Windows\Router\Router.vcxproj">
       <Project>{566551f4-4ef1-4cb4-a131-f982e7606907}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\editor\editor.vcxproj">
-      <Project>{492d3dfe-9068-4e7e-a008-7c2420a651c0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\editor_controls\editor_controls.vcxproj">
-      <Project>{b45374aa-c7ed-42cf-bbd3-deaa2b7acb48}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Layers\xrAPI\xrAPI.vcxproj">
       <Project>{1daec516-e52c-4a3c-a4da-ae3553e6e0f8}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
