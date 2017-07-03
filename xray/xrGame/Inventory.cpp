@@ -382,9 +382,9 @@ bool CInventory::Slot(u16 slot_id, PIItem pIItem, bool bNotActivate, bool strict
 		Activate				(slot_id);
 	}
 	SInvItemPlace p					= pIItem->m_ItemCurrPlace;
-	m_pOwner->OnItemSlot			(pIItem, pIItem->m_ItemCurrPlace);
 	pIItem->m_ItemCurrPlace.type	= eItemPlaceSlot;
 	pIItem->m_ItemCurrPlace.slot_id = slot_id;
+	m_pOwner->OnItemSlot			(pIItem, p);
 	pIItem->OnMoveToSlot			(p);
 	
 	pIItem->object().processing_activate();
