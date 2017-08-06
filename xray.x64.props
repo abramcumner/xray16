@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(DXSDK)include;$(SolutionDir)SDK\include;$(BOOST_1_60_0);$(IncludePath)</IncludePath>
+    <IncludePath>$(DXSDK)include;$(SolutionDir)SDK\include;$(BOOST_1_64_0);$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK)Lib\x64;$(SolutionDir)SDK\libraries\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
