@@ -42,10 +42,6 @@ CGameFont* GetFontLetterica25()
 int GetARGB(u16 a, u16 r, u16 g, u16 b)
 {return color_argb(a,r,g,b);}
 
-const Fvector2* get_wnd_pos(CUIWindow* w)
-{
-	return &w->GetWndPos();
-}
 using namespace luabind;
 #pragma optimize("s",on)
 void CUIWindow::script_register(lua_State *L)
@@ -74,7 +70,7 @@ void CUIWindow::script_register(lua_State *L)
 		.def("SetWndRect",				(void (CUIWindow::*)(Frect))	&CUIWindow::SetWndRect_script)
 		.def("SetWndPos",				(void (CUIWindow::*)(Fvector2)) &CUIWindow::SetWndPos_script)
 		.def("SetWndSize",				(void (CUIWindow::*)(Fvector2)) &CUIWindow::SetWndSize_script)
-		.def("GetWndPos",				&get_wnd_pos)
+		.def("GetWndPos",				&CUIWindow::GetWndPos_script, pure_out_value(_2))
 		.def("GetWidth",				&CUIWindow::GetWidth)
 		.def("GetHeight",				&CUIWindow::GetHeight)
 
