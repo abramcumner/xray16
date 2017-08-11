@@ -264,7 +264,7 @@ void ai_obstacle::compute_impl		()
 	}
 
 	boost::crc_32_type			temp;
-	temp.process_block			(&*m_area.begin(),&*m_area.end());
+	temp.process_block			(m_area.data(), m_area.data() + m_area.size());
 	m_crc						= temp.checksum();
 }
 
