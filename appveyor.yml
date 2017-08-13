@@ -6,7 +6,7 @@ platform:
 shallow_clone: true
 environment:
   DXSDK: '%DXSDK_DIR%'
-  BOOST_1_64_0: 'C:\Libraries\boost_1_64_0'
+  BOOST_1_64_0: 'C:\Libraries\boost_1_63_0'
 before_build:
 - cmd: >-
     echo %PLATFORM%
