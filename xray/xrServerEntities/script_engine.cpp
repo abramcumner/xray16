@@ -200,7 +200,7 @@ void lua_cast_failed					(lua_State *L, const luabind::type_id& info)
 {
 	CScriptEngine::print_output	(L,"",LUA_ERRRUN);
 
-	Debug.fatal				(DEBUG_INFO,"LUA error: cannot cast lua value to %s",info.name());
+	Debug.fatal				(DEBUG_INFO,"LUA error: cannot cast lua value to %s",info.name().c_str());
 }
 
 void CScriptEngine::setup_callbacks		()
