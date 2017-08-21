@@ -83,6 +83,7 @@ protected:
 
 	EffectorCamVec			m_EffectorsCam;
 	EffectorCamVec			m_EffectorsCam_added_deffered;
+	EffectorCamVec			m_EffectorsCam_removed_deffered;
 	EffectorPPVec			m_EffectorsPP;
 
 	bool					m_bAutoApply;

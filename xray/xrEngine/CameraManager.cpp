@@ -194,6 +194,13 @@ CEffectorCam* CCameraManager::AddCamEffector(CEffectorCam* ef)
 
 void CCameraManager::UpdateDeffered()
 {
+	for (auto eff : m_EffectorsCam_removed_deffered) {
+		auto it = std::find(m_EffectorsCam.begin(), m_EffectorsCam.end(), eff);
+		m_EffectorsCam.erase(it);
+		OnEffectorReleased(eff);
+	}
+	m_EffectorsCam_removed_deffered.clear();
+
 	EffectorCamIt it		= m_EffectorsCam_added_deffered.begin();
 	EffectorCamIt it_e		= m_EffectorsCam_added_deffered.end();
 	for (; it!=it_e; ++it)
@@ -337,10 +344,7 @@ bool CCameraManager::ProcessCameraEffector(CEffectorCam* eff)
 			res = true;
 		}
 
-		EffectorCamVec::iterator it = std::find(m_EffectorsCam.begin(), m_EffectorsCam.end(), eff);
-
-		m_EffectorsCam.erase(it);
-		OnEffectorReleased	(eff);
+		m_EffectorsCam_removed_deffered.push_back(eff);
 	}
 	return res;
 }
