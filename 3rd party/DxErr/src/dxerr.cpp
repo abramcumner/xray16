@@ -130,11 +130,10 @@ const CHAR* WINAPI DXGetErrorStringA( _In_ HRESULT hr )
 }
 
 //--------------------------------------------------------------------------------------
-#undef CHK_ERR
-#undef CHK_ERRA
-#undef HRESULT_FROM_WIN32b
-#undef CHK_ERR_WIN32A
-#undef CHK_ERR_WIN32_ONLY
+#undef CHK_ERRA_W
+#undef CHK_ERR_W
+#undef CHK_ERRA_A
+#undef CHK_ERR_A
 
 #define  CHK_ERRA_W(hrchk) \
         case hrchk: \
