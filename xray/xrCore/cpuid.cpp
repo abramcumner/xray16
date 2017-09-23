@@ -1,7 +1,6 @@
 #include "stdafx.h"
-#pragma hdrstop
-
 #include "cpuid.h"
+#include <intrin.h>
 
 int _cpuid (_processor_info *pinfo)
 {
