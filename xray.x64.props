@@ -3,14 +3,15 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(DXSDK)include;$(SolutionDir)SDK\include;$(BOOST_1_64_0);$(IncludePath)</IncludePath>
-    <LibraryPath>$(DXSDK)Lib\x64;$(SolutionDir)SDK\libraries\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_64_0);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)SDK\libraries\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <DisableSpecificWarnings>4456;4457;4458;4459;4577;4595</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />
