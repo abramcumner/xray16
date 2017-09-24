@@ -2,13 +2,13 @@
 #pragma hdrstop
 
 #pragma warning(disable:4995)
-#include <d3dx9.h>
+#include <d3dx/d3dx9.h>
 #ifndef _EDITOR
 #include "../../xrEngine/render.h"
 #endif
 #pragma warning(default:4995)
 
-#include <D3DX10Core.h>
+#include <d3dx/D3DX10Core.h>
 
 #include "../xrRender/ResourceManager.h"
 #include "../xrRender/tss.h"
