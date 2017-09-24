@@ -12,7 +12,7 @@
 
 #pragma warning(disable:4995)
 #include <commctrl.h>
-#include <d3dx9.h>
+#include <d3dx/d3dx9.h>
 #include <io.h>
 #include <fcntl.h>
 #include <sys\stat.h>

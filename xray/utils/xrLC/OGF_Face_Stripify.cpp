@@ -3,7 +3,7 @@
 #include "ogf_face.h"
 #include "NV_Library\NvTriStrip.h"
 #include "NV_Library\VertexCache.h"
-#include <d3dx9.h>
+#include <d3dx/d3dx9.h>
 
 int xrSimulate (xr_vector<u16> &indices, int iCacheSize )
 {
