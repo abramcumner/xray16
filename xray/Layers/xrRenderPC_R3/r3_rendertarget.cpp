@@ -261,14 +261,14 @@ void	generate_jitter	(DWORD*	dest, u32 elem_count)
 		*dest	= color_rgba(samples[2*it].x,samples[2*it].y,samples[2*it+1].y,samples[2*it+1].x);
 }
 
-#if _MSC_FULL_VER >= 191100000 && _MSC_FULL_VER <= 191125547
+#if _MSC_FULL_VER >= 191100000 && _MSC_FULL_VER <= 191225830
 // из-за строки: fs = powf(ls*1.01f, 128.f); возникает ICE
 // fatal error C1001 : An internal error has occurred in the compiler.
 // (compiler file 'f:\dd\vctools\compiler\utc\src\p2\main.c', line 256)
-// 15.4.3 - ошибка так и не исправлена
+// 15.5.1 - ошибка так и не исправлена
 // для исправления отключаю оптимизацию
 #define POW_128_BUG
-#elif _MSC_VER == 1911
+#elif _MSC_VER == 1911 || _MSC_VER == 1912
 #define stringize(s) _stringize(s)
 #define _stringize(s) #s
 #pragma message("_MSC_FULL_VER=" stringize(_MSC_FULL_VER))
