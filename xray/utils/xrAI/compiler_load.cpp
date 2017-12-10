@@ -211,8 +211,11 @@ void xrLoad(LPCSTR name, bool draft_mode)
 									is_tga_missing = true;
 									continue;
 								}
-								if ((w != BT.dwWidth) || (h != BT.dwHeight))
-									Msg		("! THM doesn't correspond to the texture: %dx%d -> %dx%d", BT.dwWidth, BT.dwHeight, w, h);
+								if ((w != BT.dwWidth) || (h != BT.dwHeight)) {
+									Msg("! THM doesn't correspond to the texture: %dx%d -> %dx%d", BT.dwWidth, BT.dwHeight, w, h);
+									BT.dwWidth = BT.THM.width = w;
+									BT.dwHeight = BT.THM.height = h;
+								}
 								BT.Vflip	();
 							} else {
 								// Free surface memory
