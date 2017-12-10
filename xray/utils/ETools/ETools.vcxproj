@@ -118,7 +118,7 @@
     <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\SDK\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\SDK\</OutDir>
+    <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mixed|Win32'">
     <LinkIncremental>false</LinkIncremental>
