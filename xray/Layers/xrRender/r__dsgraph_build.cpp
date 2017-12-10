@@ -358,13 +358,6 @@ void R_dsgraph_structure::r_dsgraph_insert_static	(dxRender_Visual *pVisual)
 		_NormalItem					item	= {SSA,pVisual};
 		items.push_back						(item);
 
-		if (std::isnan(SSA))
-			Msg("!!!");
-		if (std::isnan(Ncs->val.ssa))
-			Msg("!!!");
-		if (std::isnan(Nstate->val.ssa))
-			Msg("!!!");
-
 		// Need to sort for HZB efficient use
 		if (SSA>Ntex->val.ssa)		{ Ntex->val.ssa = SSA;
 		if (SSA>Nstate->val.ssa)	{ Nstate->val.ssa = SSA;
