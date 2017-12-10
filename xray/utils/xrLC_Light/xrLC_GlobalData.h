@@ -51,12 +51,18 @@ class	XRLC_LIGHT_API xrLC_GlobalData
 
 		bool							_b_nosun;
 		bool							_gl_linear;
+		bool							m_NoRgb; ///< ???
+		bool							m_NoLmaps; ///< Не создавать лайтмапы, ускоряет работу xrLC
+		bool							m_SkipInvalid; ///< Продолжить работу при обнаружении инвалид-фейсов
+		bool							m_LmapRgba; ///< Не использовать сжатие DXT при сохранении лайтмапов
+		u32								m_NumThread; ///< Количество потоков на стадии LightImplicit
+
 private:
 		bool							b_vert_not_register;
 public:
 
 public:
-									xrLC_GlobalData	();//:_RCAST_Model (0), _b_nosun(false),_gl_linear(false){}
+									xrLC_GlobalData();
 									~xrLC_GlobalData();
 		IC xr_vector<b_BuildTexture>& textures		()		{	return _cl_globs._textures; }
 		IC xr_vector<CLightmap*>	& lightmaps		()		{	return _g_lightmaps; }
@@ -97,7 +103,18 @@ public:
 
 		bool						b_nosun			()		{	return _b_nosun; }
 		bool						gl_linear		()		{	return _gl_linear; }
-IC		void						b_nosun_set		(bool v){	_b_nosun = v; }
+		void						b_nosun_set		(bool v){	_b_nosun = v; }
+		bool						noRgb() { return m_NoRgb; }
+		void						setNoRgb(bool v) { m_NoRgb = v; }
+		bool						noLmaps() { return m_NoLmaps; }
+		void						setNoLmaps(bool v) { m_NoLmaps = v; }
+		bool						skipInvalid() { return m_SkipInvalid; }
+		void						setSkipInvalid(bool v) { m_SkipInvalid = v; }
+		bool						lmapRgba() { return m_LmapRgba; }
+		void						setLmapRgba(bool v) { m_LmapRgba = v; }
+		u32							numThread() { return m_NumThread; }
+		void						setNumThread(u32 v) { m_NumThread = v; }
+
 		void						initialize		()		;
 		void						destroy_rcmodel	()		;
 

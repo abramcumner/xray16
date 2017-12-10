@@ -23,16 +23,67 @@ extern volatile BOOL bClose;
 
 static const char* h_str = 
 	"The following keys are supported / required:\n"
-	"-? or -h	== this help\n"
-	"-o			== modify build options\n"
-	"-nosun		== disable sun-lighting\n"
-	"-f<NAME>	== compile level in GameData\\Levels\\<NAME>\\\n"
+	"-? or -h\t\t== this help\n"
+	"-o\t\t== modify build options\n"
+	"-nosun\t\t== disable sun-lighting\n"
+	"-silent\t\t== no congratulation message\n"
+	"-norgb\t\t== disable common lightmap calculating\n"
+	"-nolmaps\t\t== disable lightmaps calculating\n"
+	"-skipinvalid\t== skip crash if invalid faces exists\n"
+	"-lmap_quality <PPM> == lightmap quality\n"
+	"-lmap_rgba\t== save lightmaps with lossless format\n"
+	"-thread <COUNT>\t== multi-threaded light implicit\n"
+	"-f<NAME>\t== compile level in GameData\\Levels\\<NAME>\\\n"
 	"\n"
 	"NOTE: The last key is required for any functionality\n";
 
 void Help()
 {
 	MessageBox(0,h_str,"Command line options",MB_OK|MB_ICONINFORMATION);
+}
+
+// computing build id
+XRCORE_API	LPCSTR	build_date;
+XRCORE_API	u32		build_id;
+static LPSTR month_id[12] = {
+	"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
+};
+
+static int days_in_month[12] = {
+	31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+};
+
+static int start_day = 31;	// 31
+static int start_month = 1;	// January
+static int start_year = 1999;	// 1999
+
+void compute_build_id()
+{
+	build_date = __DATE__;
+
+	int					days;
+	int					months = 0;
+	int					years;
+	string16			month;
+	string256			buffer;
+	strcpy_s(buffer, __DATE__);
+	sscanf(buffer, "%s %d %d", month, &days, &years);
+
+	for (int i = 0; i<12; i++) {
+		if (_stricmp(month_id[i], month))
+			continue;
+
+		months = i;
+		break;
+	}
+
+	build_id = (years - start_year) * 365 + days - start_day;
+
+	for (int i = 0; i<months; ++i)
+		build_id += days_in_month[i];
+
+	for (int i = 0; i<start_month - 1; ++i)
+		build_id -= days_in_month[i];
 }
 
 typedef int __cdecl xrOptions(b_params* params, u32 version, bool bRunBuild);
@@ -55,7 +106,19 @@ void Startup(LPSTR     lpCmdLine)
 	VERIFY( lc_global_data() );
 	lc_global_data()->b_nosun_set						( !!strstr(cmd,"-nosun") );
 	//if (strstr(cmd,"-nosun"))							b_nosun			= TRUE;
-	
+	lc_global_data()->setNoRgb(strstr(cmd, "-norgb") != nullptr);
+	lc_global_data()->setNoLmaps(strstr(cmd, "-nolmaps") != nullptr);
+	lc_global_data()->setSkipInvalid(strstr(cmd, "-skipinvalid") != nullptr);
+	lc_global_data()->setLmapRgba(strstr(cmd, "-lmap_rgba") != nullptr);
+	const char* threadOption = strstr(cmd, "-thread");
+	u32 numThread = 0;
+	if (threadOption)
+		sscanf(threadOption + strlen("-thread"), "%lu", &numThread);
+	if (numThread == 0 || numThread > 256) {
+		numThread = CPU::ID.n_threads;
+	}
+	lc_global_data()->setNumThread(numThread);
+
 	// Give a LOG-thread a chance to startup
 	//_set_sbh_threshold(1920);
 	InitCommonControls		();
@@ -104,6 +167,12 @@ void Startup(LPSTR     lpCmdLine)
 	// Header
 	b_params				Params;
 	F->r_chunk			(EB_Parameters,&Params);
+
+	const char* quality = strstr(cmd, "-lmap_quality ");
+	if (quality) {
+		int sz = xr_strlen("-lmap_quality ");
+		sscanf(quality + sz, "%f", &Params.m_lm_pixels_per_meter);
+	}
 
 	// Show options if needed
 	if (bModifyOptions)		
@@ -163,10 +232,13 @@ int APIENTRY WinMain(HINSTANCE hInst,
 
 	// Initialize debugging
 	Debug._initialize	(false);
+	compute_build_id();
 	Core._initialize	("xrLC");
 	
 	if(strstr(Core.Params,"-nosmg"))
 		g_using_smooth_groups = false;
+
+	Msg("Command line: '%s'\n", lpCmdLine);
 
 	Startup				(lpCmdLine);
 	Core._destroy		();

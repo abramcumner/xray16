@@ -9,6 +9,16 @@
 #include "net_task.h"
 extern void Jitter_Select	(Fvector2* &Jitter, u32& Jcount);
 
+u32 global_light_flags()
+{
+	u32 result = 0;
+	if (inlc_global_data()->b_nosun())
+		result |= LP_dont_sun;
+	if (inlc_global_data()->noRgb())
+		result |= LP_dont_rgb;
+	return result;
+}
+
 void CDeflector::L_Direct_Edge (CDB::COLLIDER* DB, base_lighting* LightsSelected, Fvector2& p1, Fvector2& p2, Fvector& v1, Fvector& v2, Fvector& N, float texel_size, Face* skip)
 {
 	Fvector		vdir;
@@ -44,7 +54,7 @@ void CDeflector::L_Direct_Edge (CDB::COLLIDER* DB, base_lighting* LightsSelected
 		VERIFY(inlc_global_data());
 		VERIFY(inlc_global_data()->RCAST_Model());
 
-		LightPoint		(DB, inlc_global_data()->RCAST_Model(), C, P, N, *LightsSelected, (inlc_global_data()->b_nosun()?LP_dont_sun:0)|LP_DEFAULT, skip); //.
+		LightPoint		(DB, inlc_global_data()->RCAST_Model(), C, P, N, *LightsSelected, LP_DEFAULT | global_light_flags(), skip); //.
 		
 		C.mul		(.5f);
 		lm.surface	[_y*lm.width+_x]._set	(C);
@@ -115,7 +125,7 @@ void CDeflector::L_Direct	(CDB::COLLIDER* DB, base_lighting* LightsSelected, HAS
 							try {
 								VERIFY(inlc_global_data());
 								VERIFY(inlc_global_data()->RCAST_Model());
-								LightPoint	(DB, inlc_global_data()->RCAST_Model(), C, wP, wN, *LightsSelected, (inlc_global_data()->b_nosun()?LP_dont_sun:0)|LP_UseFaceDisable, F); //.
+								LightPoint	(DB, inlc_global_data()->RCAST_Model(), C, wP, wN, *LightsSelected, LP_UseFaceDisable | global_light_flags(), F); //.
 								Fcount		+= 1;
 							} catch (...) {
 								clMsg("* ERROR (CDB). Recovered. ");

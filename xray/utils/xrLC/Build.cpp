@@ -287,8 +287,8 @@ void CBuild::Run	(LPCSTR P)
 #endif
 	if(g_build_options.b_net_light)
 		SetGlobalLightmapsDataInitialized();
-		
-	Light						();
+	if (!lc_global_data()->noLmaps())
+		Light					();
 	RunAfterLight				( fs );
 
 }
