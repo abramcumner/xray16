@@ -60,7 +60,7 @@ void	mem_Optimize	()
 	Msg("* Memory usage: %d M",Memory.mem_usage()/(1024*1024));
 }
 
-void xrCompiler	(LPCSTR name, bool draft_mode, bool pure_covers, LPCSTR out_name)
+void xrCompiler	(LPCSTR name, bool draft_mode, bool pure_covers, LPCSTR out_name, u32 numThread)
 {
 	Phase		("Loading level...");
 	xrLoad		(name,draft_mode);
@@ -82,7 +82,7 @@ void xrCompiler	(LPCSTR name, bool draft_mode, bool pure_covers, LPCSTR out_name
 		mem_Optimize();
 
 		Phase("Calculating coverage...");
-		xrCover		(pure_covers);
+		xrCover		(pure_covers, numThread);
 		mem_Optimize();
 	}
 	/////////////////////////////////////

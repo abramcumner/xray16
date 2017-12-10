@@ -231,7 +231,7 @@ struct	RC { RayCache	C; };
 class	CoverThread : public CThread
 {
 	u32					Nstart, Nend;
-	xr_vector<RC>		cache;
+	xr_hash_map<u32, RC> cache;
 	CDB::COLLIDER		DB;
 	Query				Q;
 
@@ -299,14 +299,6 @@ public:
 	virtual void		Execute()
 	{
 		DB.ray_options		(CDB::OPT_CULL);
-		{
-			RC				rc;	
-			rc.C[0].set		(0,0,0); 
-			rc.C[1].set		(0,0,0); 
-			rc.C[2].set		(0,0,0);
-			
-			cache.assign	(g_nodes.size()*2,rc);
-		}
 
 		FPU::m24r		();
 
@@ -561,9 +553,8 @@ void compute_non_covers		()
 	}
 }
 
-#define NUM_THREADS	3
 extern	void mem_Optimize();
-void	xrCover	(bool pure_covers)
+void	xrCover	(bool pure_covers, u32 numThread)
 {
 	Status("Calculating...");
 
@@ -575,10 +566,10 @@ void	xrCover	(bool pure_covers)
 	// Start threads, wait, continue --- perform all the work
 	u32	start_time		= timeGetTime();
 	CThreadManager		Threads;
-	u32	stride			= g_nodes.size()/NUM_THREADS;
-	u32	last			= g_nodes.size()-stride*(NUM_THREADS-1);
-	for (u32 thID=0; thID<NUM_THREADS; thID++) {
-		Threads.start(xr_new<CoverThread>(thID,thID*stride,thID*stride+((thID==(NUM_THREADS-1))?last:stride)));
+	u32	stride			= g_nodes.size()/ numThread;
+	u32	last			= g_nodes.size()-stride*(numThread -1);
+	for (u32 thID=0; thID<numThread; thID++) {
+		Threads.start(xr_new<CoverThread>(thID,thID*stride,thID*stride+((thID==(numThread -1))?last:stride)));
 //		CoverThread(thID,thID*stride,thID*stride+((thID==(NUM_THREADS-1))?last:stride)).Execute();
 //		Threads.wait		();
 	}

@@ -16,7 +16,7 @@
 
 extern LPCSTR LEVEL_GRAPH_NAME;
 
-extern void	xrCompiler			(LPCSTR name, bool draft_mode, bool pure_covers, LPCSTR out_name);
+extern void	xrCompiler			(LPCSTR name, bool draft_mode, bool pure_covers, LPCSTR out_name, u32 numThread);
 extern void logThread			(void *dummy);
 extern volatile BOOL bClose;
 extern void test_smooth_path	(LPCSTR name);
@@ -31,15 +31,62 @@ extern void test_levels			();
 
 static const char* h_str = 
 	"The following keys are supported / required:\n"
-	"-? or -h   == this help\n"
-	"-f<NAME>   == compile level in gamedata/levels/<NAME>/\n"
-	"-o         == modify build options\n"
-	"-s         == build game spawn data\n"
+	"-? or -h\t\t== this help\n"
+	"-f<NAME>\t== compile level in gamedata/levels/<NAME>/\n"
+	"-o\t\t== modify build options\n"
+	"-keep_temp_files\t== keep build.aimap\n"
+	"-silent\t\t== suppress congratulation message\n"
+	"-thread <COUNT>\t== multi-threaded cover calculation\n"
+	"-s\t\t== build game spawn data\n"
 	"\n"
 	"NOTE: The last key is required for any functionality\n";
 
 void Help()
 {	MessageBox(0,h_str,"Command line options",MB_OK|MB_ICONINFORMATION); }
+
+// computing build id
+XRCORE_API	LPCSTR	build_date;
+XRCORE_API	u32		build_id;
+static LPSTR month_id[12] = {
+	"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
+};
+
+static int days_in_month[12] = {
+	31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+};
+
+static int start_day = 31;	// 31
+static int start_month = 1;	// January
+static int start_year = 1999;	// 1999
+
+void compute_build_id()
+{
+	build_date = __DATE__;
+
+	int					days;
+	int					months = 0;
+	int					years;
+	string16			month;
+	string256			buffer;
+	strcpy_s(buffer, __DATE__);
+	sscanf(buffer, "%s %d %d", month, &days, &years);
+
+	for (int i = 0; i<12; i++) {
+		if (_stricmp(month_id[i], month))
+			continue;
+
+		months = i;
+		break;
+	}
+
+	build_id = (years - start_year) * 365 + days - start_day;
+
+	for (int i = 0; i<months; ++i)
+		build_id += days_in_month[i];
+
+	for (int i = 0; i<start_month - 1; ++i)
+		build_id -= days_in_month[i];
+}
 
 string_path INI_FILE;
 
@@ -93,7 +140,15 @@ void execute	(LPSTR cmd)
 		else
 			output		= (pstr)LEVEL_GRAPH_NAME;
 
-		xrCompiler		(prjName,!!strstr(cmd,"-draft"),!!strstr(cmd,"-pure_covers"),output);
+		const char* threadOption = strstr(cmd, "-thread");
+		u32 numThread = 0;
+		if (threadOption)
+			sscanf(threadOption + strlen("-thread"), "%lu", &numThread);
+		if (numThread == 0 || numThread > 256) {
+			numThread = CPU::ID.n_threads;
+		}
+
+		xrCompiler		(prjName,!!strstr(cmd,"-draft"),!!strstr(cmd,"-pure_covers"),output, numThread);
 	}
 	else {
 		if (strstr(cmd,"-s")) {
@@ -151,7 +206,10 @@ void Startup(LPSTR     lpCmdLine)
 	extern				HWND logWindow;
 	u32					dwEndTime = timeGetTime();
 	xr_sprintf				(stats,"Time elapsed: %s",make_time((dwEndTime-dwStartupTime)/1000).c_str());
-	MessageBox			(logWindow,stats,"Congratulation!",MB_OK|MB_ICONINFORMATION);
+	clMsg("Build succesful!\n%s", stats);
+
+	if (!strstr(cmd, "-silent"))
+		MessageBox			(logWindow,stats,"Congratulation!",MB_OK|MB_ICONINFORMATION);
 
 	bClose				= TRUE;
 	FlushLog			();
@@ -173,7 +231,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
                      int       nCmdShow)
 {
 	Debug._initialize		(false);
-	Core._initialize		("xrai",0);
+	compute_build_id();
+	Core._initialize		("xrAI");
 
 	buffer_vector_test		();
 
@@ -187,6 +246,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	create_entity = (Factory_Create*)GetProcAddress(hFactory, "create_entity");	R_ASSERT(create_entity);
 	destroy_entity = (Factory_Destroy*)GetProcAddress(hFactory, "destroy_entity");	R_ASSERT(destroy_entity);
 
+	Msg("Command line: '%s'\n", lpCmdLine);
 	Startup					(lpCmdLine);
 
 	FreeLibrary				(hFactory);
