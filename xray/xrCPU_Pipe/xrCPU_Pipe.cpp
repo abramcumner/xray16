@@ -1,10 +1,12 @@
 #include "stdafx.h"
 #pragma hdrstop
 
+#ifndef XRCPU_PIPE_STATIC
 BOOL WINAPI DllMain ( HINSTANCE hinstDLL , DWORD fdwReason , LPVOID lpvReserved )
 {
 	return TRUE;
 }
+#endif
 
 extern xrSkin1W			xrSkin1W_x86;
 extern xrSkin2W			xrSkin2W_x86;
@@ -25,7 +27,7 @@ extern xrPLC_calc3		PLC_calc3_SSE;
 
 
 extern "C" {
-	__declspec(dllexport) void	__cdecl	xrBind_PSGP	( xrDispatchTable* T , DWORD dwFeatures )
+	TTAPI void	__cdecl	xrBind_PSGP	( xrDispatchTable* T , DWORD dwFeatures )
 	{
 		// generic
 		T->skin1W	= xrSkin1W_x86;

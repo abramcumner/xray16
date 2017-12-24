@@ -5,6 +5,22 @@
 #include "../xrRender/dxUIRender.h"
 #include "../xrRender/dxDebugRender.h"
 
+#ifdef XRRENDER_R4_STATIC
+void AttachR4()
+{
+	//	Can't call CreateDXGIFactory from DllMain
+	//if (!xrRender_test_hw())	return FALSE;
+	::Render = &RImplementation;
+	::RenderFactory = &RenderFactoryImpl;
+	::DU = &DUImpl;
+	//::vid_mode_token			= inited by HW;
+	UIRender = &UIRenderImpl;
+#ifdef DEBUG
+	DRender = &DebugRenderImpl;
+#endif	//	DEBUG
+	xrRender_initconsole();
+}
+#else
 BOOL APIENTRY DllMain( HANDLE hModule, 
                        DWORD  ul_reason_for_call, 
                        LPVOID lpReserved
@@ -32,7 +48,7 @@ BOOL APIENTRY DllMain( HANDLE hModule,
 	}
 	return TRUE;
 }
-
+#endif
 
 extern "C"
 {

@@ -2,13 +2,13 @@
 #define xrApi_included
 #pragma once
 
-#ifdef XRAPI_EXPORTS
-#define XRAPI_API __declspec(dllexport)
+#if defined XRAPI_STATIC
+#  define XRAPI_API
+#elif defined XRAPI_EXPORTS
+#  define XRAPI_API __declspec(dllexport)
 #else
-#define XRAPI_API __declspec(dllimport)
+#  define XRAPI_API __declspec(dllimport)
 #endif
-
-
 
 #ifndef _EDITOR
 class IRender_interface;

@@ -22,7 +22,7 @@
 #include "script_callback_ex.h"
 #include "script_game_object.h"
 
-ENGINE_API	bool	g_dedicated_server;
+extern ENGINE_API	bool	g_dedicated_server;
 
 CUIXml*				pWpnScopeXml = NULL;
 

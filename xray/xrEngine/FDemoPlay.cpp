@@ -184,6 +184,9 @@ void CDemoPlay::stat_Stop	()
 }
 
 #define FIX(a) while (a>=m_count) a-=m_count
+#if defined XRCORE_STATIC
+void spline1(float t, Fvector *p, Fvector *ret);
+#else
 void spline1( float t, Fvector *p, Fvector *ret )
 {
 	float     t2  = t * t;
@@ -205,6 +208,7 @@ void spline1( float t, Fvector *p, Fvector *ret )
 		ret->z += p[i].z * m[i];
 	}
 }
+#endif
 
 BOOL CDemoPlay::ProcessCam(SCamEffectorInfo& info)
 {

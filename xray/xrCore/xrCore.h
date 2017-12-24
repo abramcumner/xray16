@@ -94,10 +94,6 @@
     #endif
 #endif
 
-#ifdef XRCORE_STATIC
-#	define NO_FS_SCAN
-#endif
-
 #ifdef _EDITOR
 #	define NO_FS_SCAN
 #endif

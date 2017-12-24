@@ -4,10 +4,12 @@
 
 //#include "../include/xrapi/xrapi.h"
 
-#ifdef XRSOUND_EXPORTS
-	#define XRSOUND_API __declspec(dllexport)
+#if defined XRSOUND_STATIC
+#  define XRSOUND_API
+#elif defined XRSOUND_EXPORTS
+#  define XRSOUND_API __declspec(dllexport)
 #else
-	#define XRSOUND_API __declspec(dllimport)
+#  define XRSOUND_API __declspec(dllimport)
 #endif
 
 #ifdef __BORLANDC__

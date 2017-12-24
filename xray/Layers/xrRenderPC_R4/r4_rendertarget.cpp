@@ -262,7 +262,7 @@ void	generate_jitter	(DWORD*	dest, u32 elem_count)
 		*dest	= color_rgba(samples[2*it].x,samples[2*it].y,samples[2*it+1].y,samples[2*it+1].x);
 }
 
-#if _MSC_FULL_VER >= 191100000 && _MSC_FULL_VER <= 191225830
+#if _MSC_FULL_VER >= 191100000 && _MSC_FULL_VER <= 191225831
 // из-за строки: fs = powf(ls*1.01f, 128.f); возникает ICE
 // fatal error C1001 : An internal error has occurred in the compiler.
 // (compiler file 'f:\dd\vctools\compiler\utc\src\p2\main.c', line 256)

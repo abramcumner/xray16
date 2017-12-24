@@ -38,6 +38,12 @@ struct xrDispatchTable
 
 // Binder
 // NOTE: Engine calls function named "_xrBindPSGP"
+#ifdef XRCPU_PIPE_STATIC
+extern "C" {
+	void __cdecl xrBind_PSGP(xrDispatchTable* T, DWORD dwFeatures);
+};
+#else
 typedef void	__cdecl	xrBinder	(xrDispatchTable* T, u32 dwFeatures);
+#endif
 
 #endif

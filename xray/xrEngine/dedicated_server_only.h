@@ -4,9 +4,13 @@
 //#define DEDICATED_SERVER_ONLY
 
 #ifdef DEDICATED_SERVER_ONLY
-#	define PROTECT_API
+#  define PROTECT_API
 #else// #ifdef DEDICATED_SERVER_ONLY
-#	define PROTECT_API	__declspec(dllexport)
+#  if defined XRENGINE_STATIC
+#    define PROTECT_API
+#  else
+#    define PROTECT_API	__declspec(dllexport)
+#  endif
 #endif // #ifdef DEDICATED_SERVER_ONLY
 
 #ifdef	BENCHMARK_BUILD

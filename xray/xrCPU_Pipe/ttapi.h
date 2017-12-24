@@ -10,10 +10,12 @@
 typedef VOID (*PTTAPI_WORKER_FUNC)( LPVOID lpWorkerParameters );
 typedef PTTAPI_WORKER_FUNC LPPTTAPI_WORKER_FUNC;
 
-#ifdef XRCPU_PIPE_EXPORTS
-	#define TTAPI __declspec(dllexport)
+#if defined XRCPU_PIPE_STATIC
+#  define TTAPI
+#elif defined XRCPU_PIPE_EXPORTS
+#  define TTAPI __declspec(dllexport)
 #else // XRCPU_PIPE_EXPORTS
-	#define TTAPI __declspec(dllimport)
+#  define TTAPI __declspec(dllimport)
 #endif // XRCPU_PIPE_EXPORTS
 
 extern "C"  {

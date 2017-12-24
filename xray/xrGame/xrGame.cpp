@@ -32,6 +32,21 @@ extern "C" {
 
 void CCC_RegisterCommands	();
 
+#ifdef XRGAME_STATIC
+extern float g_fTimeFactor;
+void AttachGame()
+{
+	// register console commands
+	CCC_RegisterCommands();
+	// keyboard binding
+	CCC_RegisterInput();
+
+#ifdef DEBUG
+	g_profiler = xr_new<CProfiler>();
+#endif
+	g_fTimeFactor = pSettings->r_float("alife", "time_factor");
+}
+#else
 BOOL APIENTRY DllMain(HANDLE hModule, u32 ul_reason_for_call, LPVOID lpReserved)
 {
 	switch (ul_reason_for_call) {
@@ -53,3 +68,4 @@ BOOL APIENTRY DllMain(HANDLE hModule, u32 ul_reason_for_call, LPVOID lpReserved)
 	}
     return								(TRUE);
 }
+#endif

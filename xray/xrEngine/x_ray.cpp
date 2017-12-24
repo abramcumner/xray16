@@ -39,8 +39,8 @@ extern	int PASCAL IntroDSHOW_wnd	(HINSTANCE hInstC, HINSTANCE hInstP, LPSTR lpCm
 //int		max_load_stage = 0;
 
 // computing build id
-XRCORE_API	LPCSTR	build_date;
-XRCORE_API	u32		build_id;
+extern XRCORE_API LPCSTR build_date;
+extern XRCORE_API u32 build_id;
 
 #ifdef MASTER_GOLD
 #	define NO_MULTI_INSTANCES

@@ -27,17 +27,20 @@
 // you must define ENGINE_BUILD then building the engine itself
 // and not define it if you are about to build DLL
 #ifndef NO_ENGINE_API
-	#ifdef	ENGINE_BUILD
-		#define DLL_API			__declspec(dllimport)
-		#define ENGINE_API		__declspec(dllexport)
-	#else
-		#undef	DLL_API
-		#define DLL_API			__declspec(dllexport)
-		#define ENGINE_API		__declspec(dllimport)
-	#endif
+#  if defined XRENGINE_STATIC
+#    define ENGINE_API
+#    define DLL_API
+#  elif defined ENGINE_BUILD
+#    define DLL_API			__declspec(dllimport)
+#    define ENGINE_API		__declspec(dllexport)
+#  else
+#    undef	DLL_API
+#    define DLL_API			__declspec(dllexport)
+#    define ENGINE_API		__declspec(dllimport)
+#  endif
 #else
-	#define ENGINE_API
-	#define DLL_API
+#  define ENGINE_API
+#  define DLL_API
 #endif // NO_ENGINE_API
 
 #define ECORE_API

@@ -5,7 +5,7 @@
 
 #include "../../Include/xrRender/UIShader.h"
 
-CUIStatsIcon::TEX_INFO		CUIStatsIcon::m_tex_info[MAX_DEF_TEX][2];
+CUIStatsIcon::TEX_INFO**		CUIStatsIcon::m_tex_info = NULL;
 
 CUIStatsIcon::CUIStatsIcon(){
 	SetStretchTexture(true);
@@ -13,8 +13,13 @@ CUIStatsIcon::CUIStatsIcon(){
 }
 
 void CUIStatsIcon::InitTexInfo(){
-	if (m_tex_info[RANK_0][0].sh->inited())
+	if (m_tex_info != NULL && m_tex_info[RANK_0][0].sh->inited())
 		return;
+
+	m_tex_info = new TEX_INFO*[MAX_DEF_TEX];
+	for (int i = 0; i != MAX_DEF_TEX; i++)
+		m_tex_info[i] = new TEX_INFO[2];
+
 	// ranks
 	string128 rank_tex;	
 	for (int i = RANK_0; i <= RANK_4; i++)

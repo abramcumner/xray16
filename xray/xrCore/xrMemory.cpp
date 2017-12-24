@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #pragma hdrstop
 
+#pragma init_seg(lib)
+
 #include	"xrsharedmem.h"
 #include	"xrMemory_pure.h"
 
 #include	<malloc.h>
 
+MEMPOOL		mem_pools[mem_pools_count];
 xrMemory	Memory;
 BOOL		mem_initialized	= FALSE;
 bool		shared_str_initialized	= false;
@@ -19,6 +22,18 @@ extern		pso_MemCopy		xrMemCopy_x86;
 extern		pso_MemFill		xrMemFill_x86;
 extern		pso_MemFill32	xrMemFill32_MMX;
 extern		pso_MemFill32	xrMemFill32_x86;
+
+struct MemoryInitializer
+{
+	MemoryInitializer()
+	{
+		string512 params;
+		xr_strcpy(params, sizeof(params), GetCommandLine());
+		_strlwr_s(params, sizeof(params));
+		Memory._initialize(strstr(params, "-mem_debug") ? TRUE : FALSE);
+	}
+};
+MemoryInitializer memInit;
 
 #ifdef DEBUG_MEMORY_MANAGER
 XRCORE_API void dump_phase		()

@@ -44,7 +44,7 @@ extern MagicBox3 MagicMinBox (int iQuantity, const Fvector* akPoint);
 #	include "PHDebug.h"
 #endif
 
-ENGINE_API bool g_dedicated_server;
+extern ENGINE_API bool g_dedicated_server;
 
 CGameObject::CGameObject		()
 {

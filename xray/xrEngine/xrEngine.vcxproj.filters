@@ -148,9 +148,6 @@
     <Filter Include="RenderRef\Execution &amp; 3D\Visuals\Skeleton">
       <UniqueIdentifier>{f5cec935-65d5-4fa7-b31a-fc6f3986e556}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RenderRef\doug_lea_memory_allocator">
-      <UniqueIdentifier>{31ceec99-8e7b-43df-a2e6-c342a3e28cc1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="editor">
       <UniqueIdentifier>{5a6f1046-5d70-4deb-bc58-b44898ca24f0}</UniqueIdentifier>
     </Filter>
@@ -522,9 +519,6 @@
     <ClInclude Include="SkeletonMotions.h">
       <Filter>RenderRef\Execution &amp; 3D\Visuals\Skeleton</Filter>
     </ClInclude>
-    <ClInclude Include="doug_lea_memory_allocator.h">
-      <Filter>RenderRef\doug_lea_memory_allocator</Filter>
-    </ClInclude>
     <ClInclude Include="engine_impl.hpp">
       <Filter>editor\engine_impl</Filter>
     </ClInclude>
@@ -874,9 +868,6 @@
     </ClCompile>
     <ClCompile Include="SkeletonMotions.cpp">
       <Filter>RenderRef\Execution &amp; 3D\Visuals\Skeleton</Filter>
-    </ClCompile>
-    <ClCompile Include="doug_lea_memory_allocator.c">
-      <Filter>RenderRef\doug_lea_memory_allocator</Filter>
     </ClCompile>
     <ClCompile Include="engine_impl.cpp">
       <Filter>editor\engine_impl</Filter>

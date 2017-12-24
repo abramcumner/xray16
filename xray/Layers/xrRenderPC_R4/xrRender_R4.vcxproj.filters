@@ -1346,5 +1346,8 @@
     <ClCompile Include="..\xrRender\Debug\dxPixEventWrapper.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
+    <ClCompile Include="r4_globals.cpp">
+      <Filter>Kernel</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

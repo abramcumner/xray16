@@ -150,7 +150,7 @@ CUIOptConCom g_OptConCom;
 #endif // SEVERAL_ALLOCATORS
 
 typedef void (*full_memory_stats_callback_type) ( );
-XRCORE_API full_memory_stats_callback_type g_full_memory_stats_callback;
+extern XRCORE_API full_memory_stats_callback_type g_full_memory_stats_callback;
 
 static void full_memory_stats	( )
 {

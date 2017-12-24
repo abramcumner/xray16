@@ -104,7 +104,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>XRGAME_EXPORTS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_LIB;WIN32;DEBUG;_WINDOWS;XRGAME_EXPORTS;XRENGINE_STATIC;XRCORE_STATIC;XRAPI_STATIC;XRCDB_STATIC;XRSOUND_STATIC;XRNETSERVER_STATIC;XRCPU_PIPE_STATIC;XRRENDER_R4_STATIC;XRGAME_STATIC;XRPHYSICS_STATIC;XRXMLPARSER_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4251;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
     </ClCompile>
@@ -137,7 +137,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>XRGAME_EXPORTS;NDEBUG;_LIB;_WINDOWS;dSINGLE;MSVC;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>XRGAME_EXPORTS;NDEBUG;_LIB;_WINDOWS;dSINGLE;MSVC;_SECURE_SCL=0;XRENGINE_STATIC;XRCORE_STATIC;XRAPI_STATIC;XRCDB_STATIC;XRSOUND_STATIC;XRNETSERVER_STATIC;XRCPU_PIPE_STATIC;XRRENDER_R4_STATIC;XRGAME_STATIC;XRPHYSICS_STATIC;XRXMLPARSER_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling />
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>

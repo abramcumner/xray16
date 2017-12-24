@@ -233,7 +233,7 @@ void CParticlesPlayer::AutoStopParticles(const shared_str& ps_name, u16 bone_id,
 }
 struct SRP
 {
-	bool operator	() (CParticlesPlayer::SParticlesInfo& pi)
+	bool operator	() (const CParticlesPlayer::SParticlesInfo& pi) const
 	{
 		return ! pi.ps;
 	}
@@ -275,11 +275,10 @@ void CParticlesPlayer::UpdateParticles()
 				m_bActiveBones  = true;
 		}
 
-		ParticlesInfoListIt RI=std::remove_if(b_info.particles.begin(),b_info.particles.end(),SRP());
+		ParticlesInfoListIt RI = std::remove_if(b_info.particles.begin(), b_info.particles.end(), [](const CParticlesPlayer::SParticlesInfo& pi) { return !pi.ps; });
 		b_info.particles.erase(RI,b_info.particles.end());
 	}
 }
-
 
 void CParticlesPlayer::GetBonePos	(CObject* pObject, u16 bone_id, const Fvector& offset, Fvector& result)
 {

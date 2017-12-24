@@ -74,7 +74,7 @@ int CObjectSpace::GetNearest		( xr_vector<ISpatial*>& q_spatial, xr_vector<CObje
 }
 
 //----------------------------------------------------------------------
-IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector &point, float range, CObject* ignore_object )
+int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector &point, float range, CObject* ignore_object )
 {
 	return							(
 		GetNearest(
@@ -88,7 +88,7 @@ IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector 
 }
 
 //----------------------------------------------------------------------
-IC int   CObjectSpace::GetNearest( xr_vector<CObject*>&	q_nearest, ICollisionForm* obj, float range)
+int   CObjectSpace::GetNearest( xr_vector<CObject*>&	q_nearest, ICollisionForm* obj, float range)
 {
 	CObject*	O		= obj->Owner	();
 	return				GetNearest( q_nearest, O->spatial.sphere.P, range + O->spatial.sphere.R, O );

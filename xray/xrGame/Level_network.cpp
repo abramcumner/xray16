@@ -21,7 +21,7 @@
 #include "../xrNetServer/NET_AuthCheck.h"
 
 #include "../xrphysics/physicscommon.h"
-ENGINE_API bool g_dedicated_server;
+extern ENGINE_API bool g_dedicated_server;
 
 const int max_objects_size			= 2*1024;
 const int max_objects_size_in_save	= 8*1024;

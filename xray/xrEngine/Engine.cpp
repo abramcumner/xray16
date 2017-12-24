@@ -28,10 +28,14 @@ extern	void msCreate		(LPCSTR name);
 PROTECT_API void CEngine::Initialize	(void)
 {
 	// Bind PSGP
+#ifdef XRCPU_PIPE_STATIC
+	xrBind_PSGP(&PSGP, CPU::ID.feature);
+#else
 	hPSGP		= LoadLibrary("xrCPU_Pipe.dll");
 	R_ASSERT	(hPSGP);
 	xrBinder*	bindCPU	= (xrBinder*)	GetProcAddress(hPSGP,"xrBind_PSGP");	R_ASSERT(bindCPU);
 	bindCPU		(&PSGP, CPU::ID.feature);
+#endif
 
 	// Other stuff
 	Engine.Sheduler.Initialize			( );

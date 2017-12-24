@@ -115,11 +115,26 @@ void CEngineAPI::InitializeNotDedicated()
 }
 #endif // DEDICATED_SERVER
 
+#ifdef XRGAME_STATIC
+extern "C" {
+	DLL_Pure* xrFactory_Create(CLASS_ID clsid);
+	void xrFactory_Destroy(DLL_Pure* O);
+}
+#endif
 
 void CEngineAPI::Initialize(void)
 {
 	//////////////////////////////////////////////////////////////////////////
 	// render
+#ifdef XRRENDER_R4_STATIC
+	void AttachR4();
+	AttachR4();
+
+	psDeviceFlags.set(rsR2, FALSE);
+	psDeviceFlags.set(rsR3, FALSE);
+	psDeviceFlags.set(rsR4, TRUE);
+	g_current_renderer = 4;
+#else
 	LPCSTR			r1_name	= "xrRender_R1.dll";
 
 	#ifndef DEDICATED_SERVER
@@ -140,10 +155,17 @@ void CEngineAPI::Initialize(void)
 		R_ASSERT		(hRender);
 		g_current_renderer	= 1;
 	}
+#endif
 
 	Device.ConnectToRender();
 
-	// game	
+	// game
+#ifdef XRGAME_STATIC
+	pCreate = &xrFactory_Create;
+	pDestroy = &xrFactory_Destroy;
+	void AttachGame();
+	AttachGame();
+#else
 	{
 		LPCSTR			g_name	= "xrGame.dll";
 		Log				("Loading DLL:",g_name);
@@ -153,6 +175,7 @@ void CEngineAPI::Initialize(void)
 		pCreate			= (Factory_Create*)		GetProcAddress(hGame,"xrFactory_Create"		);	R_ASSERT(pCreate);
 		pDestroy		= (Factory_Destroy*)	GetProcAddress(hGame,"xrFactory_Destroy"	);	R_ASSERT(pDestroy);
 	}
+#endif
 
 	//////////////////////////////////////////////////////////////////////////
 	// vTune

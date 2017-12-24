@@ -1,8 +1,10 @@
 #pragma once
-#ifdef XR_NETSERVER_EXPORTS
-	#define XRNETSERVER_API __declspec(dllexport)
+#if defined XRNETSERVER_STATIC
+#  define XRNETSERVER_API
+#elif defined XR_NETSERVER_EXPORTS
+#  define XRNETSERVER_API __declspec(dllexport)
 #else
-	#define XRNETSERVER_API __declspec(dllimport)
+#  define XRNETSERVER_API __declspec(dllimport)
 #endif
 
 #include "../xrCore/net_utils.h"

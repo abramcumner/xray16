@@ -23,7 +23,7 @@
 #include "../xrEngine/igame_persistent.h"
 #include "autosave_manager.h"
 
-XRCORE_API string_path g_bug_report_file;
+extern XRCORE_API string_path g_bug_report_file;
 
 using namespace ALife;
 

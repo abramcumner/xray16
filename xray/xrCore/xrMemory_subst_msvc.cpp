@@ -18,7 +18,7 @@
 	extern void save_stack_trace	();
 #endif // DEBUG_MEMORY_MANAGER
 
-MEMPOOL		mem_pools			[mem_pools_count];
+extern MEMPOOL mem_pools[mem_pools_count];
 
 // MSVC
 ICF	u8*		acc_header			(void* P)	{	u8*		_P		= (u8*)P;	return	_P-1;	}
@@ -47,11 +47,11 @@ void*	xrMemory::mem_alloc		(size_t size
 	if (!g_use_pure_alloc_initialized) {
 		g_use_pure_alloc_initialized	= true;
 		g_use_pure_alloc				= 
-#	ifdef XRCORE_STATIC
+#	ifdef XRCORE_STATIC_OLD
 			true
-#	else // XRCORE_STATIC
+#	else // XRCORE_STATIC_OLD
 			!!strstr(GetCommandLine(),"-pure_alloc")
-#	endif // XRCORE_STATIC
+#	endif // XRCORE_STATIC_OLD
 			;
 	}
 

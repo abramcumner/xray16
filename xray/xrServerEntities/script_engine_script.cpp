@@ -13,7 +13,7 @@
 
 using namespace luabind;
 
-void LuaLog(LPCSTR caMessage)
+static void LuaLog(LPCSTR caMessage)
 {
 #ifndef MASTER_GOLD
 	ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeMessage,"%s",caMessage);

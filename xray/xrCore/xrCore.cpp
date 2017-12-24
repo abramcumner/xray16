@@ -32,7 +32,9 @@ void xrCore::_initialize	(LPCSTR _ApplicationName, LogCallback cb, BOOL init_fs,
 	if (0==init_counter) {
 #ifdef XRCORE_STATIC	
 		_clear87	();
+#ifndef _WIN64
 		_control87	( _PC_53,   MCW_PC );
+#endif
 		_control87	( _RC_CHOP, MCW_RC );
 		_control87	( _RC_NEAR, MCW_RC );
 		_control87	( _MCW_EM,  MCW_EM );
@@ -77,8 +79,6 @@ void xrCore::_initialize	(LPCSTR _ApplicationName, LogCallback cb, BOOL init_fs,
 		// Mathematics & PSI detection
 		CPU::Detect			();
 		
-		Memory._initialize	(strstr(Params,"-mem_debug") ? TRUE : FALSE);
-
 		DUMP_PHASE;
 
 		InitLog				();

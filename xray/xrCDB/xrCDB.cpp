@@ -19,6 +19,7 @@ namespace Opcode {
 using namespace CDB;
 using namespace Opcode;
 
+#ifndef XRCDB_STATIC
 BOOL APIENTRY DllMain( HANDLE hModule, 
 					  u32  ul_reason_for_call, 
 					  LPVOID lpReserved
@@ -34,6 +35,7 @@ BOOL APIENTRY DllMain( HANDLE hModule,
     }
     return TRUE;
 }
+#endif
 
 // Model building
 MODEL::MODEL	()
