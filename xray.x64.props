@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_64_0);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_66_0);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDK\libraries\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
@@ -11,6 +11,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <DisableSpecificWarnings>4456;4457;4458;4459;4577;4595</DisableSpecificWarnings>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

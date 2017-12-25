@@ -58,8 +58,8 @@ namespace luabind {
 
     struct LUABIND_API scope
     {
-        scope();
-        explicit scope(std::auto_ptr<detail::registration> reg);
+        scope() noexcept;
+        explicit scope(detail::registration* reg) noexcept;
         scope(scope const& other_);
         ~scope();
 

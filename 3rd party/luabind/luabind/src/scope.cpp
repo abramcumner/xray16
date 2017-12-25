@@ -42,13 +42,13 @@ namespace luabind { namespace detail {
 
     } // namespace detail
 
-    scope::scope()
+    scope::scope() noexcept
         : m_chain(0)
     {
     }
 
-    scope::scope(std::auto_ptr<detail::registration> reg)
-        : m_chain(reg.release())
+    scope::scope(detail::registration* reg) noexcept
+        : m_chain(reg)
     {
     }
 
@@ -197,8 +197,7 @@ namespace luabind {
     };
 
     namespace_::namespace_(char const* name)
-        : scope(std::auto_ptr<detail::registration>(
-              m_registration = new registration_(name)))
+        : scope(m_registration = new registration_(name))
     {
     }
 
