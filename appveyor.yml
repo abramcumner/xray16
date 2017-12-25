@@ -1,4 +1,4 @@
-version: 1.7.0.3-{build}
+version: 1.7.05-{build}
 image: Visual Studio 2017
 configuration: Release
 platform:
@@ -6,8 +6,7 @@ platform:
 - x64
 shallow_clone: true
 environment:
-  DXSDK: '%DXSDK_DIR%'
-  BOOST_1_64_0: 'C:\Libraries\boost_1_64_0'
+  BOOST_1_66_0: 'C:\Libraries\boost_1_65_1'
 before_build:
 - cmd: >-
     echo %PLATFORM%
