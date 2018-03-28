@@ -261,30 +261,6 @@ void	generate_jitter	(DWORD*	dest, u32 elem_count)
 		*dest	= color_rgba(samples[2*it].x,samples[2*it].y,samples[2*it+1].y,samples[2*it+1].x);
 }
 
-#if _MSC_FULL_VER >= 191100000 && _MSC_FULL_VER <= 191225830
-// из-за строки: fs = powf(ls*1.01f, 128.f); возникает ICE
-// fatal error C1001 : An internal error has occurred in the compiler.
-// (compiler file 'f:\dd\vctools\compiler\utc\src\p2\main.c', line 256)
-// 15.5.1 - ошибка так и не исправлена
-// для исправления отключаю оптимизацию
-#define POW_128_BUG
-#elif _MSC_VER == 1911 || _MSC_VER == 1912
-#define stringize(s) _stringize(s)
-#define _stringize(s) #s
-#pragma message("_MSC_FULL_VER=" stringize(_MSC_FULL_VER))
-#undef _stringize
-#undef stringize
-#endif
-
-#ifdef POW_128_BUG
-#pragma optimize("", off)
-float pow128(float arg)
-{
-	return powf(arg, 128.f);
-}
-#pragma optimize("", on)
-#endif
-
 CRenderTarget::CRenderTarget		()
 {
    u32 SampleCount = 1;
@@ -778,11 +754,7 @@ CRenderTarget::CRenderTarget		()
 								}	break;
 						case 2:	{ // looks like Phong
 							fd	= ld;					// 1.0
-#ifdef POW_128_BUG
-							fs = pow128(ls*1.01f);
-#else
 							fs = powf(ls*1.01f, 128.f);
-#endif
 								}	break;
 						case 3:	{ // looks like Metal
 							float	s0	=	_abs	(1-_abs	(0.05f*_sin(33.f*ld)+ld-ls));
