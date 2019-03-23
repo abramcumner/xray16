@@ -111,7 +111,7 @@ virtual	void	write_vertices		( IWriter	&w )const;
 	{
 		return (v[0]==v[1] || v[0]==v[2] || v[1]==v[2]);
 	};
-	IC float	EdgeLen			(int edge)
+	IC float	EdgeLen			(int edge) const
 	{
 		type_vertex* V1 = v[edge2idx[edge][0]];
 		type_vertex* V2 = v[edge2idx[edge][1]];
@@ -191,12 +191,10 @@ virtual	void	write_vertices		( IWriter	&w )const;
 
 	float CalcArea() const
 	{
-		float	e1 = v[0]->P.distance_to(v[1]->P);
-		float	e2 = v[0]->P.distance_to(v[2]->P);
-		float	e3 = v[1]->P.distance_to(v[2]->P);
-
-		float	p  = (e1+e2+e3)/2.f;
-		return	_sqrt( p*(p-e1)*(p-e2)*(p-e3) );
+		auto e1 = Fvector().sub(v[0]->P, v[1]->P);
+		auto e2 = Fvector().sub(v[0]->P, v[2]->P);
+		float area = Fvector().crossproduct(e1, e2).magnitude() / 2;
+		return area;
 	}
 	float CalcMaxEdge()
 	{
