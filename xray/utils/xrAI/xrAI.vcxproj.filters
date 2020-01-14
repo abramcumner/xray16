@@ -355,12 +355,6 @@
     <ClCompile Include="..\..\xrServerEntities\PHSynchronize.cpp">
       <Filter>ALife\Shared\Server</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\xrServerEntities\smart_cast.cpp">
-      <Filter>ALife\Shared\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\xrServerEntities\smart_cast_stats.cpp">
-      <Filter>ALife\Shared\Common</Filter>
-    </ClCompile>
     <ClCompile Include="buffer_vector.cpp">
       <Filter>ALife\Shared\buffer_vector</Filter>
     </ClCompile>
@@ -835,15 +829,6 @@
       <Filter>ALife\Shared\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\xrServerEntities\smart_cast.h">
-      <Filter>ALife\Shared\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\xrServerEntities\smart_cast_impl0.h">
-      <Filter>ALife\Shared\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\xrServerEntities\smart_cast_impl1.h">
-      <Filter>ALife\Shared\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\xrServerEntities\smart_cast_impl2.h">
       <Filter>ALife\Shared\Common</Filter>
     </ClInclude>
     <ClInclude Include="profiler.h">

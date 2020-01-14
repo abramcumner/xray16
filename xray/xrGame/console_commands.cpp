@@ -64,10 +64,6 @@ string_path		g_last_saved_game;
 	extern float air_resistance_epsilon;
 #endif // #ifdef DEBUG
 
-extern void show_smart_cast_stats		();
-extern void clear_smart_cast_stats		();
-extern void release_smart_cast_stats	();
-
 extern	u64		g_qwStartGameTime;
 extern	u64		g_qwEStartGameTime;
 
@@ -1151,21 +1147,6 @@ struct CCC_LuaHelp : public IConsole_Command {
 	}
 };
 
-struct CCC_ShowSmartCastStats : public IConsole_Command {
-	CCC_ShowSmartCastStats(LPCSTR N) : IConsole_Command(N)  { bEmptyArgsHandled = true; };
-
-	virtual void Execute(LPCSTR args) {
-		show_smart_cast_stats();
-	}
-};
-
-struct CCC_ClearSmartCastStats : public IConsole_Command {
-	CCC_ClearSmartCastStats(LPCSTR N) : IConsole_Command(N)  { bEmptyArgsHandled = true; };
-
-	virtual void Execute(LPCSTR args) {
-		clear_smart_cast_stats();
-	}
-};
 /*
 struct CCC_NoClip : public CCC_Mask 
 {
@@ -1991,8 +1972,6 @@ CMD4(CCC_Integer,			"hit_anims_tune",						&tune_hit_anims,		0, 1);
 	
 #ifdef DEBUG
 	CMD1(CCC_LuaHelp,				"lua_help");
-	CMD1(CCC_ShowSmartCastStats,	"show_smart_cast_stats");
-	CMD1(CCC_ClearSmartCastStats,	"clear_smart_cast_stats");
 
 	CMD3(CCC_Mask,		"dbg_draw_actor_alive",		&dbg_net_Draw_Flags,	dbg_draw_actor_alive);
 	CMD3(CCC_Mask,		"dbg_draw_actor_dead",		&dbg_net_Draw_Flags,	dbg_draw_actor_dead );

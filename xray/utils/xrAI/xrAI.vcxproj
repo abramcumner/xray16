@@ -140,7 +140,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories);$(SolutionDir)3rd party/imdexlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;AI_COMPILER;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -174,7 +174,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories);$(SolutionDir)3rd party/imdexlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;AI_COMPILER;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -216,7 +216,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories);$(SolutionDir)3rd party/imdexlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;AI_COMPILER;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -260,7 +260,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/;%(AdditionalIncludeDirectories);$(SolutionDir)3rd party/imdexlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;AI_COMPILER;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>
@@ -307,7 +307,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/stlport;../../../sdk/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/stlport;../../../sdk/include/;%(AdditionalIncludeDirectories);$(SolutionDir)3rd party/imdexlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;DEBUG;_WINDOWS;AI_COMPILER;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -362,7 +362,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/stlport;../../../sdk/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../../xrServerEntities/;../../../sdk/include/stlport;../../../sdk/include/;%(AdditionalIncludeDirectories);$(SolutionDir)3rd party/imdexlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;DEBUG;_WINDOWS;AI_COMPILER;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -411,8 +411,6 @@
     <ClCompile Include="..\..\xrServerEntities\alife_space.cpp" />
     <ClCompile Include="..\..\xrServerEntities\PHNetState.cpp" />
     <ClCompile Include="..\..\xrServerEntities\PHSynchronize.cpp" />
-    <ClCompile Include="..\..\xrServerEntities\smart_cast.cpp" />
-    <ClCompile Include="..\..\xrServerEntities\smart_cast_stats.cpp" />
     <ClCompile Include="..\..\xrServerEntities\xrServer_Objects.cpp" />
     <ClCompile Include="..\..\xrServerEntities\xrServer_Objects_Abstract.cpp" />
     <ClCompile Include="..\..\xrServerEntities\xrServer_Objects_ALife.cpp" />
@@ -548,9 +546,6 @@
     <ClInclude Include="..\..\xrServerEntities\script_value_container_impl.h" />
     <ClInclude Include="..\..\xrServerEntities\ShapeData.h" />
     <ClInclude Include="..\..\xrServerEntities\smart_cast.h" />
-    <ClInclude Include="..\..\xrServerEntities\smart_cast_impl0.h" />
-    <ClInclude Include="..\..\xrServerEntities\smart_cast_impl1.h" />
-    <ClInclude Include="..\..\xrServerEntities\smart_cast_impl2.h" />
     <ClInclude Include="..\..\xrServerEntities\WaveForm.h" />
     <ClInclude Include="..\..\xrServerEntities\xrEProps.h" />
     <ClInclude Include="..\..\xrServerEntities\xrMessages.h" />
