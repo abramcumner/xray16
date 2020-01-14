@@ -385,7 +385,7 @@ void SetupExceptionHandler	(const bool &dedicated)
 	BT_SetDialogMessage				(
 		BTDM_INTRO2,
 		"\
-This is X-Ray Engine v1.6 crash reporting client. \
+This is X-Ray Engine v1.7 crash reporting client. \
 To help the development process, \
 please Submit Bug or save report and email it manually (button More...).\
 \r\nMany thanks in advance and sorry for the inconvenience."
@@ -442,9 +442,6 @@ please Submit Bug or save report and email it manually (button More...).\
 #endif // #ifndef MASTER_GOLD
 
 	BT_SetDumpType			(minidump_flags);
-	BT_SetSupportEMail		("cop-crash-report@stalker-game.com");
-//	BT_SetSupportServer		("localhost", 9999);
-//	BT_SetSupportURL		("www.gsc-game.com");
 }
 #endif // USE_BUG_TRAP
 
