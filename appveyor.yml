@@ -3,7 +3,6 @@ configuration: Release
 platform:
 - Win32
 - x64
-shallow_clone: true
 environment:
   DXSDK: '%DXSDK_DIR%'
   BOOST_1_71_0: 'C:\Libraries\boost_1_71_0'
