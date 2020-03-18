@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{89F6A7EE-3BBE-45D3-A8A8-5D9366CD987B}"
 EndProject
@@ -157,6 +157,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xrGames", "xrGames", "{803A028D-8FEF-490B-812F-9AF988E81869}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrGame.UI", "xray\xrGame.UI\xrGame.UI.vcxproj", "{59883632-72D5-4530-8F98-56E77EAAC2D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{922B2CDE-8E36-4CD3-A980-CF5AF9952DE2}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -3752,6 +3757,9 @@ Global
 		{7A19CBB1-FF90-44BD-9112-C2A269D9C280} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 		{CC52E0B3-CC35-4934-9302-035B748F3F2C} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 		{59883632-72D5-4530-8F98-56E77EAAC2D1} = {803A028D-8FEF-490B-812F-9AF988E81869}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBD480E3-0E0C-45AB-9F74-863A561F1A1A}
 	EndGlobalSection
 	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}

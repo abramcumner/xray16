@@ -3,10 +3,10 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_64_0);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_71_0);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDK\libraries\x64;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)intermediate\$(PlatformToolset)-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(PlatformToolset)-$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
