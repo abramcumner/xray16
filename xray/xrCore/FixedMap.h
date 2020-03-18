@@ -31,8 +31,11 @@ private:
 		TNode*	newNodes = (TNode*)allocator::alloc(sizeof(TNode)*newLimit);
 		VERIFY(newNodes);
 
+		ZeroMemory(newNodes, Size(newLimit));
+#ifndef _DEBUG
+		if (limit) CopyMemory(newNodes, nodes, Size(limit));
+#else
 		if (std::is_pod<T>::value) {
-			ZeroMemory(newNodes, Size(newLimit));
 			if (limit) CopyMemory(newNodes, nodes, Size(limit));
 		}
 		else {
@@ -40,6 +43,7 @@ private:
 			for (TNode* i = newNodes + limit; i != newNodes + newLimit; ++i)
 				new (i) TNode();
 		}
+#endif
 
 		for (u32 I=0; I<pool; I++)
 		{
