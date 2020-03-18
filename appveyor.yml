@@ -1,5 +1,4 @@
-version: 1.7.0.3-{build}
-image: Visual Studio 2017
+image: Visual Studio 2019
 configuration: Release
 platform:
 - Win32
@@ -7,14 +6,22 @@ platform:
 shallow_clone: true
 environment:
   DXSDK: '%DXSDK_DIR%'
-  BOOST_1_64_0: 'C:\Libraries\boost_1_64_0'
+  BOOST_1_71_0: 'C:\Libraries\boost_1_71_0'
 before_build:
 - cmd: >-
+    for /f "tokens=1-3 delims=-" %%i in ('git describe --always --tags') do (set GIT_LAST_TAG=%%i&set GIT_COMMIT_HASH=%%k)
+
+    for /f %%i in ('git rev-list --count HEAD') do set GIT_COMMITS_COUNT=%%i
+
+    set CI_VERSION=%GIT_LAST_TAG%.%GIT_COMMITS_COUNT%-%GIT_COMMIT_HASH%
+
+    echo %CI_VERSION%
+
     echo %PLATFORM%
 
     echo %CONFIGURATION%
 
-    echo cop_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.7z
+    echo cop_%GIT_LAST_TAG%_%PLATFORM%.7z
 build:
   project: ./engine.sln
   verbosity: minimal
@@ -42,6 +49,8 @@ after_build:
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\*.dll dist\engine\bin_%COR_PLAT%\
 
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\*.pdb dist\engine\bin_%COR_PLAT%\
+
     copy SDK\binaries\%COR_PLAT%\lua51.dll dist\engine\bin_%COR_PLAT%\
 
     md dist\engine\bin_%COR_PLAT%\lua\jit
@@ -54,17 +63,7 @@ after_build:
 
     copy gamedata\scripts\* dist\engine\gamedata\scripts\
 
-    7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z dist\engine\*
-
-    echo appveyor PushArtifact cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
-
-    rem echo ===================== engine pdb files =====================
-
-    rem md dist\engine_pdb_%COR_PLAT%
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\*.pdb dist\engine_pdb_%COR_PLAT%\
-
-    rem 7z a cop_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\engine_pdb_%COR_PLAT%\*
+    7z a cop_%GIT_LAST_TAG%_%COR_PLAT%.7z dist\engine\*
 
     echo ===================== sdk files =====================
 
@@ -84,48 +83,36 @@ after_build:
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.dll dist\sdk_%COR_PLAT%\
 
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.pdb dist\sdk_%COR_PLAT%\
+
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.dll dist\sdk_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.pdb dist\sdk_%COR_PLAT%\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.dll dist\sdk_%COR_PLAT%\
 
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.pdb dist\sdk_%COR_PLAT%\
+
     copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.dll dist\sdk_%COR_PLAT%\
 
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.pdb dist\sdk_%COR_PLAT%\
+
     copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.dll dist\sdk_%COR_PLAT%\
+
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.pdb dist\sdk_%COR_PLAT%\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.exe dist\sdk_%COR_PLAT%\
 
     copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.dll dist\sdk_%COR_PLAT%\
 
-    7z a cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z dist\sdk_%COR_PLAT%\*
+    copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.pdb dist\sdk_%COR_PLAT%\
 
-    echo appveyor PushArtifact cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%.7z release
-
-    rem echo ===================== sdk pdb files =====================
-
-    rem md dist\sdk_pdb_%COR_PLAT%
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.pdb dist\sdk_pdb_%COR_PLAT%\
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.pdb dist\sdk_pdb_%COR_PLAT%\
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.pdb dist\sdk_pdb_%COR_PLAT%\
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.pdb dist\sdk_pdb_%COR_PLAT%\
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.pdb dist\sdk_pdb_%COR_PLAT%\
-
-    rem copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.pdb dist\sdk_pdb_%COR_PLAT%\
-
-    rem 7z a cop_compilers_%APPVEYOR_REPO_TAG_NAME%_%COR_PLAT%_pdb.7z dist\sdk_pdb_%COR_PLAT%\*
+    7z a cop_compilers_%GIT_LAST_TAG%_%COR_PLAT%.7z dist\sdk_%COR_PLAT%\*
 artifacts:
-- path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat).7z
+- path: .\cop_$(git_last_tag)_$(cor_plat).7z
   name: release
-- path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat).7z
+- path: .\cop_compilers_$(git_last_tag)_$(cor_plat).7z
   name: release
-#- path: .\cop_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
-#  name: release
-#- path: .\cop_compilers_$(appveyor_repo_tag_name)_$(cor_plat)_pdb.7z
-#  name: release
 deploy:
 - provider: GitHub
   auth_token:
