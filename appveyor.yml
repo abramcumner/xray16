@@ -8,6 +8,8 @@ environment:
   BOOST_1_71_0: 'C:\Libraries\boost_1_71_0'
 before_build:
 - cmd: >-
+    set CI=1
+
     for /f "tokens=1-3 delims=-" %%i in ('git describe --always --tags') do (set GIT_LAST_TAG=%%i&set GIT_COMMIT_HASH=%%k)
 
     for /f %%i in ('git rev-list --count HEAD') do set GIT_COMMITS_COUNT=%%i
@@ -63,54 +65,8 @@ after_build:
     copy gamedata\scripts\* dist\engine\gamedata\scripts\
 
     7z a cop_%GIT_LAST_TAG%_%COR_PLAT%.7z dist\engine\*
-
-    echo ===================== sdk files =====================
-
-    md dist\sdk_%COR_PLAT%
-
-    copy SDK\binaries\%COR_PLAT%\MagicFM.dll dist\sdk_%COR_PLAT%\
-
-    copy SDK\binaries\%COR_PLAT%\nvtt.dll dist\sdk_%COR_PLAT%\
-
-    copy SDK\binaries\%COR_PLAT%\%BUGTRAP% dist\sdk_%COR_PLAT%\
-
-    copy SDK\binaries\%COR_PLAT%\lua51.dll dist\sdk_%COR_PLAT%\
-
-    md dist\sdk_%COR_PLAT%\lua\jit
-
-    copy SDK\binaries\%COR_PLAT%\lua\jit\* dist\sdk_%COR_PLAT%\lua\jit\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCore.pdb dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrCDB.pdb dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrAPI.pdb dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\xrXMLParser.pdb dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\luabind.0.9.pdb dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.exe dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.dll dist\sdk_%COR_PLAT%\
-
-    copy intermediate\%PLATFORM%-%CONFIGURATION%\SDK\*.pdb dist\sdk_%COR_PLAT%\
-
-    7z a cop_compilers_%GIT_LAST_TAG%_%COR_PLAT%.7z dist\sdk_%COR_PLAT%\*
 artifacts:
 - path: .\cop_$(git_last_tag)_$(cor_plat).7z
-  name: release
-- path: .\cop_compilers_$(git_last_tag)_$(cor_plat).7z
   name: release
 deploy:
 - provider: GitHub
