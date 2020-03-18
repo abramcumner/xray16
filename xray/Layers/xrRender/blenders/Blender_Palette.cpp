@@ -2,6 +2,7 @@
 #pragma hdrstop
 
 #include "Blender.h"
+#include <typeinfo>
 
 //////////////////////////////////////////////////////////////////////
 #include "blender_clsid.h"
