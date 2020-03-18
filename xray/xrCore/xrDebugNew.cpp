@@ -132,7 +132,7 @@ void xrDebug::gather_info		(const char *expression, const char *description, con
 
 	if (!IsDebuggerPresent() && !strstr(GetCommandLine(),"-no_call_stack_assert")) {
 		if (shared_str_initialized)
-			Msg			("stack trace:\n");
+			Msg			("stack trace:");
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 		buffer			+= xr_sprintf(buffer,assertion_size - u32(buffer - buffer_base),"stack trace:%s%s",endline,endline);
@@ -163,6 +163,7 @@ void xrDebug::do_exit	(const std::string &message)
 	TerminateProcess	(GetCurrentProcess(),1);
 }
 
+char assertion_info[16384];
 void xrDebug::backend	(const char *expression, const char *description, const char *argument0, const char *argument1, const char *file, int line, const char *function, bool &ignore_always)
 {
 	static xrCriticalSection CS
@@ -174,8 +175,6 @@ void xrDebug::backend	(const char *expression, const char *description, const ch
 	CS.Enter			();
 
 	error_after_dialog	= true;
-
-	string4096			assertion_info;
 
 	gather_info			(expression, description, argument0, argument1, file, line, function, assertion_info, sizeof(assertion_info) );
 
@@ -199,9 +198,12 @@ void xrDebug::backend	(const char *expression, const char *description, const ch
 	MessageBox			(NULL,assertion_info,"X-Ray error",MB_OK|MB_ICONERROR|MB_SYSTEMMODAL);
 #else
 #	ifdef USE_OWN_ERROR_MESSAGE_WINDOW
+		HWND wnd = GetActiveWindow();
+		ShowWindow(wnd, SW_MINIMIZE);
+		while (ShowCursor(TRUE) < 0);
 		int					result = 
 			MessageBox(
-				GetTopWindow(NULL),
+				wnd,
 				assertion_info,
 				"Fatal Error",
 				MB_CANCELTRYCONTINUE|MB_ICONERROR|MB_SYSTEMMODAL
@@ -228,6 +230,7 @@ void xrDebug::backend	(const char *expression, const char *description, const ch
 				Msg("! xrDebug::backend MessageBox error[%d] GetLastError=[%lu]", result, GetLastError());
 			}
 		}
+		ShowCursor(FALSE);
 #	else // USE_OWN_ERROR_MESSAGE_WINDOW
 #		ifdef USE_BUG_TRAP
 			BT_SetUserMessage	(assertion_info);
