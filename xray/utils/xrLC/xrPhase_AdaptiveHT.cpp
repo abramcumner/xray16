@@ -163,7 +163,7 @@ void CBuild::xrPhase_AdaptiveHT	()
 	DB.ray_options	(0);
 
 	Status			("Tesselating...");
-	if (1)
+	if (!lc_global_data()->skipAhtTesselate())
 	{
 		for (u32 fit=0; fit<lc_global_data()->g_faces().size(); fit++)	{		// clear split flag from all faces + calculate normals
 			lc_global_data()->g_faces()[fit]->flags.bSplitted		= false;

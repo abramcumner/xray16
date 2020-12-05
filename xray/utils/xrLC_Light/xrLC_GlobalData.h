@@ -56,6 +56,7 @@ class	XRLC_LIGHT_API xrLC_GlobalData
 		bool							m_SkipInvalid; ///< Продолжить работу при обнаружении инвалид-фейсов
 		bool							m_LmapRgba; ///< Не использовать сжатие DXT при сохранении лайтмапов
 		u32								m_NumThread; ///< Количество потоков на стадии LightImplicit
+		bool							m_skipAhtTesselate;
 
 private:
 		bool							b_vert_not_register;
@@ -114,6 +115,8 @@ public:
 		void						setLmapRgba(bool v) { m_LmapRgba = v; }
 		u32							numThread() { return m_NumThread; }
 		void						setNumThread(u32 v) { m_NumThread = v; }
+		bool						skipAhtTesselate() { return m_skipAhtTesselate; }
+		void						setSkipAhtTesselate(bool v) { m_skipAhtTesselate = v; } 
 
 		void						initialize		()		;
 		void						destroy_rcmodel	()		;
