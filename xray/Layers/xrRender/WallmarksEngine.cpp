@@ -105,6 +105,7 @@ void		CWallmarksEngine::static_wm_render		(CWallmarksEngine::static_wallmark*	W,
 		V->p.set		(el.p);
 		V->color		= C;
 		V->t.set		(el.t);
+		++V;
 	}
 }
 //--------------------------------------------------------------------------------
