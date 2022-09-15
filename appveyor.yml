@@ -5,7 +5,7 @@ platform:
 - x64
 environment:
   DXSDK: '%DXSDK_DIR%'
-  BOOST_1_71_0: 'C:\Libraries\boost_1_71_0'
+  BOOST_1_71_0: 'C:\Libraries\boost_1_77_0'
 before_build:
 - cmd: >-
     set CI=1
