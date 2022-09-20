@@ -25,6 +25,7 @@ public:
 	BOOL								bPresent;
 	BOOL								bUserEnvironment;
     BOOL	 							bEAX;					// Boolean variable to indicate presence of EAX Extension 
+	BOOL								bUnwantedEAX;
     BOOL								bDeferredEAX;
     BOOL								bReady;
 

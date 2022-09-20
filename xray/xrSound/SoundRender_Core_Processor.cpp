@@ -98,7 +98,7 @@ void CSoundRender_Core::update	( const Fvector& P, const Fvector& D, const Fvect
 	}
 
 	// update EAX
-    if (psSoundFlags.test(ss_EAX) && bEAX)
+	if (psSoundFlags.test(ss_EAX) && bEAX && (!bUnwantedEAX || psSoundFlags.test(ss_EAX_FORCE)))
 	{
         if (bListenerMoved)
 		{

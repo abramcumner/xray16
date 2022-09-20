@@ -29,6 +29,7 @@ CSoundRender_Core::CSoundRender_Core	()
 {
 	bPresent					= FALSE;
     bEAX						= FALSE;
+	bUnwantedEAX				= FALSE;
     bDeferredEAX				= FALSE;
 	bUserEnvironment			= FALSE;
 	geom_MODEL					= NULL;
@@ -63,6 +64,9 @@ void CSoundRender_Core::_initialize(int stage)
 {
     Log							("* sound: EAX 2.0 extension:",bEAX?"present":"absent");
     Log							("* sound: EAX 2.0 deferred:",bDeferredEAX?"present":"absent");
+	if (bEAX && bUnwantedEAX)
+		Msg("* EAX 2.0 is present, but unwanted. For enable use command snd_efx_force.");
+
 	Timer.Start					( );
 
     // load environment
