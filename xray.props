@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros">
+    <BOOST_1_71_0>$(SystemDrive)\Libraries\boost_1_71_0\</BOOST_1_71_0>
+  </PropertyGroup>
   <PropertyGroup>
     <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_71_0);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDK\libraries\x86;$(LibraryPath)</LibraryPath>
@@ -13,5 +15,10 @@
       <DisableSpecificWarnings>4456;4457;4458;4459;4577;4595</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BuildMacro Include="BOOST_1_71_0">
+      <Value>$(BOOST_1_71_0)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
 </Project>
