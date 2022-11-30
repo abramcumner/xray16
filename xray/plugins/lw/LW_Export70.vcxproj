@@ -44,14 +44,14 @@
     <_ProjectFileVersion>14.0.25420.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\..\..\binaries_plugs\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>..\..\..\..\intermediate_plugs\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\..\binaries_plugs\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>..\..\..\..\intermediate_plugs\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>

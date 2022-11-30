@@ -60,20 +60,20 @@
     <_ProjectFileVersion>14.0.25420.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\..\binaries_plugs\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>..\..\..\..\intermediate_plugs\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\..\..\binaries_plugs\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>..\..\..\..\intermediate_plugs\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mixed|Win32'">
-    <OutDir>..\..\..\..\binaries_plugs\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>..\..\..\..\intermediate_plugs\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)intermediate_plugs\$(Platform)-$(Configuration)\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
