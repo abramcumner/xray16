@@ -13,4 +13,4 @@
 
 #include "xrXMLParser.h"
 
-#endif //stdafxH
+#endif // stdafxH
