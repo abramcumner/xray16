@@ -87,15 +87,15 @@ public:
     // ICF void				set		(R_constant* C, const Fmatrix& A)		{
     //	if (C->destination&RC_dest_pixel)	{ set	(C,C->ps,A, BT_PixelBuffer); }	// a_pixel.b_dirty=TRUE;		}
     //	if (C->destination&RC_dest_vertex)	{ set	(C,C->vs,A, BT_VertexBuffer); }	//  a_vertex.b_dirty=TRUE;		}
-    //	if (C->destination&RC_dest_geometry){ set	(C,C->gs,A, BT_GeometryBuffer); }	//  a_vertex.b_dirty=TRUE; } 	if
-    //(C->destination&RC_dest_hull)	{ set	(C,C->hs,A, BT_HullBuffer); }	//  a_vertex.b_dirty=TRUE;		} 	if
+    //	if (C->destination&RC_dest_geometry){ set	(C,C->gs,A, BT_GeometryBuffer); }	//  a_vertex.b_dirty=TRUE; }
+    //if (C->destination&RC_dest_hull)	{ set	(C,C->hs,A, BT_HullBuffer); }	//  a_vertex.b_dirty=TRUE;		} 	if
     //(C->destination&RC_dest_domain)	{ set	(C,C->ds,A, BT_DomainBuffer); }	//  a_vertex.b_dirty=TRUE;		}
     // }
     // ICF void				set		(R_constant* C, const Fvector4& A)		{
     //	if (C->destination&RC_dest_pixel)	{ set	(C,C->ps,A, BT_PixelBuffer); }	//  a_pixel.b_dirty=TRUE;		}
     //	if (C->destination&RC_dest_vertex)	{ set	(C,C->vs,A, BT_VertexBuffer); }	//  a_vertex.b_dirty=TRUE;		}
-    //	if (C->destination&RC_dest_geometry){ set	(C,C->gs,A, BT_GeometryBuffer); }	//  a_vertex.b_dirty=TRUE; } 	if
-    //(C->destination&RC_dest_hull)	{ set	(C,C->hs,A, BT_HullBuffer); }	//  a_vertex.b_dirty=TRUE;		} 	if
+    //	if (C->destination&RC_dest_geometry){ set	(C,C->gs,A, BT_GeometryBuffer); }	//  a_vertex.b_dirty=TRUE; }
+    //if (C->destination&RC_dest_hull)	{ set	(C,C->hs,A, BT_HullBuffer); }	//  a_vertex.b_dirty=TRUE;		} 	if
     //(C->destination&RC_dest_domain)	{ set	(C,C->ds,A, BT_DomainBuffer); }	//  a_vertex.b_dirty=TRUE;		}
     // }
     ICF void set(R_constant* C, float x, float y, float z, float w)
@@ -110,8 +110,8 @@ public:
     //{
     //	if (C->destination&RC_dest_pixel)	{ set	(C,C->ps,A, BT_PixelBuffer); }	//  a_pixel.b_dirty=TRUE;		}
     //	if (C->destination&RC_dest_vertex)	{ set	(C,C->vs,A, BT_VertexBuffer); }	//  a_vertex.b_dirty=TRUE;		}
-    //	if (C->destination&RC_dest_geometry){ set	(C,C->gs,A, BT_GeometryBuffer); }	//  a_vertex.b_dirty=TRUE; } 	if
-    //(C->destination&RC_dest_hull)	{ set	(C,C->hs,A, BT_HullBuffer); }	//  a_vertex.b_dirty=TRUE;		} 	if
+    //	if (C->destination&RC_dest_geometry){ set	(C,C->gs,A, BT_GeometryBuffer); }	//  a_vertex.b_dirty=TRUE; }
+    //if (C->destination&RC_dest_hull)	{ set	(C,C->hs,A, BT_HullBuffer); }	//  a_vertex.b_dirty=TRUE;		} 	if
     //(C->destination&RC_dest_domain)	{ set	(C,C->ds,A, BT_DomainBuffer); }	//  a_vertex.b_dirty=TRUE;		}
     //}
 

@@ -380,17 +380,20 @@ IC void CBackend::set_Stencil(
     // Simple filter
     // if (stencil_enable		!= _enable)		{ stencil_enable=_enable;		CHK_DX(HW.pDevice->SetRenderState	(
     // D3DRS_STENCILENABLE,		_enable				)); } if (!stencil_enable)					return; if (stencil_func
-    // != _func)		{ stencil_func=_func;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILFUNC,		_func				));
+    // != _func)		{ stencil_func=_func;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILFUNC,		_func
+    // ));
     // }
-    // if (stencil_ref			!= _ref)		{ stencil_ref=_ref;				CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILREF,			_ref
+    // if (stencil_ref			!= _ref)		{ stencil_ref=_ref;				CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILREF,
+    // _ref
     // )); }
-    // if (stencil_mask		!= _mask)		{ stencil_mask=_mask;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILMASK,
-    // _mask				)); } if (stencil_writemask	!= _writemask)	{ stencil_writemask=_writemask;
+    // if (stencil_mask		!= _mask)		{ stencil_mask=_mask;			CHK_DX(HW.pDevice->SetRenderState	(
+    // D3DRS_STENCILMASK, _mask				)); } if (stencil_writemask	!= _writemask)	{ stencil_writemask=_writemask;
     // CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILWRITEMASK,	_writemask			)); }
-    // if (stencil_fail		!= _fail)		{ stencil_fail=_fail;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILFAIL,
-    // _fail				)); } if (stencil_pass		!= _pass)		{ stencil_pass=_pass;
+    // if (stencil_fail		!= _fail)		{ stencil_fail=_fail;			CHK_DX(HW.pDevice->SetRenderState	(
+    // D3DRS_STENCILFAIL, _fail				)); } if (stencil_pass		!= _pass)		{ stencil_pass=_pass;
     // CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILPASS,		_pass				)); } if (stencil_zfail
-    // != _zfail)		{ stencil_zfail=_zfail;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILZFAIL,		_zfail				));
+    // != _zfail)		{ stencil_zfail=_zfail;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILZFAIL,		_zfail
+    // ));
     // }
 }
 
@@ -439,7 +442,8 @@ IC void CBackend::set_ColorWriteEnable(u32 _mask)
 ICF void CBackend::set_CullMode(u32 _mode)
 {
     StateManager.SetCullMode(_mode);
-    // if (cull_mode		!= _mode)		{ cull_mode = _mode;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_CULLMODE,			_mode
+    // if (cull_mode		!= _mode)		{ cull_mode = _mode;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_CULLMODE,
+    // _mode
     // )); }
 }
 

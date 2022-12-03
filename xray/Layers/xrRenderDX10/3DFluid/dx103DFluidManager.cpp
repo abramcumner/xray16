@@ -49,7 +49,7 @@ LPCSTR dx103DFluidManager::m_pEngineTextureNames[NUM_RENDER_TARGETS] = {
     "$user$Texture_tempscalar", //	RENDER_TARGET_TEMPSCALAR,
     "$user$Texture_tempvector", //	 RENDER_TARGET_TEMPVECTOR,
     "$user$Texture_velocity0", //	RENDER_TARGET_VELOCITY0 = NUM_OWN_RENDER_TARGETS,	//	For textures generated from
-                               //local data
+                               // local data
     "$user$Texture_pressure", //	RENDER_TARGET_PRESSURE,
     "$user$Texture_color", //	RENDER_TARGET_COLOR_IN,
 };
@@ -62,7 +62,7 @@ LPCSTR dx103DFluidManager::m_pShaderTextureNames[NUM_RENDER_TARGETS] = {
     "Texture_tempscalar", //	RENDER_TARGET_TEMPSCALAR,
     "Texture_tempvector", //	 RENDER_TARGET_TEMPVECTOR,
     "Texture_velocity0", //	RENDER_TARGET_VELOCITY0 = NUM_OWN_RENDER_TARGETS,	//	For textures generated from local
-                         //data
+                         // data
     "Texture_pressure", //	RENDER_TARGET_PRESSURE,
     "Texture_color", //	RENDER_TARGET_COLOR_IN,
 };
@@ -435,8 +435,9 @@ void dx103DFluidManager::AdvectColorBFECC(float timestep, bool bTeperature)
     RCache.set_Element(AdvectElement);
     // pShaderResourceVariables[RENDER_TARGET_TEMPSCALAR]->SetResource( NULL );
     // pShaderResourceVariables[RENDER_TARGET_COLOR0]->SetResource( pRenderTargetShaderViews[RENDER_TARGET_TEMPVECTOR]
-    // ); 	Overwrite RENDER_TARGET_COLOR0 with RENDER_TARGET_TEMPVECTOR 	Find texture index and patch texture manually
-    //using DirecX call!
+    // ); 	Overwrite RENDER_TARGET_COLOR0 with RENDER_TARGET_TEMPVECTOR 	Find texture index and patch texture
+    // manually
+    // using DirecX call!
     static shared_str strColorName(m_pEngineTextureNames[RENDER_TARGET_COLOR_IN]);
     STextureList* _T = &*(AdvectElement->passes[0]->T);
     u32 dwTextureStage = _T->find_texture_stage(strColorName);
