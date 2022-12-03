@@ -163,14 +163,15 @@ void uber_deffer(
     else
 #endif
         C.r_Pass(vs, ps, FALSE);
-    // C.r_Sampler		("s_base",		C.L_textures[0],	false,	D3DTADDRESS_WRAP,	D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR,
+    // C.r_Sampler		("s_base",		C.L_textures[0],	false,	D3DTADDRESS_WRAP,
+    // D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR,
     // D3DTEXF_ANISOTROPIC); C.r_Sampler		("s_bumpX",		fnameB,				false,	D3DTADDRESS_WRAP,
     // D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR,	D3DTEXF_ANISOTROPIC);	// should be before base bump C.r_Sampler
     // ("s_bump",		fnameA,				false,	D3DTADDRESS_WRAP,	D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR,
     // D3DTEXF_ANISOTROPIC); C.r_Sampler		("s_bumpD",		dt,					false,	D3DTADDRESS_WRAP,
     // D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR,	D3DTEXF_ANISOTROPIC);
-    // C.r_Sampler		("s_detail",	dt,					false,	D3DTADDRESS_WRAP,	D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR,
-    // D3DTEXF_ANISOTROPIC);
+    // C.r_Sampler		("s_detail",	dt,					false,	D3DTADDRESS_WRAP,
+    // D3DTEXF_ANISOTROPIC,D3DTEXF_LINEAR, D3DTEXF_ANISOTROPIC);
     C.r_dx10Texture("s_base", C.L_textures[0]);
     C.r_dx10Texture("s_bumpX", fnameB); // should be before base bump
     C.r_dx10Texture("s_bump", fnameA);

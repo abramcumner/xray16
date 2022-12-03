@@ -170,8 +170,8 @@ void Fvisual::Load(const char* N, IReader* data, u32 dwFlags)
 
 #if defined(USE_DX10) || defined(USE_DX11)
             // BOOL	bSoft		= HW.Caps.geometry.bSoftware || (dwFlags&VLOAD_FORCESOFTWARE);
-            // u32		dwUsage		= /*D3DUSAGE_WRITEONLY |*/ (bSoft?D3DUSAGE_SOFTWAREPROCESSING:0);	// indices are read
-            // in model-wallmarks code BYTE*	bytes		= 0;
+            // u32		dwUsage		= /*D3DUSAGE_WRITEONLY |*/ (bSoft?D3DUSAGE_SOFTWAREPROCESSING:0);	// indices are
+            // read in model-wallmarks code BYTE*	bytes		= 0;
 
             // VERIFY				(NULL==p_rm_Indices);
             // R_CHK
