@@ -210,8 +210,8 @@ IC void MixInterlerp(CKey& Result, const CKey* R, const CBlend* const BA[MAX_BLE
             w = w1 / ws;
 #ifdef DEBUG
             //.					if (fis_zero(w0+w1) || (!_valid(w))){
-            //.						Debug.fatal		(DEBUG_INFO,"TO ALEXMX VERY IMPORTANT: (TOTAL: %f) w: %f, w0: %f, w1: %f,
-            //ws:%f, BIS: %d",w0+w1,w,w0,w1,ws,BLEND_INST.Blend.size()); .					}
+            //.						Debug.fatal		(DEBUG_INFO,"TO ALEXMX VERY IMPORTANT: (TOTAL: %f) w: %f, w0: %f, w1:
+            //%f, ws:%f, BIS: %d",w0+w1,w,w0,w1,ws,BLEND_INST.Blend.size()); .					}
 #endif
         KEY_Interp(Result, R[0], R[1], clampr(w, 0.f, 1.f));
         /*
@@ -251,8 +251,8 @@ IC void MixInterlerp(CKey& Result, const CKey* R, const CBlend* const BA[MAX_BLE
 
 #ifdef DEBUG
             //.						if ((total==0) || (!_valid(S[cnt].w/total))){
-            //.							Debug.fatal		(DEBUG_INFO,"TO ALEXMX VERY IMPORTANT: (TOTAL: %f) w: %f, total: %f, count:
-            //%d, real count: %d",total,S[cnt].w,total,count,BLEND_INST.Blend.size()); .						}
+            //.							Debug.fatal		(DEBUG_INFO,"TO ALEXMX VERY IMPORTANT: (TOTAL: %f) w: %f, total: %f,
+            //count: %d, real count: %d",total,S[cnt].w,total,count,BLEND_INST.Blend.size()); .						}
 #endif
 
             KEY_Interp(Result, tmp, *S[cnt].K, d);

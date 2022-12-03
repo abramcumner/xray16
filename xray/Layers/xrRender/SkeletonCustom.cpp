@@ -194,7 +194,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 
             VERIFY3(m_lod, "Cant create LOD model for", N);
             //.			VERIFY2			(m_lod->Type==MT_HIERRARHY || m_lod->Type==MT_PROGRESSIVE ||
-            //m_lod->Type==MT_NORMAL,lod_name.c_str());
+            // m_lod->Type==MT_NORMAL,lod_name.c_str());
             /*
                         strconcat		(name_load, short_name, ":lod:1");
                         m_lod 			= ::Render->model_CreateChild(name_load,LD);

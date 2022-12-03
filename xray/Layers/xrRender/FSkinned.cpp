@@ -60,8 +60,7 @@ static D3DVERTEXELEMENT9 dwDecl_01W[] = // 24bytes
             0}, // : T						: 1	:  -1..+1
         {0, 16, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_BINORMAL,
             0}, // : B						: 1	:  -1..+1
-        {
-            0, 20, D3DDECLTYPE_SHORT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0}, // : tc : 1	: -16..+16
+        {0, 20, D3DDECLTYPE_SHORT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0}, // : tc : 1	: -16..+16
         D3DDECL_END()};
 struct vertHW_1W
 {
@@ -388,8 +387,8 @@ void CSkeletonX_ext::_Load_hw(Fvisual& V, void* _verts_)
 {
     // Create HW VB in case this is possible
     //	BOOL	bSoft				= HW.Caps.geometry.bSoftware;
-    //	u32		dwUsage				= /*D3DUSAGE_WRITEONLY |*/ (bSoft?D3DUSAGE_SOFTWAREPROCESSING:0);	// VB may be read by
-    //wallmarks code
+    //	u32		dwUsage				= /*D3DUSAGE_WRITEONLY |*/ (bSoft?D3DUSAGE_SOFTWAREPROCESSING:0);	// VB may be read
+    //by wallmarks code
     switch (RenderMode)
     {
     case RM_SKINNING_SOFT:
