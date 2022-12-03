@@ -16,49 +16,48 @@
 #include "property_collection_forward.hpp"
 #include "thunderbolt.h"
 
-namespace editor {
-
+namespace editor
+{
 class property_holder_collection;
 
-namespace environment {
-namespace thunderbolts {
-
+namespace environment
+{
+namespace thunderbolts
+{
 class manager;
 class thunderbolt_id;
 
-class collection :
-	public SThunderboltCollection,
-	public editor::property_holder_holder,
-	private boost::noncopyable {
+class collection : public SThunderboltCollection, public editor::property_holder_holder, private boost::noncopyable
+{
 public:
-							collection		(manager const& manager, shared_str const& id);
-	virtual					~collection		();
-			void			load			(CInifile& config);
-			void			save			(CInifile& config);
-			void			fill			(editor::property_holder_collection* collection);
-	inline	LPCSTR			id				() const { return section.c_str(); }
-
+    collection(manager const& manager, shared_str const& id);
+    virtual ~collection();
+    void load(CInifile& config);
+    void save(CInifile& config);
+    void fill(editor::property_holder_collection* collection);
+    inline LPCSTR id() const { return section.c_str(); }
 
 private:
-			LPCSTR	xr_stdcall	id_getter	() const;
-			void	xr_stdcall	id_setter	(LPCSTR value);
+    LPCSTR xr_stdcall id_getter() const;
+    void xr_stdcall id_setter(LPCSTR value);
+
 private:
-	typedef editor::property_holder			property_holder_type;
+    typedef editor::property_holder property_holder_type;
 
 public:
-	virtual	property_holder_type* object	();
+    virtual property_holder_type* object();
 
 private:
-	typedef xr_vector<thunderbolt_id*>						container_type;
-	typedef property_collection<container_type, collection>	collection_type;
+    typedef xr_vector<thunderbolt_id*> container_type;
+    typedef property_collection<container_type, collection> collection_type;
 
 private:
-	container_type			m_ids;
-	collection_type*		m_collection;
-	property_holder_type*	m_property_holder;
+    container_type m_ids;
+    collection_type* m_collection;
+    property_holder_type* m_property_holder;
 
 public:
-	manager const&			m_manager;
+    manager const& m_manager;
 }; // class collection
 } // namespace thunderbolts
 } // namespace environment

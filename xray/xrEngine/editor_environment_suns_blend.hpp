@@ -13,29 +13,30 @@
 
 #include <boost/noncopyable.hpp>
 
-namespace editor {
-
+namespace editor
+{
 class property_holder;
 class property_holder_collection;
 
-namespace environment {
-namespace suns {
-
+namespace environment
+{
+namespace suns
+{
 class manager;
 
-class blend : private boost::noncopyable {
+class blend : private boost::noncopyable
+{
 public:
-					blend		();
-			void	load		(CInifile& config, shared_str const& section);
-			void	save		(CInifile& config, shared_str const& section);
-			void	fill		(manager const& manager, editor::property_holder* holder, editor::property_holder_collection* collection);
+    blend();
+    void load(CInifile& config, shared_str const& section);
+    void save(CInifile& config, shared_str const& section);
+    void fill(manager const& manager, editor::property_holder* holder, editor::property_holder_collection* collection);
 
 private:
-    float			m_down_time;
-    float			m_rise_time;
-    float			m_time;
+    float m_down_time;
+    float m_rise_time;
+    float m_time;
 }; // class blend
-
 } // namespace suns
 } // namespace environment
 } // namespace editor

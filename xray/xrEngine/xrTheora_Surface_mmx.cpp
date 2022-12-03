@@ -2,64 +2,50 @@
 
 #include "xrTheora_Surface_mmx.h"
 
-#pragma warning( disable : 4731 )
+#pragma warning(disable : 4731)
 
-#pragma pack( push )
-#pragma pack( 1 )
+#pragma pack(push)
+#pragma pack(1)
 
-typedef tv_sshort tv_sshort_tables[ 256 ][ 4 ];
+typedef tv_sshort tv_sshort_tables[256][4];
 
-#pragma pack( pop )
+#pragma pack(pop)
 /*
 
 //. width_diff = surface_width - theora_width
 
-		u32 pos = 0;
-		for (u32 h=0; h<height; ++h){
+        u32 pos = 0;
+        for (u32 h=0; h<height; ++h){
+            u8* Y		= yuv.y+yuv.y_stride*h;
+            u8* U		= yuv.u+yuv.uv_stride*(h/uv_h);
+            u8* V		= yuv.v+yuv.uv_stride*(h/uv_h);
 
-			u8* Y		= yuv.y+yuv.y_stride*h;
-			u8* U		= yuv.u+yuv.uv_stride*(h/uv_h);
-			u8* V		= yuv.v+yuv.uv_stride*(h/uv_h);
+            for (u32 w=0; w<width; ++w){
+                u8 y	= Y[w];
+                u8 u	= U[w/uv_w];
+                u8 v	= V[w/uv_w];
 
-			for (u32 w=0; w<width; ++w){
+                int C	= y - 16;
+                int D	= u - 128;
+                int E	= v - 128;
 
-				u8 y	= Y[w];
-				u8 u	= U[w/uv_w];
-				u8 v	= V[w/uv_w];
+                int R	= clampr(( 298 * C           + 409 * E + 128) >> 8,0,255);
+                int G	= clampr(( 298 * C - 100 * D - 208 * E + 128) >> 8,0,255);
+                int B	= clampr(( 298 * C + 516 * D           + 128) >> 8,0,255);
 
-				int C	= y - 16;
-				int D	= u - 128;
-				int E	= v - 128;
+                data[++pos] = color_rgba(R,G,B,255);
 
-				int R	= clampr(( 298 * C           + 409 * E + 128) >> 8,0,255);
-				int G	= clampr(( 298 * C - 100 * D - 208 * E + 128) >> 8,0,255);
-				int B	= clampr(( 298 * C + 516 * D           + 128) >> 8,0,255);
-
-				data[++pos] = color_rgba(R,G,B,255);
-
-				if(w==(width-1))
-					pos += width_diff;
-			}
-		}
+                if(w==(width-1))
+                    pos += width_diff;
+            }
+        }
 */
 
-lp_tv_uchar tv_yuv2argb(
-						lp_tv_uchar			argb_plane ,
-						tv_slong			argb_width ,
-						tv_slong			argb_height ,
-						lp_tv_uchar			y_plane ,
-						tv_slong			y_width ,
-						tv_slong			y_height ,
-						tv_slong			y_stride ,
-						lp_tv_uchar 		u_plane ,
-						lp_tv_uchar 		v_plane ,
-						tv_slong 			uv_width ,
-						tv_slong 			uv_height ,
-						tv_slong 			uv_stride,
-						tv_slong 			width_diff 
-						)
+lp_tv_uchar tv_yuv2argb(lp_tv_uchar argb_plane, tv_slong argb_width, tv_slong argb_height, lp_tv_uchar y_plane,
+    tv_slong y_width, tv_slong y_height, tv_slong y_stride, lp_tv_uchar u_plane, lp_tv_uchar v_plane, tv_slong uv_width,
+    tv_slong uv_height, tv_slong uv_stride, tv_slong width_diff)
 {
-	tv_sshort_tables ttl;
+    tv_sshort_tables ttl;
 #if 0
 	__asm{
 		push  ebx
@@ -193,7 +179,6 @@ _tb_loop:
 				paddsw mm3,mm1      ; mm3 = P6.B | P5.B | P2.B | P1.B
 				paddsw mm0,mm2      ; mm0 = P8.B | P7.B | P4.B | P3.B
 
-
 				// we have
 				; mm4 = P6.R | P5.R | P2.R | P1.R
 				; mm6 = P6.G | P5.G | P2.G | P1.G
@@ -230,9 +215,9 @@ _tb_loop:
 
 				movq  mm1,mm7 ; mm1 = P6.R | P6.B | P5.R | P5.B | P2.R | P2.B | P1.R | P1.B
 
-				punpcklbw mm7,mm5 ; mm7 = 0 | P2.R | P2.G | P2.B | 0 | P1.R | P1.G | P1.B 
+				punpcklbw mm7,mm5 ; mm7 = 0 | P2.R | P2.G | P2.B | 0 | P1.R | P1.G | P1.B
 				// px1
-				punpckhbw mm1,mm5 ; mm1 = 0 | P6.R | P6.G | P6.B | 0 | P5.R | P5.G | P5.B 
+				punpckhbw mm1,mm5 ; mm1 = 0 | P6.R | P6.G | P6.B | 0 | P5.R | P5.G | P5.B
 				// px3
 
 				movq  mm2,mm6 ; mm2 = P8.G | P7.G | P4.G | P3.G | P6.G | P5.G | P2.G | P1.G
@@ -243,9 +228,9 @@ _tb_loop:
 
 				movq  mm0,mm5 ; mm0 = P8.R | P8.B | P7.R | P7.B | P4.R | P4.B | P3.R | P3.B
 
-				punpckhbw mm5,mm2 ; mm5 = 0 | P8.R | P8.G | P8.B | 0 | P7.R | P7.G | P7.B 
+				punpckhbw mm5,mm2 ; mm5 = 0 | P8.R | P8.G | P8.B | 0 | P7.R | P7.G | P7.B
 				// px4
-				punpcklbw mm0,mm2 ; mm0 = 0 | P4.R | P4.G | P4.B | 0 | P3.R | P3.G | P3.B 
+				punpcklbw mm0,mm2 ; mm0 = 0 | P4.R | P4.G | P4.B | 0 | P3.R | P3.G | P3.B
 				// px2
 
 				// storing using non-temporal hint
@@ -278,7 +263,7 @@ _tb_loop:
 		emms        ;
 	}
 #endif
-	return argb_plane;
+    return argb_plane;
 } // tv_yuv2argb
 
-#pragma warning( default : 4731 )
+#pragma warning(default : 4731)

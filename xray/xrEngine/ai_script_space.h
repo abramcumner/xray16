@@ -10,16 +10,16 @@
 
 // Lua
 #pragma warning(push)
-#pragma warning(disable:4244 4267 4297 4530 4913 4995)
+#pragma warning(disable : 4244 4267 4297 4530 4913 4995)
 
-//#define LUABIND_NO_EXCEPTIONS
+// #define LUABIND_NO_EXCEPTIONS
 
 extern "C" {
-	//#define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+// #define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-	#include <lua.h>
-	#include <lualib.h>
-	#include <lauxlib.h>
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 //	#include <lua/luajit.h>
 }
 
@@ -32,10 +32,11 @@ extern "C" {
 
 typedef lua_State CLuaVirtualMachine;
 
-struct SMemberCallback {
-	luabindex::functor<void>	*m_lua_function;
-	luabind::object			*m_lua_object;
-	shared_str				m_method_name;
+struct SMemberCallback
+{
+    luabindex::functor<void>* m_lua_function;
+    luabind::object* m_lua_object;
+    shared_str m_method_name;
 };
 
 #include "ai_script_lua_space.h"

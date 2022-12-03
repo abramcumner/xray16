@@ -14,51 +14,53 @@
 #include <boost/noncopyable.hpp>
 #include "../xrserverentities/associative_vector.h"
 
-namespace editor {
+namespace editor
+{
+class property_holder;
 
-	class property_holder;
+namespace environment
+{
+namespace weathers
+{
+class manager;
+} // namespace weathers
 
-namespace environment {
-
-	namespace weathers {
-		class manager;
-	} // namespace weathers
-
-namespace levels {
-
-class manager : private boost::noncopyable {
+namespace levels
+{
+class manager : private boost::noncopyable
+{
 public:
-							manager			(::editor::environment::weathers::manager* environment);
-							~manager		();
-			void			load			();
-			void			save			();
-			void			fill			();
+    manager(::editor::environment::weathers::manager* environment);
+    ~manager();
+    void load();
+    void save();
+    void fill();
 
 private:
-			void			fill_levels		(CInifile& config, LPCSTR prefix, LPCSTR category);
+    void fill_levels(CInifile& config, LPCSTR prefix, LPCSTR category);
 
 private:
-	LPCSTR const* xr_stdcall collection		();
-	u32  xr_stdcall			collection_size	();
+    LPCSTR const* xr_stdcall collection();
+    u32 xr_stdcall collection_size();
 
 private:
-	struct predicate {
-		inline	bool	operator()			(shared_str const& left, shared_str const& right) const
-		{
-			return			(xr_strcmp(left.c_str(), right.c_str()) < 0);
-		}
-	}; // struct predicate
+    struct predicate
+    {
+        inline bool operator()(shared_str const& left, shared_str const& right) const
+        {
+            return (xr_strcmp(left.c_str(), right.c_str()) < 0);
+        }
+    }; // struct predicate
 
-	typedef associative_vector<shared_str, std::pair<LPCSTR, shared_str>, predicate>	levels_container_type;
+    typedef associative_vector<shared_str, std::pair<LPCSTR, shared_str>, predicate> levels_container_type;
 
 private:
-	levels_container_type						m_levels;
-	::editor::environment::weathers::manager&	m_weathers;
-	CInifile*									m_config_single;
-	CInifile*									m_config_mp;
-	editor::property_holder*					m_property_holder;
+    levels_container_type m_levels;
+    ::editor::environment::weathers::manager& m_weathers;
+    CInifile* m_config_single;
+    CInifile* m_config_mp;
+    editor::property_holder* m_property_holder;
 }; // class levels_manager
-
 } // namespace levels
 } // namespace environment
 } // namespace editor
