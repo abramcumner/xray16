@@ -5,9 +5,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-
-
-#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+#define WIN32_LEAN_AND_MEAN // Exclude rarely-used stuff from Windows headers
 
 #include "WarningsOff.h"
 #include <windows.h>
@@ -16,18 +14,17 @@
 #include "PSAPI.h"
 #include "WarningsOn.h"
 
-namespace BlackBox {
+namespace BlackBox
+{
+bool isspace(int ch);
 
-bool isspace( int ch ); 
+bool isdigit(int ch);
 
-bool isdigit( int ch );
-
-long atol( const char* nptr );
-
-};
+long atol(const char* nptr);
+}; // namespace BlackBox
 
 #ifdef _EDITOR
-#   define min(a,b) ((a) < (b) ? (a) : (b))
+#define min(a, b) ((a) < (b) ? (a) : (b))
 #endif // _EDITOR
 
 #endif //

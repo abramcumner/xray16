@@ -8,13 +8,13 @@ Copyright (c) 1997-2000 John Robbins -- All rights reserved.
 
 #ifdef __cplusplus
 extern "C" {
-#endif  //__cplusplus
+#endif //__cplusplus
 
 /*//////////////////////////////////////////////////////////////////////
                             Type Definitions
 //////////////////////////////////////////////////////////////////////*/
 // The type for the filter function called by the Crash Handler API.
-typedef LONG ( __stdcall *PFNCHFILTFN ) ( EXCEPTION_POINTERS * pExPtrs ) ;
+typedef LONG(__stdcall* PFNCHFILTFN)(EXCEPTION_POINTERS* pExPtrs);
 
 /*//////////////////////////////////////////////////////////////////////
                    Crash Handler Function Definitions
@@ -35,8 +35,7 @@ RETURNS         :
     1 - The crash handler was properly set.
     0 - There was a problem.
 ----------------------------------------------------------------------*/
-BOOL  __stdcall
-                             SetCrashHandlerFilter ( PFNCHFILTFN pFn ) ;
+BOOL __stdcall SetCrashHandlerFilter(PFNCHFILTFN pFn);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   AddCrashHandlerLimitModule
@@ -51,8 +50,7 @@ RETURNS         :
     1 - The module was added.
     0 - There was a problem.
 ----------------------------------------------------------------------*/
-BOOL  __stdcall
-                           AddCrashHandlerLimitModule ( HMODULE hMod ) ;
+BOOL __stdcall AddCrashHandlerLimitModule(HMODULE hMod);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetLimitModuleCount
@@ -64,7 +62,7 @@ RETURNS         :
     The item count.  This can be zero if not limiting modules have been
 added.
 ----------------------------------------------------------------------*/
-UINT  __stdcall GetLimitModuleCount ( void ) ;
+UINT __stdcall GetLimitModuleCount(void);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetLimitModulesArray
@@ -82,12 +80,11 @@ RETURNS         :
                           values.
     GLMA_FAILURE        - There was a major problem.
 ----------------------------------------------------------------------*/
-#define GLMA_SUCCESS        1
-#define GLMA_BADPARAM       -1
-#define GLMA_BUFFTOOSMALL   -2
-#define GLMA_FAILURE        0
-int  __stdcall
-               GetLimitModulesArray ( HMODULE * pahMod , UINT uiSize ) ;
+#define GLMA_SUCCESS 1
+#define GLMA_BADPARAM -1
+#define GLMA_BUFFTOOSMALL -2
+#define GLMA_FAILURE 0
+int __stdcall GetLimitModulesArray(HMODULE* pahMod, UINT uiSize);
 
 /*//////////////////////////////////////////////////////////////////////
           EXCEPTION_POINTER Translation Functions Declarations
@@ -106,8 +103,7 @@ RETURNS         :
     !NULL - The constant string that describes the fault.
     NULL  - There was a problem translating the string.
 ----------------------------------------------------------------------*/
-LPCTSTR  __stdcall
-                       GetFaultReason ( EXCEPTION_POINTERS * pExPtrs ) ;
+LPCTSTR __stdcall GetFaultReason(EXCEPTION_POINTERS* pExPtrs);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetFaultReasonVB
@@ -122,10 +118,7 @@ RETURNS         :
     TRUE  - The buffer is filled.
     FALSE - There was a problem.
 ----------------------------------------------------------------------*/
-BOOL  __stdcall
-                       GetFaultReasonVB ( EXCEPTION_POINTERS * pExPtrs ,
-                                          LPTSTR               szBuff  ,
-                                          UINT                 uiSize );
+BOOL __stdcall GetFaultReasonVB(EXCEPTION_POINTERS* pExPtrs, LPTSTR szBuff, UINT uiSize);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetFirstStackTraceString
@@ -151,16 +144,12 @@ RETURNS         :
     !NULL - The requested stack trace string.
     NULL  - There was a problem.
 ----------------------------------------------------------------------*/
-#define GSTSO_PARAMS    0x01
-#define GSTSO_MODULE    0x02
-#define GSTSO_SYMBOL    0x04
-#define GSTSO_SRCLINE   0x08
-LPCTSTR  __stdcall
-             GetFirstStackTraceString ( DWORD                dwOpts  ,
-                                        EXCEPTION_POINTERS * pExPtrs  );
-LPCTSTR  __stdcall
-             GetNextStackTraceString ( DWORD                dwOpts  ,
-                                       EXCEPTION_POINTERS * pExPtrs  ) ;
+#define GSTSO_PARAMS 0x01
+#define GSTSO_MODULE 0x02
+#define GSTSO_SYMBOL 0x04
+#define GSTSO_SRCLINE 0x08
+LPCTSTR __stdcall GetFirstStackTraceString(DWORD dwOpts, EXCEPTION_POINTERS* pExPtrs);
+LPCTSTR __stdcall GetNextStackTraceString(DWORD dwOpts, EXCEPTION_POINTERS* pExPtrs);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetFirstStackTraceStringVB
@@ -186,16 +175,8 @@ RETURNS         :
     TRUE  - The string was copied into szBuff.
     FALSE - There was a problem.
 ----------------------------------------------------------------------*/
-BOOL  __stdcall
-           GetFirstStackTraceStringVB ( DWORD                dwOpts  ,
-                                        EXCEPTION_POINTERS * pExPtrs ,
-                                        LPTSTR               szBuff  ,
-                                        UINT                 uiSize   );
-BOOL  __stdcall
-           GetNextStackTraceStringVB ( DWORD                dwOpts  ,
-                                       EXCEPTION_POINTERS * pExPtrs ,
-                                       LPTSTR               szBuff  ,
-                                       UINT                 uiSize   );
+BOOL __stdcall GetFirstStackTraceStringVB(DWORD dwOpts, EXCEPTION_POINTERS* pExPtrs, LPTSTR szBuff, UINT uiSize);
+BOOL __stdcall GetNextStackTraceStringVB(DWORD dwOpts, EXCEPTION_POINTERS* pExPtrs, LPTSTR szBuff, UINT uiSize);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetRegisterString
@@ -209,8 +190,7 @@ RETURNS         :
     !NULL - The requested register string.
     NULL  - There was a problem.
 ----------------------------------------------------------------------*/
-LPCTSTR  __stdcall
-              GetRegisterString ( EXCEPTION_POINTERS * pExPtrs ) ;
+LPCTSTR __stdcall GetRegisterString(EXCEPTION_POINTERS* pExPtrs);
 
 /*----------------------------------------------------------------------
 FUNCTION        :   GetRegisterStringVB
@@ -225,15 +205,10 @@ RETURNS         :
     TRUE  - The string was copied into szBuff.
     FALSE - There was a problem.
 ----------------------------------------------------------------------*/
-BOOL  __stdcall
-              GetRegisterStringVB ( EXCEPTION_POINTERS * pExPtrs ,
-                                    LPTSTR               szBuff  ,
-                                    UINT                 uiSize   ) ;
+BOOL __stdcall GetRegisterStringVB(EXCEPTION_POINTERS* pExPtrs, LPTSTR szBuff, UINT uiSize);
 
 #ifdef __cplusplus
 }
-#endif  //__cplusplus
+#endif //__cplusplus
 
-#endif  // _CRASHHANDLER_H
-
-
+#endif // _CRASHHANDLER_H

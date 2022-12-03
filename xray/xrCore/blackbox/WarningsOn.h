@@ -12,8 +12,6 @@ the MS headers to compile.
 #define _WARNINGSON_H
 
 /* Get the warning level back to level 4. */
-#pragma warning ( pop )
+#pragma warning(pop)
 
-#endif  /* _WARNINGSON_H */
-
-
+#endif /* _WARNINGSON_H */

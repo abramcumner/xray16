@@ -33,7 +33,6 @@
    http://www.oberhumer.com/opensource/lzo/
  */
 
-
 #ifndef __LZODEFS_H_INCLUDED
 #define __LZODEFS_H_INCLUDED 1
 

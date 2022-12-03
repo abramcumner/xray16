@@ -12,22 +12,19 @@ turned off, must be turned back in in WarningsOn.h
 #define _WARNINGSOFF_H
 
 /* Unreferenced in inline function removed */
-#pragma warning ( disable : 4514 )
+#pragma warning(disable : 4514)
 
 #ifndef _DEBUG
 /* function '' not inlined. */
-#pragma warning ( disable : 4710 )
+#pragma warning(disable : 4710)
 #endif
 
 /* This is really a dumb warning.... */
 /* 'blah' : identifier was truncated to '255' characters in the debug
    information */
-#pragma warning ( disable : 4786 )
-
+#pragma warning(disable : 4786)
 
 /* Force everything to warning level 3. */
-#pragma warning ( push , 3 )
+#pragma warning(push, 3)
 
-#endif  /* _WARNINGSOFF_H */
-
-
+#endif /* _WARNINGSOFF_H */

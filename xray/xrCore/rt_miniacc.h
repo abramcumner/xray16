@@ -33,7 +33,6 @@
    http://www.oberhumer.com/opensource/lzo/
  */
 
-
 #ifndef __ACC_H_INCLUDED
 #define __ACC_H_INCLUDED 1
 #define ACC_VERSION     20051016L
