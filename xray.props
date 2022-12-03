@@ -7,8 +7,8 @@
   <PropertyGroup>
     <IncludePath>$(SolutionDir)SDK\include;$(BOOST_1_71_0);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDK\libraries\$(Platform);$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)xray_build\binaries\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)xray_build\intermediate\$(Platform)-$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

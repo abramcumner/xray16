@@ -1,7 +1,6 @@
 .vs
 *.VC.db
-/intermediate
-/intermediate_plugs
+/xray_build
 /ipch
 *.VC.VC.opendb
 *.user
