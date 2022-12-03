@@ -43,7 +43,6 @@ PHDynamicData::PHDynamicData(unsigned int numOfchilds,dBodyID Body)
 
 bool PHDynamicData::SetChild(unsigned int childNum,unsigned int numOfchilds,dBodyID body)
 {
-
 	if(childNum<numOfChilds){
 		Childs[childNum].body=body;
 		Childs[childNum].geom=NULL;
@@ -56,7 +55,7 @@ bool PHDynamicData::SetChild(unsigned int childNum,unsigned int numOfchilds,dBod
 		if(numOfchilds>0)
 			//Childs[childNum].Childs=new PHDynamicData[numOfchilds];
 			Childs[childNum].Childs.resize(numOfchilds);
-		else   
+		else
 			//Childs[childNum].Childs=NULL;
 			Childs[childNum].numOfChilds=0;
 
@@ -81,10 +80,8 @@ void PHDynamicData::CalculateR_N_PosOfChilds(dBodyID parent)
 	BoneTransform.mulA_43		(parent_transform);
 
 	for(unsigned int i=0;i<numOfChilds;++i){
-
 		Childs[i].CalculateR_N_PosOfChilds(body);
 	}
-
 }
 void PHDynamicData::UpdateInterpolationRecursive(){
 	UpdateInterpolation();
@@ -119,7 +116,6 @@ void PHDynamicData::InterpolateTransformVsParent(Fmatrix &transform){
 
 	parent_transform.invert();
 
-
 	//BoneTransform.mulA(parent_transform);
 	transform.mulA_43	(parent_transform);
 }
@@ -130,10 +126,8 @@ PHDynamicData * PHDynamicData::GetChild(unsigned int ChildNum)
 	else return NULL;
 }
 
-
 void PHDynamicData::CalculateData()
 {
-
 	DMXPStoFMX(dBodyGetRotation(body),
 		dBodyGetPosition(body),BoneTransform);
 	Fmatrix zero;
@@ -141,12 +135,9 @@ void PHDynamicData::CalculateData()
 	zero.invert();
 	BoneTransform.mulB_43(zero);
 	for(unsigned int i=0;i<numOfChilds;++i){
-
 		Childs[i].CalculateR_N_PosOfChilds(body);
 	}
 }
-
-
 
 void PHDynamicData::Create(unsigned int numOfchilds, dBodyID Body)
 {

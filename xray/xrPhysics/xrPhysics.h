@@ -5,4 +5,3 @@
 #else
 #define XRPHYSICS_API __declspec(dllimport)
 #endif
-
