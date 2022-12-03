@@ -1,7 +1,7 @@
 #include "pch_script.h"
 
-//UI-controls
-//#include "UIListWnd.h"
+// UI-controls
+// #include "UIListWnd.h"
 #include "UIScriptWnd.h"
 #include "UIButton.h"
 #include "UIMessageBox.h"
@@ -19,13 +19,13 @@
 
 using namespace luabind;
 
-#pragma optimize("s",on)
-export_class &script_register_ui_window2(export_class &instance)
+#pragma optimize("s", on)
+export_class& script_register_ui_window2(export_class& instance)
 {
-	instance
-		.def("OnKeyboard",		&BaseType::OnKeyboardAction, &WrapType::OnKeyboard_static)
-		.def("Update",			&BaseType::Update, &WrapType::Update_static)
-		.def("Dispatch",		&BaseType::Dispatch, &WrapType::Dispatch_static)
+    instance.def("OnKeyboard", &BaseType::OnKeyboardAction, &WrapType::OnKeyboard_static)
+        .def("Update", &BaseType::Update, &WrapType::Update_static)
+        .def("Dispatch", &BaseType::Dispatch, &WrapType::Dispatch_static)
 
-	;return	(instance);
+        ;
+    return (instance);
 }

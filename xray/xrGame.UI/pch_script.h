@@ -12,13 +12,13 @@
 #include "stdafx.h"
 
 extern "C" {
-	#include <lua.h>
-	#include <lualib.h>
-	#include <lauxlib.h>
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 };
 
 #pragma warning(push)
-#pragma warning(disable:4995 4297 4913)
+#pragma warning(disable : 4995 4297 4913)
 #include <luabind/luabind.hpp>
 #pragma warning(pop)
 
