@@ -1,18 +1,17 @@
 /******
 gcdkeys.h
 GameSpy CDKey SDK Server Header
-  
+
 Copyright 1999-2007 GameSpy Industries, Inc
 
 devsupport@gamespy.com
 
 ******
 
- Please see the GameSpy CDKey SDK documentation for more 
+ Please see the GameSpy CDKey SDK documentation for more
  information
 
 ******/
-
 
 #ifndef _GOACDKEYS_H_
 #define _GOACDKEYS_H_
@@ -26,13 +25,13 @@ extern "C" {
 /*****
 QR2CDKEY_INTEGRATION: This define controls where the functions needed to integrate
 the networking of the Query & Reporting 2 SDK and CDKey SDKs are available.
-If you intend to use the integration option for these SDKs, you must uncomment the 
+If you intend to use the integration option for these SDKs, you must uncomment the
 define below, or provide it as an option to your compiler.
 *******/
 #define QR2CDKEY_INTEGRATION
 
-typedef void (*AuthCallBackFn)(int gameid, int localid, int authenticated, char *errmsg, void *instance);
-typedef void (*RefreshAuthCallBackFn)(int gameid, int localid, int hint, char *challenge, void *instance);
+typedef void (*AuthCallBackFn)(int gameid, int localid, int authenticated, char* errmsg, void* instance);
+typedef void (*RefreshAuthCallBackFn)(int gameid, int localid, int hint, char* challenge, void* instance);
 
 /* The hostname of the validation server.
 If the app resolves the hostname, an
@@ -75,23 +74,21 @@ gcd_authenticate_user
 Creates a new client and sends a request for authorization to the
 validation server.
 *********/
-void gcd_authenticate_user(int gameid, int localid, unsigned int userip, const char *challenge, 
-						   const char *response, AuthCallBackFn authfn, RefreshAuthCallBackFn refreshfn, void *instance);
+void gcd_authenticate_user(int gameid, int localid, unsigned int userip, const char* challenge, const char* response,
+    AuthCallBackFn authfn, RefreshAuthCallBackFn refreshfn, void* instance);
 
 /********
 gcd_authenticate_user
 Creates a new client and sends a request for authorization to the
 validation server.
 *********/
-void gcd_process_reauth(int gameid, int localid, int hint, const char *response);
-
+void gcd_process_reauth(int gameid, int localid, int hint, const char* response);
 
 /********
 gcd_disconnect_user
 Notify the validation server that a user has disconnected
 *********/
 void gcd_disconnect_user(int gameid, int localid);
-
 
 /********
 gcd_disconnect_all
@@ -102,7 +99,7 @@ void gcd_disconnect_all(int gameid);
 /********
 gcd_think
 Processes any pending data from the validation server
-and calls the callback to indicate whether a client was 
+and calls the callback to indicate whether a client was
 authorized or not
 *********/
 void gcd_think(void);
@@ -114,11 +111,10 @@ be the same for that users, which makes it good for banning or
 tracking of users (used with the Tracking/Stats SDK). Returns
 an empty string if that user isn't connected.
 *********/
-char *gcd_getkeyhash(int gameid, int localid);
+char* gcd_getkeyhash(int gameid, int localid);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-
