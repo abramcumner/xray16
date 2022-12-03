@@ -5,3 +5,5 @@
 *.VC.VC.opendb
 *.user
 *.cache
+game/gamearch
+game/userdata

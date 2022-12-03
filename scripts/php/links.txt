@@ -1,0 +1,44 @@
+# ai.dbo
+https://cloud.mail.ru/public/WyEZ/xyGbnvf7s
+
+# anims.dbo
+https://cloud.mail.ru/public/z5ZM/dnZRsFx99
+
+# configs.dbo
+https://cloud.mail.ru/public/D1Tm/JsGptdJth
+
+# levels.dbo
+https://cloud.mail.ru/public/iTa6/PD4eij55L
+
+# levels.db1
+https://cloud.mail.ru/public/dRC9/2rEvs7wqU
+
+# meshes.dbo
+https://cloud.mail.ru/public/NDQB/G45XBpUft
+
+# scripts.dbo
+https://cloud.mail.ru/public/88W9/oViZ1FVGT
+
+# shaders.dbo
+https://cloud.mail.ru/public/6FCr/5ycKBtHeG
+
+# sounds.dbo
+https://cloud.mail.ru/public/jt6o/HRtmm3oji
+
+# spawns.dbo
+https://cloud.mail.ru/public/41Rh/NgQ46XXSZ
+
+# textures.dbo
+https://cloud.mail.ru/public/nJ1g/Q2Y2sAs8J
+
+# textures.db1
+https://cloud.mail.ru/public/ZuXo/Nn1SFRXbj
+
+# textures.db2
+https://cloud.mail.ru/public/wJb5/LUQPVG4wh
+
+# textures.db3
+https://cloud.mail.ru/public/WeF2/5WYxtUF3k
+
+# xr.dbo
+https://cloud.mail.ru/public/Tr3X/bfpoz9Y23
