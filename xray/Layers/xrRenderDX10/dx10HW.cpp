@@ -744,7 +744,14 @@ void CHW::updateWindowProps(HWND m_hWnd)
 	// Set window properties depending on what mode were in.
 	if (bWindowed)		{
 		if (m_move_window) {
-			if (strstr(Core.Params,"-no_dialog_header"))
+			RECT DesktopRect;
+			GetClientRect		(GetDesktopWindow(), &DesktopRect);
+			bool fillDesktop = (m_ChainDesc.BufferDesc.Width == DesktopRect.right - DesktopRect.left) &&
+				(m_ChainDesc.BufferDesc.Height == DesktopRect.bottom - DesktopRect.top);
+
+			if (fillDesktop)
+				SetWindowLong	(m_hWnd, GWL_STYLE, dwWindowStyle = (WS_POPUP | WS_VISIBLE));
+			else if (strstr(Core.Params, "-no_dialog_header"))
 				SetWindowLong	( m_hWnd, GWL_STYLE, dwWindowStyle=(WS_BORDER|WS_VISIBLE) );
 			else
 				SetWindowLong	( m_hWnd, GWL_STYLE, dwWindowStyle=(WS_BORDER|WS_DLGFRAME|WS_VISIBLE|WS_SYSMENU|WS_MINIMIZEBOX ) );
@@ -762,10 +769,6 @@ void CHW::updateWindowProps(HWND m_hWnd)
 			if (strstr(Core.Params, "-center_screen"))	bCenter = TRUE;
 
 			if (bCenter) {
-				RECT				DesktopRect;
-
-				GetClientRect		(GetDesktopWindow(), &DesktopRect);
-
 				SetRect(			&m_rcWindowBounds, 
 					(DesktopRect.right-m_ChainDesc.BufferDesc.Width)/2, 
 					(DesktopRect.bottom-m_ChainDesc.BufferDesc.Height)/2, 
