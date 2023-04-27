@@ -368,9 +368,12 @@ void CElevatorState::Deactivate()
 	m_character=NULL;
 }
 
+struct  SEnertionState {
+	float dist;
+	u32	  time;
+};
 
-
-CElevatorState::SEnertionState CElevatorState:: m_etable[clbNoState][clbNoState]=
+static SEnertionState m_etable[clbNoState][clbNoState]=
 {
 //						clbNone			clbNearUp		clbNearDown		clbClimbingUp	clbClimbingDown	clbDepart	clbNoLadder
 /*clbNone			*/	{{0,0},			{0,0},			{0,0},			{0,0},			{0,0},			{0,0},		{0,0}},							//clbNone			
