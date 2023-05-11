@@ -53,6 +53,13 @@ public:
 	typedef GraphEngineSpace::CWorldProperty		CWorldProperty;
 	typedef GraphEngineSpace::CWorldState			CWorldState;
 	typedef _world_operator							_world_operator;
+	using typename inherited::_condition_type;
+	using typename inherited::COperator;
+	using typename inherited::CConditionEvaluator;
+	using typename inherited::_value_type;
+	using typename inherited::_edge_type;
+	using typename inherited::_operator_ptr;
+
 
 protected:
 	bool						m_initialized;

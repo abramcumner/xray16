@@ -187,8 +187,7 @@ namespace luabind { namespace detail
     template <class T>
     void make_pointee_instance(lua_State* L, T& x, mpl::false_, mpl::true_)
     {
-        std::auto_ptr<T> ptr(new T(x));
-        make_instance(L, ptr);
+        make_instance(L, std::unique_ptr<T> (new T(x)));
     }
 
     template <class T>
