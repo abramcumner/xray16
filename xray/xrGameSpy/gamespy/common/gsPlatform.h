@@ -424,10 +424,6 @@ extern "C" {
 #endif // GSI_UNICODE
 
 #if defined(_WIN32)
-	#define snprintf _snprintf
-#endif // _WIN32
-
-#if defined(_WIN32)
 	#define strcasecmp _stricmp
 	#define strncasecmp _strnicmp
 #endif
