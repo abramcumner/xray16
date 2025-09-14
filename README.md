@@ -6,7 +6,7 @@ XRAY 1.6
 How to Build
 ------------
 
-- install Visual Studio 2019
+- install Visual Studio 2022
 - install boost 1.71.0 (http://www.boost.org/users/history/version_1_71_0.html)
 - set enviroment variable BOOST_1_71_0 to boost path (example C:\Libraries\boost_1_71_0\)
 - open engine.sln
@@ -17,4 +17,4 @@ Binaries
 
 See [Release](https://github.com/abramcumner/xray16/releases) section.
 
-[Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/ru-ru/help/2977003/the-latest-supported-visual-c-downloads) is required to run programs.
+[Visual C++ Redistributable for Visual Studio 2022](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) is required to run programs.
